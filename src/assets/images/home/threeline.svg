@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1204px" height="518px" viewBox="0 0 1204 518" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 2</title>
+    <defs>
+        <linearGradient x1="0%" y1="47.7066319%" x2="91.7682144%" y2="52.2933681%" id="linearGradient-1">
+            <stop stop-color="#103722" stop-opacity="0.38" offset="0%"></stop>
+            <stop stop-color="#103722" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="10.5072496%" y1="47.7066319%" x2="102.625175%" y2="52.2933681%" id="linearGradient-2">
+            <stop stop-color="#103722" offset="0%"></stop>
+            <stop stop-color="#103722" stop-opacity="0.38" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="矿池" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="KuChain备份-9" transform="translate(-118.000000, -554.000000)" stroke-width="4">
+            <g id="编组-2" transform="translate(120.000000, 556.000000)">
+                <path d="M0,0 L1071.5,0 C1142.46859,0 1200,57.5314096 1200,128.5 C1200,199.46859 1142.46859,257 1071.5,257 L128.5,257" id="路径" stroke="url(#linearGradient-1)"></path>
+                <path d="M1200,514 L128.5,514 C57.5314096,514 4.54747351e-13,456.46859 4.54747351e-13,385.5 C4.54747351e-13,314.53141 57.5314096,257 128.5,257 L1071.5,257" id="路径" stroke="url(#linearGradient-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

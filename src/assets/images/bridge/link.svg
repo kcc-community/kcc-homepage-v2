@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 3</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.003922 0 0 0 0 0.031373 0 0 0 0 0.117647 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="详情_已完成" transform="translate(-615.000000, -457.000000)">
+            <g id="编组-5备份-6" transform="translate(463.000000, 264.000000)">
+                <g id="编组-6" transform="translate(84.000000, 127.000000)">
+                    <g id="编组-5" transform="translate(0.000000, 62.000000)">
+                        <g id="编组-3" transform="translate(68.000000, 4.000000)">
+                            <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="16" height="16"></rect>
+                            <g filter="url(#filter-1)" id="16/Rise" opacity="0.600000024">
+                                <g transform="translate(8.000000, 8.500000) rotate(-315.000000) translate(-8.000000, -8.500000) translate(3.000000, 3.000000)">
+                                    <polygon id="路径" fill="#1ABB97" points="5.00619408 -1.8189894e-12 9.60238816 4.59619408 8.89528137 5.30330086 5.499 1.907 5.5 11 4.5 11 4.499 1.921 1.11710678 5.30330086 0.41 4.59619408"></polygon>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
