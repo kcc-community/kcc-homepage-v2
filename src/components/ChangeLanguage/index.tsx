@@ -13,8 +13,10 @@ import { AppDispatch } from '../../state/index'
 import { useResponsive } from '../../utils/responsive'
 import { BrowserView, MobileView } from '../index'
 import { RowBetween } from '../Row'
+import i18nIcon from 'assets/images/Icons/i18n.webp'
 
 import './index.less'
+import Image from 'next/image'
 
 export interface ChangeLanguageProps {}
 
@@ -52,16 +54,13 @@ export const LanguageButton = styled.div`
   line-height: none;
   padding: 0;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 16px;
   outline: none;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  background: #212124;
-  &:hover {
-    background: transparent !important;
-  }
+  color:#fff;
   @media (max-width: 768px) {
     background: none;
     border: none;
@@ -143,13 +142,13 @@ const ChangeLanguage: React.FunctionComponent<ChangeLanguageProps> = () => {
             onClick={() => {
               setShow(() => !show)
             }}
-            style={{
-              color: theme.colors.primary,
-              fontSize: isMobile ? '14px' : '12px',
-            }}
           >
             {currentLanguage}
-            <DownOutlined
+            <Image
+              src={i18nIcon}
+              width={24}
+              height={24}
+              alt="language-icon"
               style={{ fontSize: '10px', marginLeft: isMobile ? '2px' : '6px' }}
             />
           </LanguageButton>

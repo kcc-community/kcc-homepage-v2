@@ -18,17 +18,23 @@ const AppHeaderWrap = styled.div`
   align-items: center;
   height: 80px;
   width: 100%;
-  padding: 0px 20px;
+  padding: 0px 50px;
   position: absolute;
   top: 0;
   left: 0;
   background: transparent;
   z-index: 99;
+  @media (max-width: 768px) {
+    padding: 0px 20px;
+  }
 `
 
 const Box = styled.div`
   display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
   align-items: center;
+  width: auto;
 `
 
 const HeaderLeftWrap = styled.div`
@@ -69,18 +75,18 @@ const AppHeader: React.FunctionComponent = (props: any) => {
       <AppHeaderContent isMobile={isMobile}>
         <HeaderLeftWrap>
           <KccLogo />
-          <BrowserView>
-            <AppMenu
-              style={{
-                width: 'calc(100vw - 500px)',
-                position: 'relative',
-                top: '3px',
-              }}
-            />
-          </BrowserView>
         </HeaderLeftWrap>
 
         <Box>
+          <BrowserView>
+            <AppMenu
+              style={{
+                width: 'auto',
+                position: 'relative',
+                top: '0px',
+              }}
+            />
+          </BrowserView>
           <ChangeLanguage />
           {/* {!walletButtonShow || !isMobile ? <ChangeLanguage /> : null} */}
           {/* <ButtonGroup>{walletButtonShow ? <UnlockButton /> : null}</ButtonGroup> */}

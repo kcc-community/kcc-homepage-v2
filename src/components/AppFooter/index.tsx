@@ -33,7 +33,7 @@ const AppFooterWrap = styled.div`
   }
 `
 const AppFooterContentWrap = styled.div`
-  width: 940px;
+  width: 1200px;
   padding-top: 43px;
   @media (max-width: 768px) {
     width: 100%;

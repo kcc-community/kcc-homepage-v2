@@ -7,6 +7,7 @@ export const KCC = {
   MAINNET_FAUCET: 'https://faucet.kcc.io',
   FAUCET: 'https://faucet-testnet.kcc.network/',
   DOCS_URL: 'https://docs.kcc.io/#/',
+  NEWS_URL:'https://news.kcc.io/',
   GITHUB_URL: 'https://github.com/kcc-community',
   DAPP_URL: 'https://github.com/kcc-community/awesome-dApps',
   DISCORD_URL: 'https://discord.com/invite/H5ucJydSyd',

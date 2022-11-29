@@ -45,7 +45,7 @@ export default function Home() {
         />
       </Head>
       <div style={{ height: '630px', color: '#fff' }}>
-        {t('Start building on KuCoin Community Chain')}
+       
       </div>
     </AppWrap>
   )

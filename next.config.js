@@ -19,7 +19,7 @@ const nextConfig = {
   lessLoaderOptions: {
     lessOptions: {
       modifyVars: {
-        '@primary-color': '#31D7A0',
+        '@primary-color': '#21C397',
         '@link-color': '#0fcd8c',
         '@logo-color': '#39E1A4',
       },

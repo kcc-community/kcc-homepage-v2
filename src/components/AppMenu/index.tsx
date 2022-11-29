@@ -48,19 +48,57 @@ const MenuWrap = styled.div`
 
 const { SubMenu } = Menu
 
-const NavTitle = styled.span`
+const StyledMenu = styled(Menu)`
+  border-radius: 24px !important;
+  background: transparent !important;
+`
+
+const StyledSubMenu = styled(SubMenu)`
+  &.ant-menu-submenu-open::after,
+  &.ant-menu-submenu-open::before,
+  &.ant-menu-submenu-open {
+    border-bottom: none !important;
+    transition: none !important;
+    border-width: 0px !important;
+    border-bottom-color: none !important;
+  }
+
+  &.ant-menu-submenu-active::before,
+  &.ant-menu-submenu-active::after,
+  &.ant-menu-submenu-active {
+    border-bottom: none !important;
+    transition: none !important;
+  }
+`
+
+const RootTitle = styled.span`
   font-size: 16px;
-  color: ${() => theme.colors.primary};
+  color: #fff;
   letter-spacing: 0;
   text-align: center;
   padding: 0;
   margin: 0;
+  &:hover {
+    color: ${() => theme.colors.primary};
+  }
+`
+
+const NavTitle = styled.span`
+  font-size: 16px;
+  color: #040a2d;
+  letter-spacing: 0;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    color: ${() => theme.colors.primary};
+  }
 `
 
 const NavSubTitle = styled.div`
   opacity: 0.6;
   font-size: 12px;
-  color: ${() => theme.colors.primary};
+  color: #040a2d;
   letter-spacing: 0;
   text-align: center;
   padding: 0;
@@ -72,14 +110,29 @@ const NavSubTitle = styled.div`
   text-align: left;
 `
 
+const Desc = styled.div`
+  color: #7f8393;
+  font-size: 14px;
+`
+
 const NavItemWrap = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 100%;
+  height: auto;
+  padding: 16px 0px;
+  border-radius: 0px !important;
+  &:hover ${NavSubTitle} {
+    color: ${() => theme.colors.primary};
+  }
+  &:hover ${NavTitle} {
+    color: ${() => theme.colors.primary};
+  }
 `
 
-const NavIcon = styled(Image)`
+const NavIcon = styled.div`
   width: 32px;
   height: auto;
 `
@@ -91,45 +144,57 @@ const TitleWrap = styled(Column)`
 `
 
 const NavItem: React.FunctionComponent<NavItemChildrenType> = (props) => {
+  const [isHover, setIsHover] = React.useState<boolean>(false)
+
   const { t, i18n } = useTranslation()
   const { isMobile } = useResponsive()
 
-  const getNavRoute = (route: string) => {
-    if (route === KCC.EXPLORER) {
-      if (i18n.language === 'zh-CN') {
-        return `${route}/cn`
+  const getNavRoute = React.useCallback(
+    (route: string) => {
+      if (route === KCC.EXPLORER) {
+        if (i18n.language === 'zh-CN') {
+          return `${route}/cn`
+        }
+        return `${route}/en`
       }
-      return `${route}/en`
-    }
-    return route
-  }
+      return route
+    },
+    [i18n]
+  )
 
   const dispatch = useDispatch()
 
   const router = useRouter()
 
-  const nav2Target = (route: string | undefined) => {
-    if (route) {
-      if (route.startsWith('/')) {
-        router.push(route)
+  const nav2Target = React.useCallback(
+    (route: string | undefined) => {
+      if (route) {
+        if (route.startsWith('/')) {
+          router.push(route)
+        }
+        if (route.startsWith('http')) {
+          const route1 = getNavRoute(route)
+          window.open(route1, '_blank')
+        }
+        if (isMobile) {
+          dispatch(changeMobileMenuShow({ show: false }))
+        }
       }
-      if (route.startsWith('http')) {
-        const route1 = getNavRoute(route)
-        window.open(route1, '_blank')
-      }
-      if (isMobile) {
-        dispatch(changeMobileMenuShow({ show: false }))
-      }
-    }
-  }
+    },
+    [dispatch, getNavRoute, isMobile, router]
+  )
 
   return (
-    <NavItemWrap onClick={nav2Target.bind(null, props.route)}>
-      <NavIcon width={32} src={props.icon} alt={props.title} />
+    <NavItemWrap
+      onClick={nav2Target.bind(null, props.route)}
+      onMouseEnter={() => setIsHover(() => true)}
+      onMouseLeave={() => setIsHover(() => false)}
+    >
+      <NavIcon>{props.icon(isHover)}</NavIcon>
       <TitleWrap>
         <NavTitle>{t(`${props.title}`)}</NavTitle>
         <NavSubTitle style={{ whiteSpace: 'normal' }}>
-          {t(`${props.subTitle}`)}
+          <Desc> {t(`${props.subTitle}`)}</Desc>
         </NavSubTitle>
       </TitleWrap>
     </NavItemWrap>
@@ -181,9 +246,9 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <NavTitle style={{ position: 'relative', top: '-2px' }}>
+              <RootTitle style={{ position: 'relative' }}>
                 {t(`${navItem.name}`)}
-              </NavTitle>
+              </RootTitle>
             </a>
           </Menu.Item>
         )
@@ -230,7 +295,7 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
       })
 
       return (
-        <SubMenu
+        <StyledSubMenu
           key={navItem.name}
           className="sub-menu"
           title={
@@ -238,18 +303,18 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
               style={{ alignItems: 'center' }}
               onClick={showSubMenu.bind(null, navItem)}
             >
-              <NavTitle>
+              <RootTitle>
                 {t(`${navItem.name}`)}{' '}
                 <DownOutlined
                   className="arrow-icon"
-                  style={{ fontSize: '10px', paddingTop: '-6px' }}
+                  style={{ fontSize: '10px' }}
                 />
-              </NavTitle>
+              </RootTitle>
             </Row>
           }
         >
-          {lists}
-        </SubMenu>
+          <div style={{ padding: '20px 0 20px 0' }}>{lists}</div>
+        </StyledSubMenu>
       )
     }
 
@@ -307,7 +372,6 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
         </SubMenu>
       )
     }
-
     return null
   }
 
@@ -350,18 +414,19 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
         </Menu>
       </MobileView>
       <BrowserView>
-        <Menu
+        <StyledMenu
           selectedKeys={[]}
           mode="horizontal"
           style={{
-            background: 'transparent',
-            color: theme.colors.primary,
-            border: 'none',
             ...style,
+            background: 'transparent',
+            border: 'none',
+            padding: 0,
+            margin: '0',
           }}
         >
           {MenuListDom}
-        </Menu>
+        </StyledMenu>
       </BrowserView>
     </MenuWrap>
   )

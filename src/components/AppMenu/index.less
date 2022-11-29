@@ -3,6 +3,8 @@
 .ant-menu-submenu-open {
   border-bottom: none !important;
   transition: none !important;
+  border-width: 0px !important;
+  border-bottom-color: none !important;
 }
 
 .ant-menu-submenu-active::before,
@@ -34,17 +36,18 @@
 .ant-menu-item,
 .ant-menu-submenu-title {
   white-space: wrap !important;
+  border-radius: 0px !important;
+  width: 100% !important;
 }
 
 .ant-menu {
-  border-radius: 8px !important;
+  border-radius: 0px !important;
   background: transparent !important;
 }
 
 .ant-menu-submenu-popup > .ant-menu {
   background: #000 !important;
-  border: 1px solid @primary-color !important;
-  padding: 28px 50px 28px 0px !important;
+  padding: 0px !important;
 }
 
 .ant-menu-item-group-title {
