@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Banner from 'components/home/Banner'
+import Ecosystem from 'components/home/Ecosystem'
 
 const AppWrap = styled.div`
   margin: 0;
@@ -46,8 +47,9 @@ export default function Home() {
           content="KCC is a high performance decentralized public chain built by the fans of KCS and KuCoin. We aim to provide community users with faster, more convenient and low-cost experience."
         />
       </Head>
-     
+
       <Banner />
+      <Ecosystem />
     </AppWrap>
   )
 }

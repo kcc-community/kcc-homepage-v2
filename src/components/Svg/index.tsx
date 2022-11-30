@@ -18,6 +18,7 @@ import GoDAOIcon from './Icons/GoDAO'
 import ActivityIcon from './Icons/Activity'
 import MediaIcon from './Icons/Media'
 import NewsIcon from './Icons/News'
+import ArrowLeft from './Icons/ArrowLeft'
 
 export {
   MediaIcon,
@@ -38,7 +39,8 @@ export {
   WalletIcon,
   GithubMenuIcon,
   StakingKCSIcon,
-  NewsIcon
+  NewsIcon,
+  ArrowLeft,
 }
 
 export { default as Svg } from './Svg'
