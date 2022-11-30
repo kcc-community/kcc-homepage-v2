@@ -55,7 +55,7 @@ export const MENU_LIST = [
         title: 'Developer resources',
         subTitle:
           'A collection of developer resources for developers onboarding to KCC.',
-        route: KCC.GITHUB_URL,
+        route: '', // Develop with KCC
         icon: (isHover = false) => {
           return <DeveloperResourceIcon isHover={isHover} />
         },
@@ -63,7 +63,7 @@ export const MENU_LIST = [
       {
         title: 'Grants',
         subTitle: 'Apply for technological grants for your project.',
-        route: KCC.TEST_EXPLORER,
+        route: 'https://github.com/kcc-community/kcc-grants',
         icon: (isHover = false) => {
           return <GrantIcon isHover={isHover} />
         },
@@ -85,7 +85,7 @@ export const MENU_LIST = [
       {
         title: 'Explore dApps',
         subTitle: 'Find top dApps on KCC.',
-        route: '/discover',
+        route: '/apps',
         icon: (isHover = false) => {
           return <DiscoverIcon isHover={isHover} />
         },
@@ -93,7 +93,7 @@ export const MENU_LIST = [
       {
         title: 'Wallet',
         subTitle: `Access to your funds and dApps with wallets.`,
-        route: '/community/grants',
+        route: '/apps?category=wallet', // dApps -> wallet
         icon: (isHover = false) => {
           return <WalletIcon isHover={isHover} />
         },
@@ -216,7 +216,7 @@ export const MENU_LIST = [
       {
         title: 'Bridge',
         subTitle: `Bridge assets from other chain to KCC.`,
-        route: '/community/grants',
+        route: 'https://bridge.kcc.io',
         icon: (isHover = false) => {
           return <BridgeIcon isHover={isHover} />
         },
@@ -224,7 +224,7 @@ export const MENU_LIST = [
       {
         title: 'Node Validator',
         subTitle: `Applying to be a KCC node operator.`,
-        route: '/community/grants',
+        route: 'https://news.kcc.io/announcement-of-the-kcc-validator-election',
         icon: (isHover = false) => {
           return <NodeValidatorIcon isHover={isHover} />
         },
@@ -246,7 +246,7 @@ export const MENU_LIST = [
       {
         title: 'Activities',
         subTitle: 'Find hot events at KCC.',
-        route: KCC.NEWS_URL,
+        route: 'https://news.kcc.io/category/event/kcc-event',
         icon: (isHover = false) => {
           return <ActivityIcon isHover={isHover} />
         },
@@ -262,7 +262,7 @@ export const MENU_LIST = [
       {
         title: 'Social Media',
         subTitle: 'Join our vibrant community.',
-        route: '',
+        route: '', // Join KCC Community
         icon: (isHover = false) => {
           return <MediaIcon isHover={isHover} />
         },

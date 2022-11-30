@@ -142,7 +142,7 @@ const AppFooter: React.FunctionComponent<AppFooterProps> = () => {
       )
     })
     return (
-      <Column key={index}>
+      <Column key={index} style={{width:'140px'}}>
         <FooterTitle>{t(item.title)}</FooterTitle>
         <FooterNavListWrap>{children}</FooterNavListWrap>
       </Column>

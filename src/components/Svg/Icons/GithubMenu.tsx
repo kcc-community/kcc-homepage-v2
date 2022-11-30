@@ -5,7 +5,7 @@ import { SvgProps } from '../types'
 const Icon: React.FC<SvgProps & { isHover: boolean }> = (props) => {
   return (
     <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
-      <g clip-path="url(#clip0_1059_1394)">
+      <g clipPath="url(#clip0_1059_1394)">
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
