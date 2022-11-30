@@ -33,11 +33,6 @@ export async function getStaticProps({ locale }: { locale: any }) {
 }
 
 export default function Home() {
-  const { t, i18n } = useTranslation('common')
-  React.useEffect(() => {
-    console.log('t', t)
-    console.log('i18n', i18n)
-  }, [t, i18n])
   return (
     <AppWrap>
       <Head>
@@ -47,7 +42,6 @@ export default function Home() {
           content="KCC is a high performance decentralized public chain built by the fans of KCS and KuCoin. We aim to provide community users with faster, more convenient and low-cost experience."
         />
       </Head>
-
       <Banner />
       <Ecosystem />
     </AppWrap>

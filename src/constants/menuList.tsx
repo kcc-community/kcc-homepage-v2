@@ -216,7 +216,7 @@ export const MENU_LIST = [
       {
         title: 'Bridge',
         subTitle: `Bridge assets from other chain to KCC.`,
-        route: 'https://bridge.kcc.io',
+        route: KCC.BRIDGE_URL,
         icon: (isHover = false) => {
           return <BridgeIcon isHover={isHover} />
         },

@@ -123,9 +123,7 @@ const AppFooter: React.FunctionComponent<AppFooterProps> = () => {
             .trimRight()
             .replaceAll(' ', '-')
             .toLowerCase()
-          console.log('i18n.language', i18n.language)
           const url = `${KCC.DOCS_URL}${translateLanguageTable[i18n.language]}`
-          console.log('url', url)
           window.open(url, '_blank')
         }
       }

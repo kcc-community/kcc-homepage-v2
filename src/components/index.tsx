@@ -56,3 +56,5 @@ export const BrowserView = styled.div`
     display: block;
   }
 `
+
+export const Box = styled.div``

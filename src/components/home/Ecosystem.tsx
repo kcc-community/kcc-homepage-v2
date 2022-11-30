@@ -9,6 +9,9 @@ import { GhostButton, NormalButton } from 'components/Button'
 import { RowCenterBox } from 'components'
 import { ArrowLeft } from 'components/Svg/index'
 import { useRouter } from 'next/router'
+import { KCC } from 'constants/index'
+
+import GetKCSModal from 'components/home/GetKCSModal'
 
 const Wrap = styled.div`
   display: flex;
@@ -34,7 +37,7 @@ const Content = styled.div`
   }
 `
 
-const Title = styled.h2`
+const Title = styled.div`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 700;
@@ -189,7 +192,7 @@ const stepList = [
     title: 'Download Wallet',
     desc: 'A wallet helps you connect to KCC and manage your funds.',
     buttonText: 'Download Wallet',
-    buttonUrl: '',
+    buttonUrl: '/apps?category=wallet',
   },
   {
     image: step2,
@@ -203,13 +206,32 @@ const stepList = [
     title: 'Bridge assets',
     desc: 'Bridge your holding assets from other chain to KCC instead of buy more.',
     buttonText: 'Bridge to KCC',
-    buttonUrl: '',
+    buttonUrl: KCC.BRIDGE_URL,
   },
 ]
 
 const Ecosystem: React.FC = () => {
   const { t } = useTranslation()
   const router = useRouter()
+  const [modalShow, setModalShow] = React.useState<boolean>(false)
+
+  const handleButtonClick = React.useCallback(
+    (index: number) => {
+      switch (index) {
+        case 0:
+          router.push(stepList[0].buttonUrl)
+          break
+        case 1:
+          setModalShow(() => true)
+          break
+        case 2:
+          window.open(stepList[2].buttonUrl, '_blank')
+        default:
+          console.warn('handleButtonClick error')
+      }
+    },
+    [router, setModalShow]
+  )
 
   return (
     <Wrap>
@@ -224,9 +246,9 @@ const Ecosystem: React.FC = () => {
           Get started in 4 steps to dive into the world of KCC.
         </SubTitle>
         <ListWrap>
-          {stepList.map((step) => {
+          {stepList.map((step, index) => {
             return (
-              <Item key={step.title}>
+              <Item key={index}>
                 <StyledImage
                   src={step.image}
                   width={110}
@@ -235,7 +257,10 @@ const Ecosystem: React.FC = () => {
                 />
                 <ItemTitle>{t(step.title)}</ItemTitle>
                 <ItemDesc>{t(step.desc)}</ItemDesc>
-                <GhostButton style={{ marginTop: '20px' }}>
+                <GhostButton
+                  style={{ marginTop: '20px' }}
+                  onClick={handleButtonClick.bind(null, index)}
+                >
                   <RowCenterBox>
                     <ButtonText>{t(step.buttonText)}</ButtonText>
                     <ArrowLeft />
@@ -253,11 +278,17 @@ const Ecosystem: React.FC = () => {
               'Easily navigate relevant dApps, swiftly explore and discover profitable projects. Also, apply to add your dApp.'
             )}
           </DiscoverDesc>
-          <NormalButton style={{ marginTop: '24px' }} onClick={()=>{router.push('/apps')}}>
+          <NormalButton
+            style={{ marginTop: '24px' }}
+            onClick={() => {
+              router.push('/apps')
+            }}
+          >
             <DiscoverButtonText>{t('Find the first dApp')}</DiscoverButtonText>
           </NormalButton>
         </DiscoverWrap>
       </Content>
+      <GetKCSModal open={modalShow} setModalShow={setModalShow} />
     </Wrap>
   )
 }

@@ -19,6 +19,7 @@ import ActivityIcon from './Icons/Activity'
 import MediaIcon from './Icons/Media'
 import NewsIcon from './Icons/News'
 import ArrowLeft from './Icons/ArrowLeft'
+import CloseIcon from './Icons/Close'
 
 export {
   MediaIcon,
@@ -41,6 +42,7 @@ export {
   StakingKCSIcon,
   NewsIcon,
   ArrowLeft,
+  CloseIcon
 }
 
 export { default as Svg } from './Svg'
