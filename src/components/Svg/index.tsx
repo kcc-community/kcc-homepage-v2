@@ -20,8 +20,16 @@ import MediaIcon from './Icons/Media'
 import NewsIcon from './Icons/News'
 import ArrowLeft from './Icons/ArrowLeft'
 import CloseIcon from './Icons/Close'
+import DevelopIcon1 from './Icons/ DevelopIcon-1'
+import DevelopIcon2 from './Icons/ DevelopIcon-2'
+import DevelopIcon3 from './Icons/ DevelopIcon-3'
+import DevelopIcon4 from './Icons/ DevelopIcon-4'
 
 export {
+  DevelopIcon1,
+  DevelopIcon3,
+  DevelopIcon2,
+  DevelopIcon4,
   MediaIcon,
   ActivityIcon,
   GoDAOIcon,
@@ -42,7 +50,7 @@ export {
   StakingKCSIcon,
   NewsIcon,
   ArrowLeft,
-  CloseIcon
+  CloseIcon,
 }
 
 export { default as Svg } from './Svg'

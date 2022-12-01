@@ -8,6 +8,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Banner from 'components/home/Banner'
 import Ecosystem from 'components/home/Ecosystem'
+import Develop from 'components/home/Develop'
 
 const AppWrap = styled.div`
   margin: 0;
@@ -44,6 +45,7 @@ export default function Home() {
       </Head>
       <Banner />
       <Ecosystem />
+      <Develop />
     </AppWrap>
   )
 }
