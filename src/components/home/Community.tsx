@@ -1,14 +1,14 @@
+import { Input } from 'antd'
+import { NormalButton } from 'components/Button'
+import { KCC } from 'constants/index'
 import { Trans, useTranslation } from 'next-i18next'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import styled from 'styled-components'
-import { KCC } from 'constants/index'
-import TwitterIcon from '../Svg/Icons/TwitterIcon'
-import TelegramIcon from '../Svg/Icons/TelegramIcon'
 import DiscordIcon from '../Svg/Icons/DiscordIcon'
-import Link from 'next/link'
-import { NormalButton } from 'components/Button'
-import { Input } from 'antd'
+import TelegramIcon from '../Svg/Icons/TelegramIcon'
+import TwitterIcon from '../Svg/Icons/TwitterIcon'
 
 const mediaList = [
   {

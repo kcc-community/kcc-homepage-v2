@@ -1,3 +1,22 @@
+import kucoin from 'assets/images/home/v2/kucoin.svg'
+import kucoinWalllet from 'assets/images/home/v2/kucoin-wallet.svg'
+import kucoinVentures from 'assets/images/home/v2/kucoin-ventures.svg'
+import kucoinLabs from 'assets/images/home/v2/kucoin-labs.svg'
+import tokenView from 'assets/images/home/v2/tokenview.svg'
+import conflux from 'assets/images/home/v2/conflux.svg'
+import hashed from 'assets/images/home/v2/hashed.svg'
+import hashkey from 'assets/images/home/v2/hashkey.svg'
+import maven from 'assets/images/home/v2/maven-capital.svg'
+import skyman from 'assets/images/home/v2/skyman.svg'
+import cointelegraph from 'assets/images/home/v2/cointelegraph.svg'
+import blog from 'assets/images/home/v2/blog.svg'
+import shardingCapital from 'assets/images/home/v2/sharding-capital.svg'
+import shimaCapital from 'assets/images/home/v2/shima-capital.svg'
+import zonff from 'assets/images/home/v2/zonff.svg'
+import axis from 'assets/images/home/v2/axis.svg'
+import acCapital from 'assets/images/home/v2/ac-capital.svg'
+import web3port from 'assets/images/home/v2/web3port.svg'
+
 export const KCC = {
   FULLNAME: 'KuCoin Community Chain',
   ABBR: 'KCC',
@@ -51,99 +70,93 @@ export const KCC = {
   PARTNER_LIST: [
     {
       name: 'KuCoin',
-      logo: require('../assets/images/home/kucoin.png').default,
+      logo: kucoin,
       route: 'https://www.kucoin.com/',
     },
     {
       name: 'KucoinVentures',
-      logo: require('../assets/images/home/kucoinventures.png').default,
+      logo: kucoinVentures,
       route: 'https://www.kucoin.com/kucoin-ventures',
     },
     {
       name: 'Kucoinlabs',
-      logo: require('../assets/images/home/kucoinlab.png').default,
+      logo: kucoinLabs,
       route: 'https://www.kucoin.com/land/kucoinlabs',
     },
     {
       name: 'KuCoin Wallet',
-      logo: require('../assets/images/home/kucoin-wallet.png').default,
+      logo: kucoinWalllet,
       route: 'https://www.kuwallet.com',
     },
     {
       name: 'TokenView',
-      logo: require('../assets/images/home/tokenview.png').default,
+      logo: tokenView,
       route: 'https://tokenview.com/en',
     },
     {
       name: 'Conflux',
-      logo: require('../assets/images/home/conflux.png').default,
+      logo: conflux,
       route: 'https://confluxnetwork.org/',
     },
     {
       name: 'Hashed',
-      logo: require('../assets/images/home/hashed.png').default,
+      logo: hashed,
       route: 'https://www.hashed.com/',
     },
     {
       name: 'Hashkey',
-      logo: require('../assets/images/home/hashkey.png').default,
+      logo: hashkey,
       route: 'https://www.hashkey.com/',
     },
     {
       name: 'maven',
-      logo: require('../assets/images/home/maven.png').default,
+      logo: maven,
       route: 'https://www.mavencp.com/',
     },
     {
       name: 'SkymanVentures',
-      logo: require('../assets/images/home/skyman.png').default,
+      logo: skyman,
       route: 'https://www.skymanventures.com',
     },
     {
       name: 'coinletegraph',
-      logo: require('../assets/images/home/Cointelegraph.png').default,
+      logo: cointelegraph,
       route: 'https://cointelegraph.com/',
     },
 
     {
       name: 'blog',
-      logo: require('../assets/images/home/blog.png').default,
+      logo: blog,
       route: 'https://blogtienao.com/',
     },
-    // {
-    //   name: 'nest',
-    //   logo: require('../assets/images/home/nest.png').default,
-    //   route: 'https://www.nestprotocol.org',
-    // },
-
     {
       name: 'Sharding Capital',
-      logo: require('../assets/images/home/sharding.png').default,
+      logo: shardingCapital,
       route: 'https://www.sharding.capital/',
     },
     {
       name: 'Shima Capital',
-      logo: require('../assets/images/home/shima.png').default,
+      logo: shimaCapital,
       route: 'https://shima.capital/',
     },
     {
       name: 'Zonff',
-      logo: require('../assets/images/home/zonff.png').default,
+      logo: zonff,
       route: 'https://www.zonff.partners/#/home',
     },
     {
       name: 'Axis Ventures',
-      logo: require('../assets/images/home/Axis.png').default,
+      logo: axis,
       route: 'https://www.axis.ventures/',
     },
     {
       name: 'AC Capital',
-      logo: require('../assets/images/home/ac.png').default,
+      logo: acCapital,
       route: 'https://www.accapital.io/',
     },
     {
       name: 'Web3Port',
-      logo: require('../assets/images/home/web3.png').default,
+      logo: web3port,
       route: 'https://www.web3port.us/',
     },
   ],

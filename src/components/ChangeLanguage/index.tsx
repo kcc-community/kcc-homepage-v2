@@ -133,7 +133,7 @@ const ChangeLanguage: React.FunctionComponent<ChangeLanguageProps> = () => {
         style={{ background: '#000' }}
         placement="bottom"
         content={selectOptions}
-        visible={show}
+        open={show}
       >
         <BrowserView>
           <LanguageButton
