@@ -63,7 +63,7 @@ export const MENU_LIST = [
       {
         title: 'Grants',
         subTitle: 'Apply for technological grants for your project.',
-        route: 'https://github.com/kcc-community/kcc-grants',
+        route: KCC.GRANTS,
         icon: (isHover = false) => {
           return <GrantIcon isHover={isHover} />
         },

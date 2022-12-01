@@ -1,16 +1,47 @@
+import cupImage from 'assets/images/home/v2/cup.webp'
+import quoteImage from 'assets/images/home/v2/quote.webp'
+import {
+  ArrowLeft,
+  DevelopIcon1,
+  DevelopIcon2,
+  DevelopIcon3,
+  DevelopIcon4,
+} from 'components/Svg'
+import { KCC } from 'constants/index'
+import { Trans, useTranslation } from 'next-i18next'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React from 'react'
 import styled from 'styled-components'
-import { Trans, useTranslation } from 'next-i18next'
 import { NormalButton } from '../Button/NormalButton'
-import { GhostButton } from '../Button/GhostButton'
-import { KCC } from 'constants/index'
-import { useRouter } from 'next/router'
-import { ArrowLeft, DevelopIcon1 } from 'components/Svg'
+
+import { Box, RowCenterBox } from 'components'
 import Link from 'next/link'
+
+const advantageList = [
+  {
+    title: 'Decentralized',
+    desc: "Built by the fans of KCS and KuCoin's fan communities,KCC is a decentralized public chain.",
+  },
+  {
+    title: 'EVM Compatible',
+    desc: 'Fully compatible with EVM and ERC-20 smart contracts, extremely low costs in migration.',
+  },
+  {
+    title: 'Sustainability',
+    desc: 'The blocks are produced every 3 seconds, accelerated transaction confirmation and higher chain performance.',
+  },
+  {
+    title: 'PoSA',
+    desc: 'Adopt the consensus algorithm of Proof of Staked Authority (PoSA), more efficient, secure and robust.',
+  },
+]
 
 const developList = [
   {
-    icon: '',
+    icon: (isHover: boolean) => (
+      <DevelopIcon1 color={isHover ? ' #21C397' : '#fff'} />
+    ),
     title: 'Documentation',
     list: [
       {
@@ -20,7 +51,9 @@ const developList = [
     ],
   },
   {
-    icon: '',
+    icon: (isHover: boolean) => (
+      <DevelopIcon2 color={isHover ? ' #21C397' : '#fff'} />
+    ),
     title: 'Tools',
     list: [
       {
@@ -42,7 +75,9 @@ const developList = [
     ],
   },
   {
-    icon: '',
+    icon: (isHover: boolean) => (
+      <DevelopIcon3 color={isHover ? ' #21C397' : '#fff'} />
+    ),
     title: 'Resources',
     list: [
       {
@@ -60,7 +95,9 @@ const developList = [
     ],
   },
   {
-    icon: '',
+    icon: (isHover: boolean) => (
+      <DevelopIcon4 color={isHover ? ' #21C397' : '#fff'} />
+    ),
     title: 'Roadmap',
     list: [
       {
@@ -91,6 +128,7 @@ const Wrap = styled.div`
   }
 `
 const Content = styled.div`
+  position: relative;
   width: 1200px;
   margin: 0 auto;
   padding-top: 117px;
@@ -197,9 +235,115 @@ const ItemRow = styled(Link)`
 
 const AdvantageListWrap = styled.div`
   display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 100px;
+  row-gap: 48px;
+`
+
+const AdvantageItem = styled.div`
+  width: 550px;
+`
+
+const AdvantageTitle = styled.div`
+  position: relative;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffffff;
+  z-index: 1;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    z-index: -1;
+    background: linear-gradient(
+      89.94deg,
+      #21c397 -3.64%,
+      rgba(33, 195, 151, 0) 110.47%
+    );
+    width: 109px;
+    height: 14px;
+  }
+`
+
+const AdvantageDesc = styled.div`
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* or 171% */
+  color: #ffffff;
+  margin-top: 18px;
+`
+
+const QuoteBg = styled(Image)`
+  position: absolute;
+  z-index: 0;
+  top: 120px;
+  left: -40px;
+`
+
+const RotateQuoteBg = styled(Image)`
+  position: absolute;
+  top: 860px;
+  right: -60px;
+  transform: rotate(180deg);
+`
+
+const GrantWrap = styled.div`
+  margin-top: 92px;
+  padding: 53px 65px 43px 65px;
+  width: 100%;
+  display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  background: #21c397;
+  border-radius: 16px;
+`
+
+const GrantTitle = styled.div`
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+`
+
+const GrantDesc = styled.div`
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  margin-top: 10px;
+  max-width: 583px;
+`
+
+const ButtonText = styled.div`
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-right: 9px;
 `
 
 const List: React.FC<{ list: { name: string; url: string } }> = ({ list }) => {
@@ -234,6 +378,13 @@ const Develop: React.FC = () => {
   return (
     <Wrap>
       <Content>
+        <QuoteBg src={quoteImage} width={145} height={114} alt="quote-bg" />
+        <RotateQuoteBg
+          src={quoteImage}
+          width={145}
+          height={114}
+          alt="rotate-quote-bg"
+        />
         <Title>
           <Trans i18nKey="Develop with KCC" components={{ color: <Color /> }} />
         </Title>
@@ -250,7 +401,7 @@ const Develop: React.FC = () => {
                 onMouseEnter={() => setHoverByIndex(index)}
                 onMouseLeave={() => setHoverList(() => initHoverState)}
               >
-                <DevelopIcon1 color={hoverList[index] ? ' #21C397' : '#fff'} />
+                {develop.icon(hoverList[index])}
                 <ItemTitle>{t(develop.title)}</ItemTitle>
                 {develop.list.map((list, index1) => {
                   return <List list={list} key={index1} />
@@ -259,6 +410,38 @@ const Develop: React.FC = () => {
             )
           })}
         </ListWrap>
+        <AdvantageListWrap>
+          {advantageList.map((advantage, index) => {
+            return (
+              <AdvantageItem key={index}>
+                <AdvantageTitle>{t(advantage.title)}</AdvantageTitle>
+                <AdvantageDesc>{t(advantage.desc)}</AdvantageDesc>
+              </AdvantageItem>
+            )
+          })}
+        </AdvantageListWrap>
+        <GrantWrap>
+          <Box>
+            <GrantTitle>{t('Grant Program')}</GrantTitle>
+            <GrantDesc>
+              {t(
+                'Sponsored by KCS Foundation, the program supports the research of protocols in the blockchain technology stack. The program also supports the development of bottom layers, tools and applications based on the KCC chain, all of which are operated in a decentralized manner to improve the KCC ecology and to offer a more convenient, faster and lower-cost blockchain experience for community users.'
+              )}
+            </GrantDesc>
+            <NormalButton
+              style={{ border: '1px solid #fff', marginTop: '28px' }}
+              onClick={() => {
+                window.open(KCC.GRANTS, '_blank')
+              }}
+            >
+              <RowCenterBox style={{ width: 'auto' }}>
+                <ButtonText>{t('Learn More')}</ButtonText>
+                <ArrowLeft color="#fff" />
+              </RowCenterBox>
+            </NormalButton>
+          </Box>
+          <Image src={cupImage} width={393} height={340} alt="cup-image" />
+        </GrantWrap>
       </Content>
     </Wrap>
   )

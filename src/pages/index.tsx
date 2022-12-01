@@ -2,13 +2,14 @@ import AppLayout from 'components/AppLayout'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
-import { useTranslation } from 'next-i18next'
 import styled from 'styled-components'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Banner from 'components/home/Banner'
 import Ecosystem from 'components/home/Ecosystem'
 import Develop from 'components/home/Develop'
+import Community from 'components/home/Community'
+import Partner from 'components/home/Partner'
 
 const AppWrap = styled.div`
   margin: 0;
@@ -46,6 +47,8 @@ export default function Home() {
       <Banner />
       <Ecosystem />
       <Develop />
+      <Community />
+      <Partner />
     </AppWrap>
   )
 }

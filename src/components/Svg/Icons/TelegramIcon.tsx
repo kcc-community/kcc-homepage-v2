@@ -2,12 +2,12 @@ import React from 'react'
 import Svg from '../Svg'
 import { SvgProps } from '../types'
 
-const TelegramIcon: React.FC<SvgProps & { isHover: boolean }> = (props) => {
+const TelegramIcon: React.FC<SvgProps & { color: string }> = (props) => {
   return (
     <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
       <path
         d="M20.1521 4.05339C20.1521 4.05339 22.0022 3.33196 21.848 5.084C21.7967 5.80544 21.3341 8.33044 20.9744 11.0616L19.7409 19.1519C19.7409 19.1519 19.6382 20.3371 18.7131 20.5432C17.788 20.7493 16.4004 19.8218 16.1434 19.6157C15.9378 19.4611 12.289 17.1422 11.0041 16.0085C10.6444 15.6993 10.2332 15.081 11.0555 14.3595L16.4518 9.20649C17.0685 8.58811 17.6852 7.14525 15.1156 8.8973L7.92056 13.7927C7.92056 13.7927 7.09827 14.308 5.55651 13.8442L2.21595 12.8136C2.21595 12.8136 0.982516 12.0407 3.08963 11.2677C8.22894 8.84573 14.5503 6.37225 20.1521 4.05339Z"
-        fill={props.isHover ? 'black' : 'white'}
+        fill={props.color ?? 'black'}
       />
     </Svg>
   )
