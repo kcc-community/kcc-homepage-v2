@@ -61,7 +61,6 @@ const ImageWrap = styled(Link)`
 
 const StyledMarquee = styled(Marquee)`
   margin-top: 38px;
-  padding: 30px 0;
 `
 
 const Partner: React.FC = () => {
@@ -81,7 +80,7 @@ const Partner: React.FC = () => {
           play={isHover ? false : true}
         >
           <RowCenterBox
-            style={{ width: '100%' }}
+            style={{ width: '100%', padding: '40px 0' }}
             onMouseEnter={() => setIsHover(() => true)}
             onMouseLeave={() => setIsHover(() => false)}
           >
