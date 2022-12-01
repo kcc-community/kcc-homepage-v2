@@ -15,7 +15,7 @@ const Icon: React.FC<SvgProps & { color?: string }> = (props) => {
       <path
         d="M10.9498 4.99943L13.8996 7.94922L10.9498 10.899"
         stroke={props.color ?? '#21C397'}
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
     </Svg>
   )

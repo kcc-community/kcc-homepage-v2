@@ -60,7 +60,7 @@ export const LanguageButton = styled.div`
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  color:#fff;
+  color: #fff;
   @media (max-width: 768px) {
     background: none;
     border: none;
@@ -122,7 +122,7 @@ const ChangeLanguage: React.FunctionComponent<ChangeLanguageProps> = () => {
         onMouseLeave={hidePopover}
       >
         <RowBetween>
-          <Text> {lng.language}</Text>
+          <Text>{lng.language}</Text>
         </RowBetween>
       </LanguageItem>
     )

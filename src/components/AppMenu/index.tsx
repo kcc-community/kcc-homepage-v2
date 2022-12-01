@@ -282,7 +282,7 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
       const lists = subMenuList?.map((item) => {
         return (
           <Menu.Item
-            key={item.title}
+            key={item.title ?? Math.random()}
             style={{
               height: 'auto',
               lineHeight: '25px',

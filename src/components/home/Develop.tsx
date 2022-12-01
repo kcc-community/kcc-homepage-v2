@@ -5,8 +5,8 @@ import { NormalButton } from '../Button/NormalButton'
 import { GhostButton } from '../Button/GhostButton'
 import { KCC } from 'constants/index'
 import { useRouter } from 'next/router'
-
-
+import { ArrowLeft, DevelopIcon1 } from 'components/Svg'
+import Link from 'next/link'
 
 const developList = [
   {
@@ -136,10 +136,101 @@ const Desc = styled.div`
   margin-top: 18px;
 `
 
+const ListWrap = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 48px;
+`
+const Item = styled.div`
+  border-radius: 16px;
+  width: 282px;
+  height: 320px;
+  padding: 48px 32px 30px 32px;
+  background: #181818;
+  & + & {
+    margin-left: 24px;
+  }
+`
+
+const ItemTitle = styled.div`
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 16px;
+`
+
+const ItemText = styled.div`
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-right: 12px;
+  max-width: 169px;
+`
+
+const ItemRow = styled(Link)`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 12px;
+  cursor: pointer;
+  &:hover ${ItemText} {
+    color: #21c397;
+  }
+`
+
+const AdvantageListWrap = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const List: React.FC<{ list: { name: string; url: string } }> = ({ list }) => {
+  const { t } = useTranslation()
+  const [isHover, setIsHover] = React.useState<boolean>(false)
+  return (
+    <ItemRow
+      href={list.url}
+      target="_blank"
+      onMouseEnter={() => setIsHover(() => true)}
+      onMouseLeave={() => setIsHover(() => false)}
+    >
+      <ItemText>{t(list.name)}</ItemText>
+      <ArrowLeft color={isHover ? '#21C397' : '#fff'} />
+    </ItemRow>
+  )
+}
 
 const Develop: React.FC = () => {
   const { t } = useTranslation()
   const router = useRouter()
+  const initHoverState = new Array(developList.length).fill(false)
+  const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
+
+  const setHoverByIndex = (index: number) => {
+    const stateList = initHoverState
+    setHoverList(() => initHoverState)
+    stateList.splice(index, 1, true)
+    setHoverList(() => stateList)
+  }
+
   return (
     <Wrap>
       <Content>
@@ -151,6 +242,23 @@ const Develop: React.FC = () => {
             'A collection of developer resources and discussion channels for developers onboarding to KCC.'
           )}
         </Desc>
+        <ListWrap>
+          {developList.map((develop, index) => {
+            return (
+              <Item
+                key={index}
+                onMouseEnter={() => setHoverByIndex(index)}
+                onMouseLeave={() => setHoverList(() => initHoverState)}
+              >
+                <DevelopIcon1 color={hoverList[index] ? ' #21C397' : '#fff'} />
+                <ItemTitle>{t(develop.title)}</ItemTitle>
+                {develop.list.map((list, index1) => {
+                  return <List list={list} key={index1} />
+                })}
+              </Item>
+            )
+          })}
+        </ListWrap>
       </Content>
     </Wrap>
   )
