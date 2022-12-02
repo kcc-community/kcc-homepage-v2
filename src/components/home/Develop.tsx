@@ -123,9 +123,6 @@ const Wrap = styled.div`
     #f5f5f5 100%
   );
   background-size: 100% 1456px;
-  @media (min-width: 1920px) {
-    background-size: 100% 886px;
-  }
 `
 const Content = styled.div`
   position: relative;

@@ -52,8 +52,8 @@ export default function MFooter() {
         }
         // Open the corresponding document address according to the current language
         const anchor = t(navText)
-          .trimLeft()
-          .trimRight()
+          .trimStart()
+          .trimEnd()
           .replaceAll(' ', '-')
           .toLowerCase()
         const url = `${KCC.DOCS_URL}${

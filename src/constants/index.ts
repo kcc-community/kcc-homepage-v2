@@ -45,28 +45,7 @@ export const KCC = {
   DAO: 'https://godao.community',
   SAFE_GNOSIS: 'https://safe.kcc.io',
   STAKING: 'https://staking.kcc.io',
-  CONTACT_LIST: [
-    {
-      app: 'Twitter',
-      icon: require('../assets/images/Icons/app/twitter-logo@2x.png').default,
-      route: 'https://twitter.com/KCCOfficialTW',
-    },
-    {
-      app: 'Telegram',
-      icon: require('../assets/images/Icons/app/telegram-logo@2x.png').default,
-      route: 'https://t.me/KCCOfficialEnglishCommunity',
-    },
-    {
-      app: 'Github',
-      icon: require('../assets/images/Icons/app/github-logo@2x.png').default,
-      route: 'https://github.com/kcc-community',
-    },
-    {
-      app: 'Discord',
-      icon: require('../assets/images/Icons/app/discord-logo@2x.png').default,
-      route: 'https://discord.com/invite/H5ucJydSyd',
-    },
-  ],
+  KCSWHITEPAPER: 'https://www.kcs.foundation/',
   PARTNER_LIST: [
     {
       name: 'KuCoin',

@@ -1,13 +1,12 @@
 import { RowCenterBox } from 'components'
 import { KCC } from 'constants/index'
 import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import Marquee from 'react-fast-marquee'
 import styled from 'styled-components'
 import { useResponsive } from 'utils/responsive'
-import Link from 'next/link'
-import Image from 'next/image'
 
 const Wrap = styled.div`
   display: flex;
@@ -35,7 +34,6 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 48px;
   line-height: 72px;
-  /* identical to box height */
   margin: 0;
   padding: 0;
   display: flex;
@@ -65,7 +63,6 @@ const StyledMarquee = styled(Marquee)`
 
 const Partner: React.FC = () => {
   const { t } = useTranslation()
-  const router = useRouter()
   const { isMobile } = useResponsive()
   const [isHover, setIsHover] = React.useState<boolean>(false)
 

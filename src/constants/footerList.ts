@@ -3,52 +3,44 @@ import { KCC } from '.'
 // footer nanList
 export const FOOTER_LIST = [
   {
-    title: 'About KCC',
+    title: 'Developer',
     children: [
       {
-        navText: 'Announcement',
-        navRoute: KCC.MEDIA_URL,
+        navText: 'Documentation',
+        navRoute: KCC.DOCS_URL, // docs quick-start
       },
       {
-        navText: 'Risk Statement',
-        navRoute: KCC.RISK_STATMENT,
-      },
-      /* {
-        navText: 'Proof of Assets',
-        navRoute: '',
-      }, */
-      {
-        navText: 'Disclaimers',
-        navRoute: KCC.DISCLAIMER,
+        navText: 'Explorer',
+        navRoute: KCC.EXPLORER,
       },
       {
-        navText: 'News',
-        navRoute: 'https://news.kcc.io',
+        navText: 'Tools',
+        navRoute: '', // docs tools kit
+      },
+      {
+        navText: 'GitHub',
+        navRoute: KCC.GITHUB_URL,
       },
     ],
   },
   {
-    title: 'Development Tool',
+    title: 'Ecosystem',
     children: [
       {
-        navText: 'Docs',
-        navRoute: KCC.DOCS_URL,
+        navText: 'Explore dApps',
+        navRoute: '/apps',
       },
       {
-        navText: 'Github',
-        navRoute: KCC.GITHUB_URL,
+        navText: 'Bridge',
+        navRoute: KCC.BRIDGE_URL,
       },
       {
-        navText: 'Testnet Explorer',
-        navRoute: KCC.TEST_EXPLORER,
+        navText: 'Stake KCSord',
+        navRoute: KCC.STAKING,
       },
       {
-        navText: 'Mainnet faucet',
-        navRoute: KCC.MAINNET_FAUCET,
-      },
-      {
-        navText: 'Testnet faucet',
-        navRoute: KCC.FAUCET,
+        navText: 'KCS Whitepaper',
+        navRoute: KCC.KCSWHITEPAPER,
       },
       {
         navText: 'Proof of assets',
@@ -57,50 +49,24 @@ export const FOOTER_LIST = [
     ],
   },
   {
-    title: 'Community',
+    title: 'About KCC',
     children: [
       {
-        navText: 'Telegram',
-        navRoute: KCC.TELEGRAM,
+        navText: 'About KCC',
+        navRoute: KCC.MEDIA_URL, // 'docs about kcc'
       },
       {
-        navText: 'Twitter',
-        navRoute: KCC.TWITTER,
+        navText: 'Risk Statement',
+        navRoute: KCC.RISK_STATMENT,
       },
       {
-        navText: 'Discord',
-        navRoute: KCC.DISCORD_URL,
+        navText: 'Disclaimers',
+        navRoute: KCC.DISCLAIMER,
       },
       {
-        navText: 'Medium',
-        navRoute: KCC.MEDIA_URL,
+        navText: 'Media Kit',
+        navRoute: '', // media kit
       },
-    ],
-  },
-  // {
-  //   title: 'Event',
-  //   children: [
-  //     {
-  //       navText: 'Unicorn Contest',
-  //       navRoute: '/unicorn',
-  //     },
-  //   ],
-  // },
-  {
-    title: 'Contact Us',
-    children: [
-      {
-        navText: 'Technical Support',
-        navRoute: KCC.DISCORD_URL,
-      },
-      {
-        navText: 'FAQ',
-        navRoute: KCC.FAQ,
-      },
-      /* {
-        navText: 'Media kit',
-        navRoute: KCC.DOCS_URL,
-      }, */
     ],
   },
 ]

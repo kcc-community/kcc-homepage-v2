@@ -10,8 +10,61 @@ import KccLogo from '../Logo/KccLogo'
 import Row from '../Row'
 import { CenterRow, RowBetween } from '../Row/index'
 import MFooter from './MFooter'
+import DiscordIcon from '../Svg/Icons/DiscordIcon'
+import TelegramIcon from '../Svg/Icons/TelegramIcon'
+import TwitterIcon from '../Svg/Icons/TwitterIcon'
+import GithubMedia from '../Svg/Icons/GithubMedia'
+import Link from 'next/link'
 
 export interface AppFooterProps {}
+
+export const mediaList = [
+  {
+    name: 'Twitter',
+    icon: (isHover: boolean) => (
+      <TwitterIcon
+        width={18}
+        height={18}
+        color={isHover ? '#21C397' : '#fff'}
+      />
+    ),
+    url: KCC.TWITTER,
+  },
+  {
+    name: 'Github',
+    icon: (isHover: boolean) => (
+      <GithubMedia
+        width={18}
+        height={18}
+        color={isHover ? '#21C397' : '#fff'}
+      />
+    ),
+    url: KCC.GITHUB_URL,
+  },
+  {
+    name: 'Discord',
+    icon: (isHover: boolean) => (
+      <DiscordIcon
+        width={18}
+        height={18}
+        color={isHover ? '#21C397' : '#fff'}
+      />
+    ),
+    url: KCC.DISCORD_URL,
+  },
+  {
+    name: 'Telegram',
+    icon: (isHover: boolean) => (
+      <TelegramIcon
+        width={18}
+        height={18}
+        color={isHover ? '#21C397' : '#fff'}
+        style={{ marginLeft: '-3px' }}
+      />
+    ),
+    url: KCC.TELEGRAM,
+  },
+]
 
 const AppFooterWrap = styled.div`
   position: relative;
@@ -45,17 +98,16 @@ const AppFooterContentWrap = styled.div`
   }
 `
 
-const ChainText = styled.div`
-  font-size: 20px;
-  color: #0fcd8c;
-  line-height: 32px;
-  margin-top: 12px;
-  width: 245px;
-`
 const FooterTitle = styled.span`
-  font-size: 20px;
-  color: #ffffff;
-  line-height: 32px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  color: #21c397;
 `
 
 const FooterNavListWrap = styled(Column)`
@@ -63,12 +115,15 @@ const FooterNavListWrap = styled(Column)`
 `
 
 const FooterNavText = styled.span`
-  font-size: 14px;
-  color: #ffffff;
-  line-height: 32px;
   cursor: pointer;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 32px;
+  color: #ffffff;
   &:hover {
-    font-weight: bold;
+    color: #21c397;
   }
 `
 
@@ -95,7 +150,43 @@ const CopyRightText = styled.div`
   }
 `
 
+const MediaListWrap = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 32px;
+`
+
+const MediaImage = styled(Link)`
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  & + & {
+    margin-left: 24px;
+  }
+  &:hover {
+    background: rgba(33, 195, 151, 0.2);
+  }
+`
+
 const AppFooter: React.FunctionComponent<AppFooterProps> = () => {
+  const initHoverState = new Array(mediaList.length).fill(false)
+  const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
+
+  const setHoverByIndex = (index: number) => {
+    const stateList = initHoverState
+    setHoverList(() => initHoverState)
+    stateList.splice(index, 1, true)
+    setHoverList(() => stateList)
+  }
+
   const { t, i18n } = useTranslation()
 
   const router = useRouter()
@@ -155,11 +246,28 @@ const AppFooter: React.FunctionComponent<AppFooterProps> = () => {
             <CenterRow
               style={{
                 width: '355px',
+                flexFlow: 'column nowrap',
                 justifyContent: 'flex-start',
-                alignItems: 'center',
+                alignItems: 'flex-start',
+                marginRight: '100px',
               }}
             >
               <KccLogo />
+              <MediaListWrap>
+                {mediaList.map((media, index) => {
+                  return (
+                    <MediaImage
+                      href={media.url}
+                      target="_blank"
+                      onMouseEnter={() => setHoverByIndex(index)}
+                      onMouseLeave={() => setHoverList(() => initHoverState)}
+                      key={index}
+                    >
+                      {media.icon(hoverList[index])}
+                    </MediaImage>
+                  )
+                })}
+              </MediaListWrap>
             </CenterRow>
             <RowBetween>{FooterNavList}</RowBetween>
           </Row>

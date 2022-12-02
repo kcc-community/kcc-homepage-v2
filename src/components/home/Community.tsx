@@ -3,20 +3,23 @@ import { NormalButton } from 'components/Button'
 import { KCC } from 'constants/index'
 import { Trans, useTranslation } from 'next-i18next'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import React from 'react'
 import styled from 'styled-components'
 import DiscordIcon from '../Svg/Icons/DiscordIcon'
 import TelegramIcon from '../Svg/Icons/TelegramIcon'
 import TwitterIcon from '../Svg/Icons/TwitterIcon'
+import GithubMedia from '../Svg/Icons/GithubMedia'
+
+import { message } from 'antd'
+import axios from 'axios'
 
 const mediaList = [
   {
     name: 'Twitter',
     icon: (isHover: boolean) => (
       <TwitterIcon
-        width={48}
-        height={48}
+        width={24}
+        height={24}
         color={isHover ? '#fff' : '#040A2D'}
       />
     ),
@@ -26,8 +29,8 @@ const mediaList = [
     name: 'Telegram',
     icon: (isHover: boolean) => (
       <TelegramIcon
-        width={48}
-        height={48}
+        width={24}
+        height={24}
         color={isHover ? '#fff' : '#040A2D'}
       />
     ),
@@ -36,9 +39,9 @@ const mediaList = [
   {
     name: 'Github',
     icon: (isHover: boolean) => (
-      <TwitterIcon
-        width={48}
-        height={48}
+      <GithubMedia
+        width={24}
+        height={24}
         color={isHover ? '#fff' : '#040A2D'}
       />
     ),
@@ -48,8 +51,8 @@ const mediaList = [
     name: 'Discord',
     icon: (isHover: boolean) => (
       <DiscordIcon
-        width={48}
-        height={48}
+        width={24}
+        height={24}
         color={isHover ? '#fff' : '#040A2D'}
       />
     ),
@@ -215,15 +218,46 @@ const StyledInput = styled(Input)`
 
 const Community: React.FC = () => {
   const { t } = useTranslation()
-  const router = useRouter()
   const initHoverState = new Array(mediaList.length).fill(false)
   const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
+  const [email, setEmail] = React.useState<string>('')
+  const [disable, setDisable] = React.useState<boolean>(false)
+  const [subscribed, setSubscribed] = React.useState<boolean>(false)
 
   const setHoverByIndex = (index: number) => {
     const stateList = initHoverState
     setHoverList(() => initHoverState)
     stateList.splice(index, 1, true)
     setHoverList(() => stateList)
+  }
+
+  const subscribe = async (email: string) => {
+    const emailReg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
+
+    if (!emailReg.test(email)) {
+      message.error(t(`Please provide a valid email address.`))
+      return false
+    }
+    setDisable(true)
+    try {
+      const res = await axios({
+        url: '/api/mail',
+        method: 'POST',
+        data: {
+          email,
+        },
+      })
+
+      if (res.data.errorCode === 1) {
+        message.warning(t(`${res.data.detail}`))
+      } else {
+        message.success(t(`Thank you for subscribing`))
+        setSubscribed(() => true)
+        setEmail(() => '')
+      }
+    } finally {
+      setDisable(false)
+    }
   }
 
   return (
@@ -263,8 +297,17 @@ const Community: React.FC = () => {
             <SubscribeDesc>
               {t("We'll send you updates about KCC")}
             </SubscribeDesc>
-            <StyledInput type="email" size="large" />
-            <NormalButton style={{ marginTop: '22px' }}>
+            <StyledInput
+              type="email"
+              size="large"
+              value={email}
+              onChange={(e) => setEmail(() => e.target.value)}
+            />
+            <NormalButton
+              onClick={subscribe.bind(null, email)}
+              style={{ marginTop: '22px' }}
+              loading={disable}
+            >
               <ButtonText>{t('Subscribe')}</ButtonText>
             </NormalButton>
           </SubscribeWrap>
