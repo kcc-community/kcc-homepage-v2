@@ -5,11 +5,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import Banner from 'components/home/Banner'
-import Ecosystem from 'components/home/Ecosystem'
-import Develop from 'components/home/Develop'
-import Community from 'components/home/Community'
-import Partner from 'components/home/Partner'
+import Banner from 'components/Home1/Banner'
+import Ecosystem from 'components/Home1/Ecosystem'
+import Develop from 'components/Home1/Develop'
+import Community from 'components/Home1/Community'
+import Partner from 'components/Home1/Partner'
 
 const AppWrap = styled.div`
   margin: 0;
