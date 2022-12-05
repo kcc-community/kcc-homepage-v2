@@ -3,11 +3,19 @@ import styled from 'styled-components'
 import AppFooter from './AppFooter'
 import AppHeader from './AppHeader'
 
-const Wrap = styled.div``
+const Wrap = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+`
 
 const AppContentWrap = styled.div`
+  width: 100%;
   height: auto;
-  min-height: calc(100vh - 360px);
+  min-height: calc(100vh - 340px);
+  flex: 1;
 `
 
 // Not fullscreen mode

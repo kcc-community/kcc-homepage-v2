@@ -1,20 +1,16 @@
 import AppLayout from 'components/AppLayout'
-import Banner from 'components/Apps/Banner'
-import AppList from 'components/Apps/Apps'
 import { NextPage } from 'next'
 import Head from 'next/head'
-import React from 'react'
 import styled from 'styled-components'
 
 const AppWrap = styled.div`
   margin: 0;
   padding: 0;
   position: relative;
-  background: #f5f5f5;
-  height: 100%;
+  background: #000;
 `
 
-export default function Apps() {
+export default function Submit() {
   return (
     <AppWrap>
       <Head>
@@ -24,12 +20,11 @@ export default function Apps() {
           content="KCC is a high performance decentralized public chain built by the fans of KCS and KuCoin. We aim to provide community users with faster, more convenient and low-cost experience."
         />
       </Head>
-      <Banner />
-      <AppList />
+      <div>submit</div>
     </AppWrap>
   )
 }
 
-Apps.getLayout = function getLayout(page: NextPage) {
+Submit.getLayout = function getLayout(page: NextPage) {
   return <AppLayout>{page}</AppLayout>
 }

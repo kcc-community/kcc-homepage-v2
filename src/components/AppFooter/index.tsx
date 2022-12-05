@@ -76,6 +76,7 @@ const AppFooterWrap = styled.div`
   height: auto;
   background: #000;
   box-sizing: border-box;
+  width: 100%;
   @media (max-width: 768px) {
     width: 100%;
     height: auto;
