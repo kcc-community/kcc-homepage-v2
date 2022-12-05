@@ -11,7 +11,7 @@ import { ArrowLeft } from 'components/Svg/index'
 import { useRouter } from 'next/router'
 import { KCC } from 'constants/index'
 
-import GetKCSModal from 'components/Home1/GetKCSModal'
+import GetKCSModal from 'components/Home/GetKCSModal'
 
 const Wrap = styled.div`
   display: flex;
