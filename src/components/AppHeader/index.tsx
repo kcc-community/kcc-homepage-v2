@@ -81,7 +81,7 @@ const AppHeader: React.FunctionComponent = (props: any) => {
           <BrowserView>
             <AppMenu
               style={{
-                width: 'auto',
+                width: '100%',
                 position: 'relative',
                 top: '0px',
               }}

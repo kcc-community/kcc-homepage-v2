@@ -51,6 +51,9 @@ const { SubMenu } = Menu
 const StyledMenu = styled(Menu)`
   border-radius: 24px !important;
   background: transparent !important;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
 `
 
 const StyledSubMenu = styled(SubMenu)`
@@ -420,9 +423,10 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
           style={{
             ...style,
             background: 'transparent',
+            width: '600px',
             border: 'none',
             padding: 0,
-            margin: '0',
+            margin: 0,
           }}
         >
           {MenuListDom}

@@ -11,7 +11,7 @@ import TwitterIcon from '../Svg/Icons/TwitterIcon'
 import GithubMedia from '../Svg/Icons/GithubMedia'
 
 import { message } from 'antd'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 const mediaList = [
   {
@@ -216,6 +216,18 @@ const StyledInput = styled(Input)`
   font-size: 18px;
 `
 
+async function subscribeMail(email: string) {
+  const response: AxiosResponse<any> = await axios({
+    method: 'post',
+    url: KCC.MAIL_SUBSCRIBE_PROXY,
+    data: {
+      email_address: email,
+      status: 'subscribed',
+    },
+  })
+  return response
+}
+
 const Community: React.FC = () => {
   const { t } = useTranslation()
   const initHoverState = new Array(mediaList.length).fill(false)
@@ -240,16 +252,9 @@ const Community: React.FC = () => {
     }
     setDisable(true)
     try {
-      const res = await axios({
-        url: '/api/mail',
-        method: 'POST',
-        data: {
-          email,
-        },
-      })
-
-      if (res.data.errorCode === 1) {
-        message.warning(t(`${res.data.detail}`))
+      const response = await subscribeMail(email)
+      if (response.data.status === 400) {
+        message.warning(t(`${response.data.detail}`))
       } else {
         message.success(t(`Thank you for subscribing`))
         setSubscribed(() => true)
