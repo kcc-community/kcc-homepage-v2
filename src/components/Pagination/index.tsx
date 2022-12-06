@@ -85,7 +85,7 @@ const Pagination: React.FC<Props> = ({
   const [inputPage, setInputPage] = React.useState<string>('')
   React.useEffect(() => {
     setInputPage(() => `${currentPage}`)
-  }, [])
+  }, [currentPage])
 
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent) => {
