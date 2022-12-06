@@ -10,7 +10,7 @@ import {
 export interface ApplicationState {
   blockNumber: { [chainId: number]: number }
   darkMode: boolean
-  language: string | (() => string)
+  language: string
   mobileMenuShow: boolean
   bridgeLoadingVisible: boolean
   bridgeLoadingStatus: number
