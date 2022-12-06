@@ -3,6 +3,9 @@ const withAntdLess = require('next-plugin-antd-less')
 const { i18n } = require('./next-i18next.config')
 
 const nextConfig = {
+  experimental: {
+    runtime: 'experimental-edge',
+  },
   i18n,
   reactStrictMode: true,
   swcMinify: true,

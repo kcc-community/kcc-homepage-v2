@@ -6,6 +6,10 @@ type ResponseData = {
   message: string
 }
 
+export const config = {
+  runtime: 'experimental-edge',
+}
+
 async function subscribe(email: string) {
   const response = await axios({
     method: 'post',
