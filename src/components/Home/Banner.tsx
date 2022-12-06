@@ -25,7 +25,7 @@ const Content = styled.div`
   margin: 0 auto;
   padding-top: 200px;
   padding-bottom: 70px;
-  @media (min-width: 1200px) {
+  @media (max-width: 1200px) {
     padding-left: 24px;
     padding-right: 24px;
   }

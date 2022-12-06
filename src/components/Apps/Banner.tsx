@@ -20,7 +20,7 @@ const Content = styled.div`
   padding-top: 163px;
   background: url('/images/apps/apps-bg.webp') -100px center no-repeat;
   background-size: auto 100%;
-  @media (min-width: 1200px) {
+  @media (max-width: 1200px) {
     padding-left: 24px;
     padding-right: 24px;
   }

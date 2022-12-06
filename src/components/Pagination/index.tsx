@@ -1,4 +1,4 @@
-import { Input } from 'antd'
+import { Input, message } from 'antd'
 import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
@@ -82,31 +82,49 @@ const Pagination: React.FC<Props> = ({
     return Math.ceil(total / perPage)
   }, [total, perPage])
 
-  const [inputPage, setInputPage] = React.useState<number>(0)
+  const [inputPage, setInputPage] = React.useState<string>('')
+  React.useEffect(() => {
+    setInputPage(() => `${currentPage}`)
+  }, [])
 
-  const handleKeyDown = (e: any) => {
-    console.log('e', e)
-  }
+  const handleKeyDown = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      console.log('e', e)
+      if (e.key === 'Enter') {
+        if (
+          !Number.isNaN(inputPage) &&
+          Number(inputPage) > 0 &&
+          Number(inputPage) <= totalPage
+        ) {
+          setCurrentPage(() => inputPage)
+        } else {
+          message.warning('Please enter a valid page number')
+          setInputPage(() => '')
+        }
+      }
+    },
+    [inputPage, setCurrentPage, totalPage]
+  )
 
   return (
     <Wrap>
       <OperateButton
-        disabled={currentPage === totalPage}
-        onClick={() => setCurrentPage((p: number) => p + 1)}
+        disabled={currentPage === 1}
+        onClick={() => setCurrentPage((p: number) => p - 1)}
       >
         {t('Page up')}
       </OperateButton>
       <RowCenterBox style={{ width: 'auto', margin: '0 15px' }}>
         <StyledInput
-          value={currentPage}
-          onChange={(e) => setCurrentPage(() => e.target.value)}
+          value={inputPage}
+          onChange={(e) => setInputPage(() => e.target.value)}
           onKeyDown={(e) => handleKeyDown(e)}
         />
         <TotalPageText>/ {totalPage}</TotalPageText>
       </RowCenterBox>
       <OperateButton
-        disabled={currentPage === 0}
-        onClick={() => setCurrentPage((p: number) => p - 1)}
+        disabled={currentPage === totalPage}
+        onClick={() => setCurrentPage((p: number) => p + 1)}
       >
         {t('Page down')}
       </OperateButton>

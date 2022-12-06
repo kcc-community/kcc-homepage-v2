@@ -42,7 +42,7 @@ const HeaderLeftWrap = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  @media (min-width: 1200px) {
+  @media (max-width: 1200px) {
     padding-left: 0px;
   }
 `

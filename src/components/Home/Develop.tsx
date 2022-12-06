@@ -134,7 +134,7 @@ const Content = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  @media (min-width: 1200px) {
+  @media (max-width: 1200px) {
     padding-left: 24px;
     padding-right: 24px;
   }

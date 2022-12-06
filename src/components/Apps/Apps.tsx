@@ -175,7 +175,7 @@ const Apps: React.FC = () => {
 
   const { t } = useTranslation()
   const router = useRouter()
-  const [currentPage, setCurrentPage] = React.useState<number>(0)
+  const [currentPage, setCurrentPage] = React.useState<number>(1)
   return (
     <Wrap>
       <Content>
