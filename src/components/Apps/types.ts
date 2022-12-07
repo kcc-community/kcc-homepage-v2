@@ -1,3 +1,7 @@
+export interface AppCategoryType {
+  id: number
+  name: string
+}
 export interface AppType {
   id: number
   name: string
@@ -5,8 +9,5 @@ export interface AppType {
   website: string
   description: string
   rank: string
-}
-export interface AppCategoryType {
-  id: number
-  name: string
+  categories: AppCategoryType[]
 }

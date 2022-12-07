@@ -79,6 +79,7 @@ const Pagination: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation()
   const totalPage = React.useMemo(() => {
+    if (total < perPage) return 1
     return Math.ceil(total / perPage)
   }, [total, perPage])
 
@@ -89,7 +90,6 @@ const Pagination: React.FC<Props> = ({
 
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent) => {
-      console.log('e', e)
       if (e.key === 'Enter') {
         if (
           !Number.isNaN(inputPage) &&

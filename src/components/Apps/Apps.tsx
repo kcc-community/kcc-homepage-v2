@@ -2,11 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { AppCategoryType } from './types'
+import { AppCategoryType, AppType } from './types'
 import Image from 'next/image'
 import Link from 'next/link'
-import testImage from 'assets/test.png'
 import Pagination from 'components/Pagination'
+import { DappService } from '../../api/dapp'
+import { Spin } from 'antd'
+import { FileSearchOutlined } from '@ant-design/icons'
 
 const Wrap = styled.div`
   width: 100%;
@@ -21,7 +23,9 @@ const Content = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
   max-width: 1200px;
+  min-height: calc(100vh - 350px);
   @media (max-width: 1200px) {
     padding: 0 24px;
   }
@@ -39,7 +43,7 @@ const OperateBar = styled.div`
   row-gap: 12px;
 `
 
-const CategoryText = styled.div`
+const CategoryText = styled.div<{ isActive: boolean }>`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
@@ -47,10 +51,15 @@ const CategoryText = styled.div`
   line-height: 24px;
   display: flex;
   align-items: center;
-  color: #040a2d;
+  color: ${({ isActive }) => {
+    if (isActive) {
+      return '#fff'
+    }
+    return '#040a2d'
+  }};
 `
 
-const Category = styled.div`
+const Category = styled.div<{ isActive: boolean }>`
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -61,7 +70,12 @@ const Category = styled.div`
   border-radius: 20px;
   row-gap: 12px;
   cursor: pointer;
-  background: #fff;
+  background: ${({ isActive }) => {
+    if (isActive) {
+      return '#21C397'
+    }
+    return '#fff'
+  }};
   &:hover ${CategoryText} {
     color: #fff;
   }
@@ -79,6 +93,11 @@ const AppCardList = styled.div`
   height: auto;
   row-gap: 24px;
   column-gap: 16px;
+  min-height: 300px;
+`
+
+const StyledSpin = styled(Spin)`
+  width: 100%;
 `
 
 const AppCard = styled.div`
@@ -130,6 +149,14 @@ const Desc = styled.div`
   color: #494e67;
   margin-top: 24px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  height: 105px;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 `
 const PaginationWrap = styled.div`
   display: flex;
@@ -141,77 +168,146 @@ const PaginationWrap = styled.div`
   margin-top: 32px;
 `
 
-const Apps: React.FC = () => {
-  const appCategoryList: AppCategoryType[] = [
-    {
-      id: 0,
-      name: 'ALL apps',
-    },
-    {
-      id: 1,
-      name: 'KCC Unicorn',
-    },
-    {
-      id: 2,
-      name: 'DeFi',
-    },
-    {
-      id: 3,
-      name: 'NFT',
-    },
-    {
-      id: 4,
-      name: 'Tool',
-    },
-    {
-      id: 5,
-      name: 'Game',
-    },
-    {
-      id: 6,
-      name: 'Others',
-    },
-  ]
+const LoadingWrap = styled.div`
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+`
 
+const Text = styled.div`
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  color: #494e67;
+`
+
+const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
+  categoryList,
+}) => {
   const { t } = useTranslation()
   const router = useRouter()
   const [currentPage, setCurrentPage] = React.useState<number>(1)
+
+  const [pageSize, setPageSize] = React.useState<number>(12)
+  const [appList, setAppList] = React.useState<AppType[]>([])
+  const [loading, setLoading] = React.useState<boolean>(false)
+  const [totalApps, setTotalApps] = React.useState<number>(0)
+
+  const allCategoryList = React.useMemo(() => {
+    return [{ id: -1, name: 'All apps' }, ...categoryList]
+  }, [categoryList])
+
+  const currentCategory = React.useMemo(() => {
+    let category = router.query.category as string | undefined
+    if (category) {
+      for (let i = 0; i < categoryList.length; i++) {
+        if (categoryList[i].name.toLowerCase() === category.toLowerCase()) {
+          category = categoryList[i].name
+          break
+        }
+      }
+    } else {
+      category = 'All apps'
+    }
+    return category
+  }, [router.query, categoryList])
+
+  React.useEffect(() => {
+    async function update() {
+      setAppList(() => [])
+      setLoading(() => true)
+      try {
+        const response = await DappService.dappList(
+          currentPage,
+          pageSize,
+          currentCategory !== 'All apps' ? currentCategory : undefined
+        )
+        setAppList(() => response.data.data.list)
+        console.log('change app list', response.data.data.list)
+        setTotalApps(() => response.data.data.total_count)
+      } catch (e) {
+        console.log(e)
+      } finally {
+        setLoading(() => false)
+      }
+    }
+    update()
+  }, [currentPage, pageSize, currentCategory])
+
+  const nav2AppsCategory = React.useCallback(
+    (categoryName: string) => {
+      setLoading(() => true)
+      const { pathname } = router
+      if (categoryName === 'All apps') {
+        router.push(pathname)
+      } else {
+        router.push(`${pathname}?category=${categoryName}`)
+      }
+    },
+    [router]
+  )
+
   return (
     <Wrap>
       <Content>
         <OperateBar>
-          {appCategoryList.map((category) => {
+          {allCategoryList.map((category) => {
             return (
-              <Category key={category.id}>
-                <CategoryText>{category.name}</CategoryText>
+              <Category
+                onClick={() => nav2AppsCategory(category.name)}
+                isActive={category.name === currentCategory}
+                key={category.id}
+              >
+                <CategoryText isActive={category.name === currentCategory}>
+                  {category.name}
+                </CategoryText>
               </Category>
             )
           })}
         </OperateBar>
-        <AppCardList>
-          {new Array(10).fill(null).map((n, index) => {
-            return (
-              <AppCard key={index}>
-                <Logo src={testImage} width={80} height={80} alt="app-logo" />
-                <Name>Mojitoswap</Name>
-                <Website href="https://apps.mojitoswap.finance" target="_blank">
-                  Mojitoswap.finance
-                </Website>
-                <Desc>
-                  Built by the fans of KCS and KuCoin's fan communities,KCC is a
-                  decentralized public chain with EVM compatible and high
-                  performance.
-                </Desc>
-              </AppCard>
-            )
-          })}
-        </AppCardList>
+
+        <StyledSpin spinning={loading}>
+          <AppCardList>
+            {appList.length > 0 ? (
+              <>
+                {appList.map((app, index) => {
+                  return (
+                    <AppCard key={index}>
+                      <Logo
+                        src={app.logo_url}
+                        width={80}
+                        height={80}
+                        alt="app-logo"
+                      />
+                      <Name>{app.name}</Name>
+                      <Website href={app.website} target="_blank">
+                        {app.website}
+                      </Website>
+                      <Desc>{app.description}</Desc>
+                    </AppCard>
+                  )
+                })}
+              </>
+            ) : (
+              <LoadingWrap>
+                {!loading && <Text>{t('No data')}</Text>}
+              </LoadingWrap>
+            )}
+          </AppCardList>
+        </StyledSpin>
+
         <PaginationWrap>
           <Pagination
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
-            total={25}
-            perPage={12}
+            total={totalApps}
+            perPage={pageSize}
           />
         </PaginationWrap>
       </Content>

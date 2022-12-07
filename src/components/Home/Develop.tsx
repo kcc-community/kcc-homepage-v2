@@ -20,20 +20,20 @@ import Link from 'next/link'
 
 const advantageList = [
   {
-    title: 'Decentralized',
-    desc: "Built by the fans of KCS and KuCoin's fan communities,KCC is a decentralized public chain.",
-  },
-  {
     title: 'EVM Compatible',
-    desc: 'Fully compatible with EVM and ERC-20 smart contracts, extremely low costs in migration.',
+    desc: 'KCC is EVM compatible. Deploy and run your dApps on KCC with your favorite tooling for Ethereum.',
   },
   {
-    title: 'Sustainability',
-    desc: 'The blocks are produced every 3 seconds, accelerated transaction confirmation and higher chain performance.',
+    title: 'Low Cost',
+    desc: 'Gas fee is paid with KCS. Transfer your tokens around the world with a fraction of a cent.',
   },
   {
-    title: 'PoSA',
-    desc: 'Adopt the consensus algorithm of Proof of Staked Authority (PoSA), more efficient, secure and robust.',
+    title: 'Fast Finality',
+    desc: 'The average block time of KCC is 3 seconds. A typical transaction can be included in a block in less than 6 seconds. And this block is finalized if more than half of all validators add their blocks after it.',
+  },
+  {
+    title: 'Safe and Secure',
+    desc: 'Each block is validated by trusted validators with their identities and KCS as stakes.',
   },
 ]
 
