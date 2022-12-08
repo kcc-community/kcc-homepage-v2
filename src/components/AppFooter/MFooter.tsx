@@ -37,7 +37,7 @@ export default function MFooter() {
     navText: string
     navRoute: string
   }) => {
-    let route = navRoute
+    const route = navRoute
     if (route) {
       if (route.startsWith('/')) {
         router.push(route)

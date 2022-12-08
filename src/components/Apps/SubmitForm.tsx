@@ -1,4 +1,13 @@
-import { Form, Input, Select, Button, Radio } from 'antd'
+import {
+  Form,
+  Input,
+  Select,
+  Button,
+  Radio,
+  Upload,
+  UploadFile,
+  Modal,
+} from 'antd'
 import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
@@ -7,40 +16,16 @@ import { DappService } from 'api/dapp'
 import { updateAppCategoryList } from 'state/apps/actions'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from 'state'
+import StringCrypto from 'string-crypto'
+import { uploadImg } from 'utils/submit'
+import { FormDataProps, ProjectStatus, RequestType } from './types'
+import { NFTStorage } from 'nft.storage'
+import { Ipfs, IpfsUri } from 'constants/index'
+import { RcFile } from 'antd/es/upload'
+import { PlusOutlined } from '@ant-design/icons'
+import Image from 'next/image'
 
 const { Option } = Select
-
-enum RequestType {
-  'New submission',
-  'Update dApp information',
-}
-
-enum ProjectStatus {
-  'Live',
-  'Work in progress',
-}
-
-interface FormDataProps {
-  name: string
-  requestType: RequestType
-  project_status: ProjectStatus
-  website: string
-  category_ids: string
-  brief_introduction: string
-  detail_description: string
-  logo_url: string
-  smart_contract_address: string
-  token_symbol: string
-  project_email: string
-  token_contract_address?: string
-  tvl_interface: string
-  github?: string
-  twitter?: string
-  telegram?: string
-  coinmarketcap?: string
-  coingecko?: string
-  token?: string
-}
 
 const initState: FormDataProps = {
   name: '',
@@ -106,20 +91,36 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 }
 
+const getBase64 = (file: RcFile): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => resolve(reader.result as string)
+    reader.onerror = (error) => reject(error)
+  })
+
 const SubmitForm: React.FC = () => {
   const { t } = useTranslation('submit')
-  const [form] = Form.useForm<FormDataProps>()
+  const [form] = Form.useForm<FormDataProps>() // useForm to collect form data
+  const [fileList, setFileList] = React.useState<UploadFile[]>([])
+  const [previewOpen, setPreviewOpen] = React.useState(false)
+  const [previewImage, setPreviewImage] = React.useState('')
+  const [previewTitle, setPreviewTitle] = React.useState('')
+
+  const { decryptString } = new StringCrypto()
+
+  const client = new NFTStorage({ token: decryptString(Ipfs, 'KCC_DISCOVER') })
 
   const categoryList = useAppCategoryList()
 
   const dispatch = useDispatch<AppDispatch>()
 
+  // update category list
   React.useEffect(() => {
     async function updateList() {
       const response = await DappService.categoryList()
       dispatch(updateAppCategoryList({ list: response.data.data.list }))
     }
-
     if (categoryList.length < 1) {
       updateList()
     }
@@ -132,6 +133,40 @@ const SubmitForm: React.FC = () => {
   const onReset = () => {
     form.resetFields()
   }
+
+  const upLoadProps = {
+    onRemove: (file: any) => {
+      const index = fileList.indexOf(file)
+      const newFileList = fileList.slice()
+      newFileList.splice(index, 1)
+      setFileList(newFileList)
+    },
+    beforeUpload: (file: any) => {
+      console.log('file =', file)
+      setFileList([...fileList, file])
+      return false
+    },
+    accept: 'image/*',
+    fileList,
+  }
+
+  const handlePreview = async (file: UploadFile) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj as RcFile)
+    }
+    setPreviewImage(file.url || (file.preview as string))
+    setPreviewOpen(true)
+    setPreviewTitle(file.name ?? file.url)
+  }
+
+  const handleCancel = () => setPreviewOpen(false)
+
+  const uploadButton = (
+    <div>
+      <PlusOutlined />
+      <div style={{ marginTop: 8 }}>{t('Upload')}</div>
+    </div>
+  )
 
   return (
     <FormWrap>
@@ -215,7 +250,46 @@ const SubmitForm: React.FC = () => {
             label={t('Logo')}
             rules={[{ required: true }]}
           >
-            <Input />
+            <Upload
+              name="avatar"
+              listType="picture-card"
+              className="avatar-uploader"
+              showUploadList={true}
+              onPreview={handlePreview}
+              {...upLoadProps}
+              onChange={async (e: any) => {
+                // delete upload
+                if (!e.fileList.length) {
+                  return false
+                }
+                const metadata = await uploadImg(client, e.file, {
+                  width: 256,
+                  height: 256,
+                })
+                if (metadata) {
+                  console.log(
+                    '`${IpfsUri}/${metadata}`',
+                    `${IpfsUri}/${metadata}`
+                  )
+                  form.setFieldValue('logo_url', `${IpfsUri}/${metadata}`)
+                }
+              }}
+            >
+              {fileList.length > 0 ? null : uploadButton}
+            </Upload>
+            <Modal
+              open={previewOpen}
+              title={previewTitle}
+              footer={null}
+              onCancel={handleCancel}
+            >
+              <Image
+                alt={fileList.length ? fileList[0].name : 'preview'}
+                width={256}
+                height={256}
+                src={previewImage}
+              />
+            </Modal>
           </Form.Item>
           <Form.Item
             name="smart_contract_address"
@@ -234,7 +308,7 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="project_email"
             label={t('Project Email')}
-            rules={[{ required: true }]}
+            rules={[{ required: true }, { type: 'email', min: 6 }]}
           >
             <Input />
           </Form.Item>
@@ -248,23 +322,43 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="tvl_interface"
             label={t('Tvl Interface')}
-            rules={[{ required: true }]}
+            rules={[{ required: true }, { type: 'url' }]}
           >
             <Input />
           </Form.Item>
-          <Form.Item name="github" label={t('Github')}>
+          <Form.Item
+            name="github"
+            label={t('Github')}
+            rules={[{ type: 'url' }]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item name="twitter" label={t('Twitter')}>
+          <Form.Item
+            name="twitter"
+            label={t('Twitter')}
+            rules={[{ type: 'url' }]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item name="telegram" label={t('Telegram')}>
+          <Form.Item
+            name="telegram"
+            label={t('Telegram')}
+            rules={[{ type: 'url' }]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item name="coinmarketcap" label={t('Coinmarketcap')}>
+          <Form.Item
+            name="coinmarketcap"
+            label={t('Coinmarketcap')}
+            rules={[{ type: 'url' }]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item name="coingecko" label={t('Coingecko')}>
+          <Form.Item
+            name="coingecko"
+            label={t('Coingecko')}
+            rules={[{ type: 'url' }]}
+          >
             <Input />
           </Form.Item>
           <Form.Item name="token" label={t('Token')}>
@@ -273,10 +367,10 @@ const SubmitForm: React.FC = () => {
 
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit">
-              Submit
+              {t('Submit')}
             </Button>
             <Button htmlType="button" onClick={onReset}>
-              Reset
+              {t('Reset')}
             </Button>
           </Form.Item>
         </StyledForm>

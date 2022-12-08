@@ -41,7 +41,7 @@ export const uploadImg = async (
   const volumeResult = limitUploadVolume(1024)
 
   if (!sizeResult || !volumeResult) {
-    message.error('Unacceptable img size', 3)
+    message.error(i18n?.t('Unacceptable img size'), 3)
     return null
   }
   i18n && message.info(i18n.t('Uploading'), 0)
