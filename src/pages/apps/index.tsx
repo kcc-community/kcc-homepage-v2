@@ -1,16 +1,15 @@
+import { DappService } from 'api/dapp'
 import AppLayout from 'components/AppLayout'
-import Banner from 'components/Apps/Banner'
 import AppList from 'components/Apps/Apps'
-import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
+import Banner from 'components/Apps/Banner'
+import { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
-import styled from 'styled-components'
-import { DappService } from 'api/dapp'
-import { AppCategoryType } from 'components/Apps/types'
-import { useAppCategoryList } from 'state/apps/hooks'
-import { AppDispatch } from 'state'
-import { updateAppCategoryList } from '../../state/apps/actions'
 import { useDispatch } from 'react-redux'
+import { AppDispatch } from 'state'
+import { useAppCategoryList } from 'state/apps/hooks'
+import styled from 'styled-components'
+import { updateAppCategoryList } from '../../state/apps/actions'
 
 const AppWrap = styled.div`
   margin: 0;

@@ -1,13 +1,16 @@
 import AppLayout from 'components/AppLayout'
+import SubmitForm from 'components/Apps/SubmitForm'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import styled from 'styled-components'
 
 const AppWrap = styled.div`
+  padding-top: 0px;
   margin: 0;
   padding: 0;
   position: relative;
   background: #000;
+  border: 1px solid #000;
 `
 
 export default function Submit() {
@@ -20,7 +23,7 @@ export default function Submit() {
           content="KCC is a high performance decentralized public chain built by the fans of KCS and KuCoin. We aim to provide community users with faster, more convenient and low-cost experience."
         />
       </Head>
-      <div>submit</div>
+      <SubmitForm />
     </AppWrap>
   )
 }
