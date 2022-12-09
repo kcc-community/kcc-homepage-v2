@@ -1,24 +1,21 @@
 import { DownOutlined } from '@ant-design/icons'
 import { Popover } from 'antd'
-import React, { useState } from 'react'
+import i18nIcon from 'assets/images/Icons/i18n.webp'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { useRouter } from 'next/router'
 import { allLanguages } from '../../constants/languageCodes'
 import { theme } from '../../constants/theme'
 import { changeLanguage } from '../../state/application/actions'
-import { useLanguage } from '../../state/application/hooks'
 import { AppDispatch } from '../../state/index'
 import { useResponsive } from '../../utils/responsive'
 import { BrowserView, MobileView } from '../index'
 import { RowBetween } from '../Row'
-import i18nIcon from 'assets/images/Icons/i18n.webp'
 
-import './index.less'
 import Image from 'next/image'
-
-export interface ChangeLanguageProps {}
+import './index.less'
 
 const MenuWrap = styled.div`
   display: flex;
@@ -69,7 +66,7 @@ export const LanguageButton = styled.div`
   }
 `
 
-const ChangeLanguage: React.FunctionComponent<ChangeLanguageProps> = () => {
+const ChangeLanguage: React.FC = () => {
   const { isMobile } = useResponsive()
   const { i18n } = useTranslation()
   const router = useRouter()
@@ -95,13 +92,11 @@ const ChangeLanguage: React.FunctionComponent<ChangeLanguageProps> = () => {
     (code: string) => {
       const { pathname, asPath, query } = router
       dispatch(changeLanguage({ lng: code }))
-      console.log('i18n', i18n.changeLanguage)
-      // i18n.changeLanguage(code)
       router.push({ pathname, query }, asPath, { locale: code })
       window.localStorage.setItem('kcc_homepage_language', code)
       setShow(() => false)
     },
-    [dispatch, i18n, router]
+    [dispatch, router]
   )
 
   const currentLanguage = React.useMemo(() => {

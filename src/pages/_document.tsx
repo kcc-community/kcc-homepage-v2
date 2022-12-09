@@ -2,6 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 import i18nextConfig from '../../next-i18next.config'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
+import Script from 'next/script'
 
 export default function Document() {
   const { i18n } = useTranslation()
@@ -44,6 +45,10 @@ export default function Document() {
           content="KCC Official Homepage - KuCoin Community Chain"
         />
         <link rel="manifest" href="/manifest.json" />
+        <Script
+          src="//recaptcha.net/recaptcha/api.js?hl=en"
+          strategy="beforeInteractive"
+        />
       </Head>
       <body>
         <Main />

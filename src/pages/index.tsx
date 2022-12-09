@@ -21,7 +21,7 @@ const AppWrap = styled.div`
 export async function getStaticProps({ locale }: { locale: any }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['common'], null, [
+      ...(await serverSideTranslations(locale ?? 'en', ['menu'], null, [
         'en',
         'zh-TW',
         'zh-CN',

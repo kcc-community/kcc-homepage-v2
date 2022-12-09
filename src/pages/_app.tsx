@@ -69,10 +69,6 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
           gtag('config', 'G-SDY59S7KD7');
         `}
       </Script>
-      <Script
-        src="//recaptcha.net/recaptcha/api.js?hl=en"
-        strategy="beforeInteractive"
-      />
     </>
   )
 }

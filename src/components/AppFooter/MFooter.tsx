@@ -28,7 +28,7 @@ const NavText = styled.div`
 export default function MFooter() {
   const router = useRouter()
 
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('menu')
 
   const nav2Target = ({
     navText,

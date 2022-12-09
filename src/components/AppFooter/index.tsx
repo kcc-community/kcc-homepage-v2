@@ -1,6 +1,7 @@
-import React from 'react'
 import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
+import React from 'react'
 import styled from 'styled-components'
 import { KCC } from '../../constants'
 import { FOOTER_LIST } from '../../constants/footerList'
@@ -9,14 +10,11 @@ import { BrowserView, MobileView } from '../index'
 import KccLogo from '../Logo/KccLogo'
 import Row from '../Row'
 import { CenterRow, RowBetween } from '../Row/index'
-import MFooter from './MFooter'
 import DiscordIcon from '../Svg/Icons/DiscordIcon'
+import GithubMedia from '../Svg/Icons/GithubMedia'
 import TelegramIcon from '../Svg/Icons/TelegramIcon'
 import TwitterIcon from '../Svg/Icons/TwitterIcon'
-import GithubMedia from '../Svg/Icons/GithubMedia'
-import Link from 'next/link'
-
-export interface AppFooterProps {}
+import MFooter from './MFooter'
 
 export const mediaList = [
   {
@@ -177,7 +175,7 @@ const MediaImage = styled(Link)`
   }
 `
 
-const AppFooter: React.FunctionComponent<AppFooterProps> = () => {
+const AppFooter: React.FC = () => {
   const initHoverState = new Array(mediaList.length).fill(false)
   const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
 
@@ -188,13 +186,13 @@ const AppFooter: React.FunctionComponent<AppFooterProps> = () => {
     setHoverList(() => stateList)
   }
 
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('menu')
 
   const router = useRouter()
 
   const nav2Target = React.useCallback(
-    ({ navText, navRoute }: { navText: string; navRoute: string }) => {
-      let route = navRoute
+    ({ navRoute }: { navText: string; navRoute: string }) => {
+      const route = navRoute
       if (route) {
         if (route.startsWith('/')) {
           router.push(route)
@@ -210,17 +208,13 @@ const AppFooter: React.FunctionComponent<AppFooterProps> = () => {
             'pt-BR': 'pt-br',
           }
           // Open the corresponding document address according to the current language
-          const anchor = t(navText)
-            .trimLeft()
-            .trimRight()
-            .replaceAll(' ', '-')
-            .toLowerCase()
+
           const url = `${KCC.DOCS_URL}${translateLanguageTable[i18n.language]}`
           window.open(url, '_blank')
         }
       }
     },
-    [i18n.language, router, t]
+    [i18n.language, router]
   )
 
   const FooterNavList = FOOTER_LIST.map((item, index) => {

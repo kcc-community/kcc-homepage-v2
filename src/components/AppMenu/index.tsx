@@ -1,10 +1,5 @@
 import { DownOutlined } from '@ant-design/icons'
-import {
-  MENU_LIST,
-  NavItemChildrenType,
-  NavItemGroupType,
-  NavItemType,
-} from 'constants/menuList'
+import { MENU_LIST, NavItemChildrenType, NavItemType } from 'constants/menuList'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { CSSProperties } from 'react'
@@ -14,7 +9,7 @@ import styled from 'styled-components'
 import { Menu } from 'antd'
 
 import Column from '../Column'
-import Row, { RowBetween } from '../Row/index'
+import Row from '../Row/index'
 
 import { useDispatch } from 'react-redux'
 import { KCC } from '../../constants/index'
@@ -22,7 +17,6 @@ import { theme } from '../../constants/theme'
 import { changeMobileMenuShow } from '../../state/application/actions'
 import { useResponsive } from '../../utils/responsive'
 import { BrowserView, MobileView } from '../index'
-import Image from 'next/image'
 
 import './index.less'
 
@@ -86,13 +80,18 @@ const RootTitle = styled.span`
   }
 `
 
-const NavTitle = styled.span`
+const NavTitle = styled.div`
   font-size: 16px;
   color: #040a2d;
   letter-spacing: 0;
   text-align: center;
   padding: 0;
   margin: 0;
+  width: auto;
+  word-wrap: wrap;
+  max-width: 245px;
+  height: auto;
+  white-space: wrap !important;
   &:hover {
     color: ${() => theme.colors.primary};
   }
@@ -123,7 +122,7 @@ const NavItemWrap = styled.div`
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
+  width: 320px;
   height: auto;
   padding: 16px 0px;
   border-radius: 0px !important;
@@ -149,7 +148,7 @@ const TitleWrap = styled(Column)`
 const NavItem: React.FunctionComponent<NavItemChildrenType> = (props) => {
   const [isHover, setIsHover] = React.useState<boolean>(false)
 
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('menu')
   const { isMobile } = useResponsive()
 
   const getNavRoute = React.useCallback(
@@ -189,6 +188,7 @@ const NavItem: React.FunctionComponent<NavItemChildrenType> = (props) => {
 
   return (
     <NavItemWrap
+      key={props.title}
       onClick={nav2Target.bind(null, props.route)}
       onMouseEnter={() => setIsHover(() => true)}
       onMouseLeave={() => setIsHover(() => false)}
@@ -205,7 +205,7 @@ const NavItem: React.FunctionComponent<NavItemChildrenType> = (props) => {
 }
 
 const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
-  const { t, i18n } = useTranslation('common')
+  const { t, i18n } = useTranslation('menu')
 
   const { isMobile } = useResponsive()
 
@@ -285,7 +285,7 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
       const lists = subMenuList?.map((item) => {
         return (
           <Menu.Item
-            key={item.title ?? Math.random()}
+            key={item.title}
             style={{
               height: 'auto',
               lineHeight: '25px',
@@ -321,60 +321,62 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
       )
     }
 
-    // gourp menu &  has children
-    if (navItem?.hasGroup) {
-      const groupList = navItem.childrens as NavItemGroupType[]
-      const groupDom = groupList?.map((group, index) => {
-        const groupMember = group.groupMember
+    // // gourp menu &  has children
+    // if (navItem?.hasGroup) {
+    //   const groupList = navItem.childrens as NavItemGroupType[]
+    //   const groupDom = groupList?.map((group, index) => {
+    //     const groupMember = group.groupMember
 
-        const groupItemDom = groupMember.map((groupChild) => {
-          return (
-            <Menu.Item
-              key={groupChild.title}
-              style={{ height: 'auto', lineHeight: '25px' }}
-            >
-              <NavItem {...groupChild} setOpenKeys={setOpenKeys} />
-            </Menu.Item>
-          )
-        })
+    //     const groupItemDom = groupMember.map((groupChild) => {
+    //       console.log('groupChild.title', groupChild.title)
+    //       return (
+    //         <Menu.Item
+    //           key={groupChild.title}
+    //           style={{ height: 'auto', lineHeight: '25px' }}
+    //         >
+    //           <NavItem {...groupChild} setOpenKeys={setOpenKeys} />
+    //         </Menu.Item>
+    //       )
+    //     })
 
-        return (
-          <Menu.ItemGroup
-            key={index}
-            title={<NavTitle>{t(`${group.groupName}`)}</NavTitle>}
-          >
-            {groupItemDom}
-            {groupList.length - 1 !== index ? (
-              <RowBetween>
-                {/*    <DivideLine style={{ background: ' #F1F4F7', margin: '12px' }} /> */}
-              </RowBetween>
-            ) : null}
-          </Menu.ItemGroup>
-        )
-      })
-      return (
-        <SubMenu
-          key={navItem.name}
-          className="sub-menu"
-          title={
-            <Row
-              style={{ alignItems: 'center' }}
-              onClick={showSubMenu.bind(null, navItem)}
-            >
-              <NavTitle>
-                {t(`${navItem.name}`)}{' '}
-                <DownOutlined
-                  className="arrow-icon"
-                  style={{ fontSize: '10px', paddingTop: '-10px' }}
-                />
-              </NavTitle>
-            </Row>
-          }
-        >
-          {groupDom}
-        </SubMenu>
-      )
-    }
+    //     return (
+    //       <Menu.ItemGroup
+    //         key={index}
+    //         title={<NavTitle>{t(`${group.groupName}`)}</NavTitle>}
+    //       >
+    //         {groupItemDom}
+    //         {groupList.length - 1 !== index ? (
+    //           <RowBetween>
+    //             {/*    <DivideLine style={{ background: ' #F1F4F7', margin: '12px' }} /> */}
+    //           </RowBetween>
+    //         ) : null}
+    //       </Menu.ItemGroup>
+    //     )
+    //   })
+    //   return (
+    //     <SubMenu
+    //       key={navItem.name}
+    //       className="sub-menu"
+    //       title={
+    //         <Row
+    //           style={{ alignItems: 'center' }}
+    //           onClick={showSubMenu.bind(null, navItem)}
+    //         >
+    //           <NavTitle>
+    //             {t(`${navItem.name}`)}{' '}
+    //             <DownOutlined
+    //               className="arrow-icon"
+    //               style={{ fontSize: '10px', paddingTop: '-10px' }}
+    //             />
+    //           </NavTitle>
+    //         </Row>
+    //       }
+    //     >
+    //       {groupDom}
+    //     </SubMenu>
+    //   )
+    // }
+
     return null
   }
 

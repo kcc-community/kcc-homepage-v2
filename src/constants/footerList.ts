@@ -3,7 +3,7 @@ import { KCC } from '.'
 // footer nanList
 export const FOOTER_LIST = [
   {
-    title: 'Developer',
+    title: 'Developers',
     children: [
       {
         navText: 'Documentation',
@@ -35,7 +35,7 @@ export const FOOTER_LIST = [
         navRoute: KCC.BRIDGE_URL,
       },
       {
-        navText: 'Stake KCSord',
+        navText: 'Stake KCS',
         navRoute: KCC.STAKING,
       },
       {
