@@ -7,6 +7,7 @@ import {
   Upload,
   UploadFile,
   Modal,
+  message,
 } from 'antd'
 import React from 'react'
 import styled from 'styled-components'
@@ -24,23 +25,25 @@ import { Ipfs, IpfsUri } from 'constants/index'
 import { RcFile } from 'antd/es/upload'
 import { PlusOutlined } from '@ant-design/icons'
 import Image from 'next/image'
+import GoogleCaptcha from './GoogleCaptcha'
 
 const { Option } = Select
 
 const initState: FormDataProps = {
-  name: '',
+  name: 'test',
   requestType: RequestType['New submission'],
   project_status: ProjectStatus.Live,
-  website: '',
-  category_ids: '',
-  brief_introduction: '',
-  detail_description: '',
-  logo_url: '',
-  smart_contract_address: '',
-  token_symbol: '',
-  project_email: '',
-  token_contract_address: '',
-  tvl_interface: '',
+  website: 'https://123.com',
+  category_ids: '1,2',
+  brief_introduction: 'kkkj',
+  detail_description: 'jkjk',
+  logo_url:
+    'https://ipfs.kcc.network/ipfs/bafkreiett2drwhs4cirm27chkbbmjfloeb2fvz2rirlls5xprhklwuajle',
+  smart_contract_address: '0xa6fD2503fcF6F795D4d1593085BF3040651D01D9',
+  token_symbol: 'test',
+  project_email: '123@qq.com',
+  token_contract_address: '0xa6fD2503fcF6F795D4d1593085BF3040651D01D9',
+  tvl_interface: 'https://123.com',
   github: '',
   twitter: '',
   telegram: '',
@@ -103,9 +106,18 @@ const SubmitForm: React.FC = () => {
   const { t } = useTranslation('submit')
   const [form] = Form.useForm<FormDataProps>() // useForm to collect form data
   const [fileList, setFileList] = React.useState<UploadFile[]>([])
-  const [previewOpen, setPreviewOpen] = React.useState(false)
-  const [previewImage, setPreviewImage] = React.useState('')
-  const [previewTitle, setPreviewTitle] = React.useState('')
+  const [previewOpen, setPreviewOpen] = React.useState<boolean>(false)
+  const [previewImage, setPreviewImage] = React.useState<string>('')
+  const [previewTitle, setPreviewTitle] = React.useState<string>('')
+  const [refreshTag, setRefreshTag] = React.useState<number>(0)
+  const [loading, setLoading] = React.useState<boolean>(false)
+
+  const setToken = React.useCallback(
+    (token: string) => {
+      form.setFieldValue('token', token)
+    },
+    [form]
+  )
 
   const { decryptString } = new StringCrypto()
 
@@ -126,13 +138,47 @@ const SubmitForm: React.FC = () => {
     }
   }, [categoryList, dispatch])
 
-  const onFinish = (values: any) => {
-    console.log(values)
-  }
-
-  const onReset = () => {
+  const onReset = React.useCallback(() => {
     form.resetFields()
-  }
+  }, [form])
+
+  const onFinish = React.useCallback(
+    async (values: any) => {
+      console.log(values)
+      try {
+        setLoading(() => true)
+        // get googlecaptcha code
+        setRefreshTag((n) => n + 1)
+        setTimeout(async () => {
+          if (form.getFieldValue('token')) {
+            // handle data with categories
+            values = {
+              ...values,
+              token: form.getFieldValue('token'),
+              category_ids: values.category_ids?.join(','),
+            }
+            // send add new dapp request
+            console.log('values', values)
+            const response = await DappService.addApp(values)
+            console.log('response', response)
+            if (response.data.code === 1) {
+              message.error(response.data.msg)
+            } else {
+              message.success(t('Successfully Submit Project'))
+              onReset()
+            }
+          } else {
+            console.log('no google captcha')
+          }
+        }, 100)
+      } catch (e) {
+        console.warn(e)
+      } finally {
+        setLoading(() => false)
+      }
+    },
+    [form, onReset, t]
+  )
 
   const upLoadProps = {
     onRemove: (file: any) => {
@@ -178,7 +224,12 @@ const SubmitForm: React.FC = () => {
           name="control-hooks"
           onFinish={onFinish}
         >
-          <Form.Item name="name" label={t('name')} rules={[{ required: true }]}>
+          <Form.Item
+            name="name"
+            label={t('name')}
+            rules={[{ required: true }, { min: 3, max: 30 }]}
+            initialValue={initState.name}
+          >
             <Input />
           </Form.Item>
           <Form.Item
@@ -213,6 +264,7 @@ const SubmitForm: React.FC = () => {
             name="website"
             label={t('Website')}
             rules={[{ required: true }]}
+            initialValue={initState.website}
           >
             <Input />
           </Form.Item>
@@ -234,14 +286,16 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="brief_introduction"
             label={t('Brief Introduction')}
-            rules={[{ required: true }]}
+            rules={[{ required: true }, { max: 50 }]}
+            initialValue={initState.brief_introduction}
           >
             <Input.TextArea rows={2} />
           </Form.Item>
           <Form.Item
             name="detail_description"
             label={t('Detail Description')}
-            rules={[{ required: true }]}
+            rules={[{ required: true }, { max: 500 }]}
+            initialValue={initState.detail_description}
           >
             <Input.TextArea rows={4} />
           </Form.Item>
@@ -250,51 +304,58 @@ const SubmitForm: React.FC = () => {
             label={t('Logo')}
             rules={[{ required: true }]}
           >
-            <Upload
-              name="avatar"
-              listType="picture-card"
-              className="avatar-uploader"
-              showUploadList={true}
-              onPreview={handlePreview}
-              {...upLoadProps}
-              onChange={async (e: any) => {
-                // delete upload
-                if (!e.fileList.length) {
-                  return false
-                }
-                const metadata = await uploadImg(client, e.file, {
-                  width: 256,
-                  height: 256,
-                })
-                if (metadata) {
-                  console.log(
-                    '`${IpfsUri}/${metadata}`',
-                    `${IpfsUri}/${metadata}`
-                  )
-                  form.setFieldValue('logo_url', `${IpfsUri}/${metadata}`)
-                }
-              }}
-            >
-              {fileList.length > 0 ? null : uploadButton}
-            </Upload>
-            <Modal
-              open={previewOpen}
-              title={previewTitle}
-              footer={null}
-              onCancel={handleCancel}
-            >
-              <Image
-                alt={fileList.length ? fileList[0].name : 'preview'}
-                width={256}
-                height={256}
-                src={previewImage}
-              />
-            </Modal>
+            <>
+              <Upload
+                listType="picture-card"
+                className="avatar-uploader"
+                showUploadList={true}
+                onPreview={handlePreview}
+                {...upLoadProps}
+                onChange={async (e: any) => {
+                  // delete upload
+                  if (!e.fileList.length) {
+                    return false
+                  }
+                  const metadata = await uploadImg(client, e.file, {
+                    width: 256,
+                    height: 256,
+                  })
+                  if (metadata) {
+                    console.log(
+                      '`${IpfsUri}/${metadata}`',
+                      `${IpfsUri}/${metadata}`
+                    )
+                    form.setFieldValue('logo_url', `${IpfsUri}/${metadata}`)
+                    setFileList((oldFileList) => {
+                      return [
+                        { ...oldFileList[0], url: `${IpfsUri}/${metadata}` },
+                      ]
+                    })
+                  }
+                }}
+              >
+                {fileList.length > 0 ? null : uploadButton}
+              </Upload>
+              <Modal
+                open={previewOpen}
+                title={previewTitle}
+                footer={null}
+                onCancel={handleCancel}
+              >
+                <Image
+                  alt={'preview'}
+                  width={256}
+                  height={256}
+                  src={previewImage}
+                />
+              </Modal>
+            </>
           </Form.Item>
           <Form.Item
             name="smart_contract_address"
             label={t('Contract Address')}
             rules={[{ required: true }]}
+            initialValue={initState.smart_contract_address}
           >
             <Input />
           </Form.Item>
@@ -302,6 +363,7 @@ const SubmitForm: React.FC = () => {
             name="token_symbol"
             label={t('Token Symbol')}
             rules={[{ required: true }]}
+            initialValue={initState.token_symbol}
           >
             <Input />
           </Form.Item>
@@ -309,6 +371,7 @@ const SubmitForm: React.FC = () => {
             name="project_email"
             label={t('Project Email')}
             rules={[{ required: true }, { type: 'email', min: 6 }]}
+            initialValue={initState.project_email}
           >
             <Input />
           </Form.Item>
@@ -316,6 +379,7 @@ const SubmitForm: React.FC = () => {
             name="token_contract_address"
             label={t('Token Contract Address')}
             rules={[]}
+            initialValue={initState.token_contract_address}
           >
             <Input />
           </Form.Item>
@@ -323,6 +387,7 @@ const SubmitForm: React.FC = () => {
             name="tvl_interface"
             label={t('Tvl Interface')}
             rules={[{ required: true }, { type: 'url' }]}
+            initialValue={initState.tvl_interface}
           >
             <Input />
           </Form.Item>
@@ -330,6 +395,7 @@ const SubmitForm: React.FC = () => {
             name="github"
             label={t('Github')}
             rules={[{ type: 'url' }]}
+            initialValue={initState.github}
           >
             <Input />
           </Form.Item>
@@ -337,6 +403,7 @@ const SubmitForm: React.FC = () => {
             name="twitter"
             label={t('Twitter')}
             rules={[{ type: 'url' }]}
+            initialValue={initState.twitter}
           >
             <Input />
           </Form.Item>
@@ -344,6 +411,7 @@ const SubmitForm: React.FC = () => {
             name="telegram"
             label={t('Telegram')}
             rules={[{ type: 'url' }]}
+            initialValue={initState.telegram}
           >
             <Input />
           </Form.Item>
@@ -351,6 +419,7 @@ const SubmitForm: React.FC = () => {
             name="coinmarketcap"
             label={t('Coinmarketcap')}
             rules={[{ type: 'url' }]}
+            initialValue={initState.coinmarketcap}
           >
             <Input />
           </Form.Item>
@@ -358,20 +427,46 @@ const SubmitForm: React.FC = () => {
             name="coingecko"
             label={t('Coingecko')}
             rules={[{ type: 'url' }]}
+            initialValue={initState.coingecko}
           >
             <Input />
           </Form.Item>
-          <Form.Item name="token" label={t('Token')}>
-            <Input />
+          <Form.Item label={t('Google Captcha')} initialValue={initState.token}>
+            <GoogleCaptcha
+              token={form.getFieldValue('token')}
+              setToken={setToken}
+              refreshTag={refreshTag}
+            />
           </Form.Item>
 
           <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
+            <Button
+              type="primary"
+              htmlType="submit"
+              loading={loading}
+              size="large"
+              style={{
+                marginRight: '20px',
+                borderRadius: '24px',
+                padding: '0 20px',
+              }}
+            >
               {t('Submit')}
             </Button>
-            <Button htmlType="button" onClick={onReset}>
+            <Button
+              size="large"
+              htmlType="button"
+              onClick={onReset}
+              style={{ borderRadius: '24px', padding: '0 20px' }}
+            >
               {t('Reset')}
             </Button>
+            {/* <Button
+              htmlType="button"
+              onClick={() => setRefreshTag((n) => n + 1)}
+            >
+              {t('Test')}
+            </Button> */}
           </Form.Item>
         </StyledForm>
       </Content>

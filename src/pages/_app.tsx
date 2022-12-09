@@ -39,7 +39,10 @@ import { appWithTranslation } from 'next-i18next'
 //   ],
 // })
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
+  P,
+  IP
+> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 
@@ -66,6 +69,10 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
           gtag('config', 'G-SDY59S7KD7');
         `}
       </Script>
+      <Script
+        src="//recaptcha.net/recaptcha/api.js?hl=en"
+        strategy="beforeInteractive"
+      />
     </>
   )
 }

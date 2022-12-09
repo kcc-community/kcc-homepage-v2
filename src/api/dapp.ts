@@ -1,4 +1,4 @@
-import { AppCategoryType, AppType } from 'components/Apps/types'
+import { AppCategoryType, AppType, FormDataProps } from 'components/Apps/types'
 import Axios, { HttpResponse } from './axios'
 
 // bridge-list
@@ -29,6 +29,14 @@ export class DappService {
     return Axios({
       method: 'get',
       url: url,
+    })
+  }
+
+  static addApp(data: FormDataProps): Promise<HttpResponse<any>> {
+    return Axios({
+      method: 'post',
+      url: `${this.baseUrl}/submit`,
+      data,
     })
   }
 }
