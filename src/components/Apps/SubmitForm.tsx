@@ -81,7 +81,7 @@ const Title = styled.div`
 const StyledForm = styled(Form)`
   .ant-form-item {
     font-family: 'Poppins';
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
   }
 `
@@ -214,6 +214,15 @@ const SubmitForm: React.FC = () => {
     </div>
   )
 
+  const LogoItem = (
+    <div>
+      <span style={{ marginRight: '10px' }}>{t('Logo')}</span>
+      <span style={{ fontSize: '12px', color: '#737E8D' }}>
+        {t('Image Size')}: 256*256px
+      </span>
+    </div>
+  )
+
   return (
     <FormWrap>
       <Content>
@@ -301,7 +310,7 @@ const SubmitForm: React.FC = () => {
           </Form.Item>
           <Form.Item
             name="logo_url"
-            label={t('Logo')}
+            label={LogoItem}
             rules={[{ required: true }]}
           >
             <>
@@ -331,6 +340,8 @@ const SubmitForm: React.FC = () => {
                         { ...oldFileList[0], url: `${IpfsUri}/${metadata}` },
                       ]
                     })
+                  } else {
+                    setFileList(() => [])
                   }
                 }}
               >
