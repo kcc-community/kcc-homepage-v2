@@ -275,8 +275,9 @@ const Community: React.FC = () => {
           />
         </Title>
         <SubTitle>
-          Our vibrant community with developers, validators, users, HODLers and
-          enthusiasts.
+          {t(
+            'Our vibrant community with developers, validators, users, HODLers and enthusiasts.'
+          )}
         </SubTitle>
         <Main>
           <MediaGrid>

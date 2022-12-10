@@ -361,7 +361,6 @@ const List: React.FC<{ list: { name: string; url: string } }> = ({ list }) => {
 
 const Develop: React.FC = () => {
   const { t } = useTranslation()
-  const router = useRouter()
   const initHoverState = new Array(developList.length).fill(false)
   const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
 

@@ -6,7 +6,6 @@ import Link from 'next/link'
 import React from 'react'
 import Marquee from 'react-fast-marquee'
 import styled from 'styled-components'
-import { useResponsive } from 'utils/responsive'
 
 const Wrap = styled.div`
   display: flex;
@@ -63,13 +62,12 @@ const StyledMarquee = styled(Marquee)`
 
 const Partner: React.FC = () => {
   const { t } = useTranslation()
-  const { isMobile } = useResponsive()
   const [isHover, setIsHover] = React.useState<boolean>(false)
 
   return (
     <Wrap>
       <Content>
-        <Title>{'Partners'}</Title>
+        <Title>{t('Partners')}</Title>
         <StyledMarquee
           direction="right"
           speed={50}
