@@ -3,10 +3,6 @@ import { useSelector } from 'react-redux'
 // import { addPopup, PopupContent, removePopup, toggleWalletModal, toggleSettingsMenu } from './actions'
 import { AppState } from '../index'
 
-export function useBlockNumber(): number | undefined {
-  return useSelector((state: AppState) => 0)
-}
-
 export function useDark(): boolean {
   return useSelector((state: AppState) => state.application.darkMode === true)
 }

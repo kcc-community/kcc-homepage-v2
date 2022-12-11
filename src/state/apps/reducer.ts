@@ -1,7 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit'
 import { AppCategoryType } from '../../components/Apps/types'
 import { updateAppCategoryList } from './actions'
-import AppList from 'components/Apps/Apps'
 
 export interface AppsState {
   appCategoryList: AppCategoryType[]

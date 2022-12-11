@@ -10,7 +10,6 @@ import {
 import { KCC } from 'constants/index'
 import { Trans, useTranslation } from 'next-i18next'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import React from 'react'
 import styled from 'styled-components'
 import { NormalButton } from '../Button/NormalButton'

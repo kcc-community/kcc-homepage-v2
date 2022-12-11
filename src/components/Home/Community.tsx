@@ -234,7 +234,7 @@ const Community: React.FC = () => {
   const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
   const [email, setEmail] = React.useState<string>('')
   const [disable, setDisable] = React.useState<boolean>(false)
-  const [subscribed, setSubscribed] = React.useState<boolean>(false)
+  const [, setSubscribed] = React.useState<boolean>(false)
 
   const setHoverByIndex = (index: number) => {
     const stateList = initHoverState

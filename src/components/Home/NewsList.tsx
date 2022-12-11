@@ -1,11 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
 import { RowCenterBox } from 'components'
 import arrowDown from 'assets/images/Icons/arrow-down.webp'
 import Image from 'next/image'
 import { KCC } from 'constants/index'
+
+import news1 from '../../assets/images/home/news1.png'
+import news2 from '../../assets/images/home/news2.jpg'
+import news3 from '../../assets/images/home/news3.jpg'
 
 const Wrap = styled.div`
   width: 100%;
@@ -78,7 +81,7 @@ const newsList = [
   {
     id: '0',
     url: '',
-    image: require('../../assets/images/home/news1.png').default,
+    image: news1,
     title:
       'Torches Announces Strategic Investment by KuCoin,c Investment by KuCoinc Investment by KuCoinc Investment by KuCoin ',
     date: 'Jul 12.2020',
@@ -86,7 +89,7 @@ const newsList = [
   {
     id: '1',
     url: '',
-    image: require('../../assets/images/home/news2.jpg').default,
+    image: news2,
     title:
       'Torches Announces Strategic Investment by KuCoin,c Investment by KuCoinc Investment by KuCoinc Investment by KuCoin ',
     date: 'Jul 12.2020',
@@ -94,7 +97,7 @@ const newsList = [
   {
     id: '2',
     url: '/apps',
-    image: require('../../assets/images/home/news3.jpg').default,
+    image: news3,
     title:
       'Torches Announces Strategic Investment by KuCoin,c Investment by KuCoinc Investment by KuCoinc Investment by KuCoin ',
     date: 'Jul 12.2020',
@@ -103,7 +106,6 @@ const newsList = [
 
 const NewsList: React.FC = () => {
   const { t } = useTranslation()
-  const router = useRouter()
   return (
     <Wrap>
       <TitleBar>

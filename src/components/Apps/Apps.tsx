@@ -8,7 +8,6 @@ import Link from 'next/link'
 import Pagination from 'components/Pagination'
 import { DappService } from '../../api/dapp'
 import { Spin } from 'antd'
-import { FileSearchOutlined } from '@ant-design/icons'
 
 const Wrap = styled.div`
   width: 100%;
@@ -194,7 +193,7 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
   const router = useRouter()
   const [currentPage, setCurrentPage] = React.useState<number>(1)
 
-  const [pageSize, setPageSize] = React.useState<number>(12)
+  const [pageSize] = React.useState<number>(12)
   const [appList, setAppList] = React.useState<AppType[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
   const [totalApps, setTotalApps] = React.useState<number>(0)

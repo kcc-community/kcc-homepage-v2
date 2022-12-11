@@ -9,7 +9,7 @@ import { useResponsive } from 'utils/responsive'
 import AppMenu from '../AppMenu'
 import ChangeLanguage from '../ChangeLanguage/index'
 import { BrowserView, MobileView } from '../index'
-import KccLogo, { PictureType } from '../Logo/KccLogo'
+import KccLogo from '../Logo/KccLogo'
 
 const AppHeaderWrap = styled.div`
   display: flex;
@@ -53,13 +53,7 @@ const AppHeaderContent = styled(HeaderLeftWrap)<{ isMobile: boolean }>`
   // max-width: 1200px;
 `
 
-const ButtonGroup = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-`
-
-const AppHeader: React.FunctionComponent = (props: any) => {
+const AppHeader: React.FunctionComponent = () => {
   // const [mobileMenuShow, setMobileMenuShow] = React.useState(false)
   const show = useMobileMenuShow()
   const { isMobile } = useResponsive()
