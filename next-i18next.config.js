@@ -9,8 +9,8 @@ module.exports = {
   nonExplicitSupportedLngs: true,
   localePath:
     typeof window === 'undefined'
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      ? require('path').resolve('./public/locales')
+      ? // eslint-disable-next-line @typescript-eslint/no-var-requires
+        require('path').resolve('./public/locales')
       : '/locales',
   reloadOnPrerender: process.env.NODE_ENV === 'development',
 }
