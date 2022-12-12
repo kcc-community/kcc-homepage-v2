@@ -9,18 +9,23 @@ import Loading from 'components/Loading'
 
 const Banner = dynamic(() => import('components/Home/Banner'), {
   suspense: true,
+  ssr: false,
 })
 const Ecosystem = dynamic(() => import('components/Home/Ecosystem'), {
   suspense: true,
+  ssr: false,
 })
 const Develop = dynamic(() => import('components/Home/Develop'), {
   suspense: true,
+  ssr: false,
 })
 const Community = dynamic(() => import('components/Home/Community'), {
   suspense: true,
+  ssr: false,
 })
 const Partner = dynamic(() => import('components/Home/Partner'), {
   suspense: true,
+  ssr: false,
 })
 
 const AppWrap = styled.div`
