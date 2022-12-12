@@ -30,20 +30,19 @@ import GoogleCaptcha from './GoogleCaptcha'
 const { Option } = Select
 
 const initState: FormDataProps = {
-  name: 'test',
+  name: '',
   requestType: RequestType['New submission'],
   project_status: ProjectStatus.Live,
-  website: 'https://123.com',
-  category_ids: '1,2',
-  brief_introduction: 'kkkj',
-  detail_description: 'jkjk',
-  logo_url:
-    'https://ipfs.kcc.network/ipfs/bafkreiett2drwhs4cirm27chkbbmjfloeb2fvz2rirlls5xprhklwuajle',
-  smart_contract_address: '0xa6fD2503fcF6F795D4d1593085BF3040651D01D9',
-  token_symbol: 'test',
-  project_email: '123@qq.com',
-  token_contract_address: '0xa6fD2503fcF6F795D4d1593085BF3040651D01D9',
-  tvl_interface: 'https://123.com',
+  website: '',
+  category_ids: '',
+  brief_introduction: '',
+  detail_description: '',
+  logo_url: '',
+  smart_contract_address: '',
+  token_symbol: '',
+  project_email: '',
+  token_contract_address: '',
+  tvl_interface: '',
   github: '',
   twitter: '',
   telegram: '',
@@ -235,7 +234,7 @@ const SubmitForm: React.FC = () => {
         >
           <Form.Item
             name="name"
-            label={t('name')}
+            label={t('Name')}
             rules={[{ required: true }, { min: 3, max: 30 }]}
             initialValue={initState.name}
           >
@@ -249,10 +248,10 @@ const SubmitForm: React.FC = () => {
           >
             <Radio.Group>
               <Radio value={RequestType['New submission']}>
-                {RequestType[0]}
+                {t(RequestType[0])}
               </Radio>
               <Radio value={RequestType['Update dApp information']}>
-                {RequestType[1]}
+                {t(RequestType[1])}
               </Radio>
             </Radio.Group>
           </Form.Item>
