@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import AppFooter from './AppFooter'
 import AppHeader from './AppHeader'
+import { isClient } from 'constants/index'
 
 const Wrap = styled.div`
   display: flex;
@@ -31,10 +32,9 @@ const AppBaseLayout: React.FC<{ children: any }> = ({ children }) => {
 
 // App layout
 const AppLayout: React.FC<{ children: any }> = ({ children }) => {
-  const isFullScreen =
-    typeof window !== 'undefined'
-      ? window.localStorage.getItem('FULLSCREEN_MODE') ?? false
-      : false
+  const isFullScreen = isClient
+    ? window.localStorage.getItem('FULLSCREEN_MODE') ?? false
+    : false
 
   if (isFullScreen) return <React.Fragment>{children}</React.Fragment>
   return <AppBaseLayout>{children}</AppBaseLayout>

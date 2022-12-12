@@ -2,6 +2,7 @@ import { message } from 'antd'
 import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
+import { isClient } from 'constants/index'
 
 const Wrap = styled.div``
 
@@ -16,7 +17,7 @@ const GoogleCaptcha: React.FC<{
   const [captchaId, setCaptchaId] = React.useState<number>(-1)
 
   const renderGoogleCaptcha = React.useCallback(() => {
-    if (typeof window !== 'undefined') {
+    if (isClient) {
       const char = window.document.getElementById('captcha')
       console.log('captchaId', captchaId)
       if (!token && char && window?.grecaptcha && !rendered) {

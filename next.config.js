@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('next').NextConfig} */
 const withAntdLess = require('next-plugin-antd-less')
-const { i18n } = require('./next-i18next.config')
+const { i18n } = require('./next-i18next.config.js')
 
 const nextConfig = {
   i18n,

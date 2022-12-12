@@ -14,6 +14,7 @@ import { useResponsive } from '../../utils/responsive'
 import { BrowserView, MobileView } from '../index'
 import { RowBetween } from '../Row'
 
+import { isClient } from 'constants/index'
 import Image from 'next/image'
 import './index.less'
 
@@ -90,11 +91,13 @@ const ChangeLanguage: React.FC = () => {
 
   const selectChange = React.useCallback(
     (code: string) => {
-      const { pathname, asPath, query } = router
-      dispatch(changeLanguage({ lng: code }))
-      router.push({ pathname, query }, asPath, { locale: code })
-      window.localStorage.setItem('kcc_homepage_language', code)
-      setShow(() => false)
+      if (isClient) {
+        const { pathname, asPath, query } = router
+        dispatch(changeLanguage({ lng: code }))
+        router.push({ pathname, query }, asPath, { locale: code })
+        window.localStorage.setItem('kcc_homepage_language', code)
+        setShow(() => false)
+      }
     },
     [dispatch, router]
   )
