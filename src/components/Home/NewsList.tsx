@@ -9,6 +9,7 @@ import { KCC } from 'constants/index'
 import news1 from '../../assets/images/home/news1.png'
 import news2 from '../../assets/images/home/news2.jpg'
 import news3 from '../../assets/images/home/news3.jpg'
+import { useResponsive } from 'utils/responsive'
 
 const Wrap = styled.div`
   width: 100%;
@@ -19,6 +20,9 @@ const TitleBar = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 768px) {
+    padding: 0 24px;
+  }
 `
 
 const Title = styled.div`
@@ -30,6 +34,10 @@ const Title = styled.div`
   display: flex;
   align-items: center;
   color: #ffffff;
+  @media (max-width: 768px) {
+    font-size: 20px;
+    line-height: 30px;
+  }
 `
 
 const ListWrap = styled.div`
@@ -39,11 +47,21 @@ const ListWrap = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 16px;
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    overflow: hidden;
+    overflow-x: scroll;
+    padding-left: 24px;
+  }
 `
 const Item = styled.div`
   width: 384px;
   & + & {
     margin-left: 24px;
+  }
+
+  @media (max-width: 768px) {
+    width: 300px;
   }
 `
 const ItemTitle = styled.div`
@@ -58,6 +76,12 @@ const ItemTitle = styled.div`
   text-overflow: ellipsis;
   white-space: wrap;
   margin-top: 16px;
+  @media (max-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
+    height: 48px;
+    margin-top: 6px;
+  }
 `
 
 const DateText = styled.div`
@@ -70,6 +94,11 @@ const DateText = styled.div`
   align-items: center;
   color: #7f8393;
   margin-top: 16px;
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin-top: 6px;
+    line-height: 24px;
+  }
 `
 
 const StyledImage = styled(Image)`
@@ -106,15 +135,27 @@ const newsList = [
 
 const NewsList: React.FC = () => {
   const { t } = useTranslation()
+  const { isMobile } = useResponsive()
   return (
     <Wrap>
       <TitleBar>
         <Title>{t('News')}</Title>
         <RowCenterBox
-          style={{ width: 'auto', cursor: 'pointer' }}
+          style={{
+            width: 'auto',
+            cursor: 'pointer',
+          }}
           onClick={() => window.open(KCC.NEWS_URL, '_blank')}
         >
-          <Title style={{ marginRight: '5px' }}>{t('More')}</Title>
+          <Title
+            style={{
+              marginRight: '5px',
+              fontSize: isMobile ? '16px' : '24px',
+              fontWeight: isMobile ? 500 : 700,
+            }}
+          >
+            {t('More')}
+          </Title>
           <Image src={arrowDown} width={24} height={24} alt="arrow-down" />
         </RowCenterBox>
       </TitleBar>
@@ -128,8 +169,8 @@ const NewsList: React.FC = () => {
             <Item key={news.id}>
               <StyledImage
                 src={news.image}
-                width={384}
-                height={220}
+                width={isMobile ? 300 : 384}
+                height={isMobile ? 172 : 220}
                 alt="news-thumbnail"
               />
               <ItemTitle>{newTitle}</ItemTitle>

@@ -1,9 +1,9 @@
 import { DownOutlined } from '@ant-design/icons'
 import { MENU_LIST, NavItemChildrenType, NavItemType } from 'constants/menuList'
+import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { CSSProperties } from 'react'
-import { useTranslation } from 'next-i18next'
 import styled from 'styled-components'
 
 import { Menu } from 'antd'
@@ -12,13 +12,14 @@ import Column from '../Column'
 import Row from '../Row/index'
 
 import { useDispatch } from 'react-redux'
-import { KCC } from '../../constants/index'
+import { isClient, KCC } from '../../constants/index'
 import { theme } from '../../constants/theme'
 import { changeMobileMenuShow } from '../../state/application/actions'
 import { useResponsive } from '../../utils/responsive'
 import { BrowserView, MobileView } from '../index'
 
 import './index.less'
+import { useMobileMenuShow } from '../../state/application/hooks'
 
 export interface AppMenuProps {
   style?: CSSProperties
@@ -31,12 +32,13 @@ const MenuWrap = styled.div`
   @media (max-width: 768px) {
     margin-left: 0px;
     justify-self: flex-end;
-    position: absolute;
+    position: fixed;
     top: 70px;
     left: 0px;
     width: 100%;
     margin-left: 0;
-    background: #000;
+    background: #fff;
+    min-height: calc(100vh + 70px);
   }
 `
 
@@ -77,6 +79,9 @@ const RootTitle = styled.span`
   margin: 0;
   &:hover {
     color: ${() => theme.colors.primary};
+  }
+  @media (max-width: 768px) {
+    color: #040a2d;
   }
 `
 
@@ -211,7 +216,26 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
 
   const dispatch = useDispatch()
 
+  const mobileMenuShow = useMobileMenuShow()
+
   const [openKeys, setOpenKeys] = React.useState<string[]>([])
+
+  React.useEffect(() => {
+    if (isClient) {
+      const body = window.document.getElementsByTagName('body')[0]
+      if (mobileMenuShow) {
+        body.style.overflowY = 'hidden'
+      } else {
+        body.style.overflowY = 'auto'
+      }
+    }
+    return () => {
+      if (isClient) {
+        const body = window.document.getElementsByTagName('body')[0]
+        body.style.overflowY = 'auto'
+      }
+    }
+  }, [mobileMenuShow])
 
   const showSubMenu = (navItem: any) => {
     if (openKeys.length && openKeys[0] === navItem.name) {
@@ -308,10 +332,12 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
             >
               <RootTitle>
                 {t(`${navItem.name}`)}{' '}
-                <DownOutlined
-                  className="arrow-icon"
-                  style={{ fontSize: '10px' }}
-                />
+                {!isMobile && (
+                  <DownOutlined
+                    className="arrow-icon"
+                    style={{ fontSize: '10px' }}
+                  />
+                )}
               </RootTitle>
             </Row>
           }
@@ -386,10 +412,9 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
 
   const M_MENU_CSS: CSSProperties = isMobile
     ? {
-        border: `1px solid ${theme.colors.primary}`,
         color: `${theme.colors.primary} !important`,
         zIndex: 999,
-        background: '#000',
+        background: '#fff',
       }
     : {}
 

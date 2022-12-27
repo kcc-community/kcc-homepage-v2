@@ -4,10 +4,9 @@ import Script from 'next/script'
 // import localFont from '@next/font/local'
 import type { ReactElement, ReactNode } from 'react'
 import Providers from '../components/Providers'
+import { appWithTranslation } from 'next-i18next'
 import '../styles/globals.css'
 import '../styles/index.less'
-
-import { appWithTranslation } from 'next-i18next'
 
 // const URWDIN = localFont({
 //   src: [

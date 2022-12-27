@@ -13,6 +13,10 @@ const StyledButton = styled(Button)`
   align-items: center;
   outline: none;
   border: none;
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 300px;
+  }
 `
 
 export const NormalButton: React.FC<ButtonProps> = (props) => {

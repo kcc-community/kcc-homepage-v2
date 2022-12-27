@@ -22,6 +22,10 @@ const Wrap = styled.div`
   height: auto;
   background: url('/images/home/logo-gray-bg.webp') 0px 420px no-repeat, #f5f5f5;
   padding: 100px 0 112px 0;
+  @media (max-width: 768px) {
+    padding: 0px 0 20px 0;
+    background: #f5f5f5;
+  }
 `
 
 const Content = styled.div`
@@ -34,6 +38,9 @@ const Content = styled.div`
   @media (max-width: 1200px) {
     padding-left: 24px;
     padding-right: 24px;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `
 
@@ -50,6 +57,11 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   color: #040a2d;
+  @media (max-width: 768px) {
+    font-size: 32px;
+    line-height: 48px;
+    text-align: center;
+  }
 `
 
 const Color = styled.span`
@@ -67,6 +79,9 @@ const SubTitle = styled.div`
   text-align: center;
   color: #7f8393;
   margin-top: 16px;
+  @media (max-width: 768px) {
+    margin-top: 12px;
+  }
 `
 
 const ListWrap = styled.div`
@@ -76,6 +91,11 @@ const ListWrap = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 60px;
+  @media (max-width: 768px) {
+    flex-flow: column nowrap;
+    justify-content: center;
+    margin-top: 36px;
+  }
 `
 const Item = styled.div`
   width: 384px;
@@ -85,12 +105,20 @@ const Item = styled.div`
   & + & {
     margin-left: 24px;
   }
-`
-
-const StyledImage = styled(Image)`
-  &:hover {
+  @media (max-width: 768px) {
+    & + & {
+      margin-left: 0px;
+    }
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
   }
 `
+
+const StyledImage = styled(Image)``
 
 const ItemTitle = styled.div`
   font-family: 'Poppins';
@@ -116,6 +144,9 @@ const ItemDesc = styled.div`
   max-width: 282px;
   margin-top: 18px;
   height: 72px;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `
 
 const ButtonText = styled.div`
@@ -143,6 +174,31 @@ const DiscoverWrap = styled.div`
   background: url('/images/home/dapp.webp') bottom right no-repeat, #fffefe;
   background-size: auto 100%;
   margin-top: 30px;
+  @media (max-width: 768px) {
+    padding: 69px 0px 30px 0px;
+    margin-top: 16px;
+    background: none;
+    background-size: none;
+    position: relative;
+    z-index: 1;
+    background: #fffefe;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    &::before {
+      background: url('/images/home/dapp.webp') bottom right no-repeat;
+      background-size: auto 325px;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+      z-index: -1;
+    }
+  }
 `
 
 const DiscoverTitle = styled.div`
@@ -154,6 +210,9 @@ const DiscoverTitle = styled.div`
   display: flex;
   align-items: center;
   color: #040a2d;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `
 
 const DividerLine = styled.div`
@@ -174,6 +233,9 @@ const DiscoverDesc = styled.div`
   color: #494e67;
   max-width: 305px;
   margin-top: 10px;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `
 
 const DiscoverButtonText = styled.div`
@@ -243,7 +305,7 @@ const Ecosystem: React.FC = () => {
           />
         </Title>
         <SubTitle>
-          Get started in 4 steps to dive into the world of KCC.
+          {t('Get started in 4 steps to dive into the world of KCC.')}
         </SubTitle>
         <ListWrap>
           {stepList.map((step, index) => {
@@ -261,7 +323,7 @@ const Ecosystem: React.FC = () => {
                   style={{ marginTop: '20px' }}
                   onClick={handleButtonClick.bind(null, index)}
                 >
-                  <RowCenterBox>
+                  <RowCenterBox style={{ width: 'auto' }}>
                     <ButtonText>{t(step.buttonText)}</ButtonText>
                     <ArrowLeft />
                   </RowCenterBox>

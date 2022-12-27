@@ -16,6 +16,7 @@ import { NormalButton } from '../Button/NormalButton'
 
 import { Box, RowCenterBox } from 'components'
 import Link from 'next/link'
+import { useResponsive } from 'utils/responsive'
 
 const advantageList = [
   {
@@ -39,7 +40,10 @@ const advantageList = [
 const developList = [
   {
     icon: (isHover: boolean) => (
-      <DevelopIcon1 color={isHover ? ' #21C397' : '#fff'} />
+      <DevelopIcon1
+        color={isHover ? ' #21C397' : '#fff'}
+        style={{ alignSelf: 'flex-start' }}
+      />
     ),
     title: 'Documentation',
     list: [
@@ -51,7 +55,10 @@ const developList = [
   },
   {
     icon: (isHover: boolean) => (
-      <DevelopIcon2 color={isHover ? ' #21C397' : '#fff'} />
+      <DevelopIcon2
+        color={isHover ? ' #21C397' : '#fff'}
+        style={{ alignSelf: 'flex-start' }}
+      />
     ),
     title: 'Tools',
     list: [
@@ -75,7 +82,10 @@ const developList = [
   },
   {
     icon: (isHover: boolean) => (
-      <DevelopIcon3 color={isHover ? ' #21C397' : '#fff'} />
+      <DevelopIcon3
+        color={isHover ? ' #21C397' : '#fff'}
+        style={{ alignSelf: 'flex-start' }}
+      />
     ),
     title: 'Resources',
     list: [
@@ -95,7 +105,10 @@ const developList = [
   },
   {
     icon: (isHover: boolean) => (
-      <DevelopIcon4 color={isHover ? ' #21C397' : '#fff'} />
+      <DevelopIcon4
+        color={isHover ? ' #21C397' : '#fff'}
+        style={{ alignSelf: 'flex-start' }}
+      />
     ),
     title: 'Roadmap',
     list: [
@@ -122,6 +135,11 @@ const Wrap = styled.div`
     #f5f5f5 100%
   );
   background-size: 100% 1456px;
+  @media (max-width: 768px) {
+    height: auto;
+    background-size: 100% 100%;
+    overflow: hidden;
+  }
 `
 const Content = styled.div`
   position: relative;
@@ -136,6 +154,10 @@ const Content = styled.div`
   @media (max-width: 1200px) {
     padding-left: 24px;
     padding-right: 24px;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    padding-top: 80px;
   }
 `
 
@@ -152,6 +174,11 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   color: #fff;
+  @media (max-width: 768px) {
+    font-size: 32px;
+    line-height: 48px;
+    text-align: center;
+  }
 `
 
 const Color = styled.span`
@@ -168,6 +195,10 @@ const Desc = styled.div`
   align-items: center;
   color: #ffffff;
   margin-top: 18px;
+  @media (max-width: 768px) {
+    margin-top: 12px;
+    text-align: center;
+  }
 `
 
 const ListWrap = styled.div`
@@ -177,6 +208,11 @@ const ListWrap = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 48px;
+  @media (max-width: 768px) {
+    width: 100%;
+    overflow-x: scroll;
+    justify-content: flex-start;
+  }
 `
 const Item = styled.div`
   border-radius: 16px;
@@ -186,6 +222,18 @@ const Item = styled.div`
   background: #181818;
   & + & {
     margin-left: 24px;
+  }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    flex-shrink: 0;
+    width: 282px !important;
+    & + & {
+      margin-left: 24px;
+    }
   }
 `
 
@@ -237,10 +285,16 @@ const AdvantageListWrap = styled.div`
   width: 100%;
   margin-top: 100px;
   row-gap: 48px;
+  @media (max-width: 768px) {
+    margin-top: 48px;
+  }
 `
 
 const AdvantageItem = styled.div`
   width: 550px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const AdvantageTitle = styled.div`
@@ -288,7 +342,7 @@ const QuoteBg = styled(Image)`
 const RotateQuoteBg = styled(Image)`
   position: absolute;
   top: 860px;
-  right: -60px;
+  right: 0px;
   transform: rotate(180deg);
 `
 
@@ -302,6 +356,11 @@ const GrantWrap = styled.div`
   align-items: center;
   background: #21c397;
   border-radius: 16px;
+  @media (max-width: 768px) {
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding: 53px 32px 43px 32px;
+  }
 `
 
 const GrantTitle = styled.div`
@@ -312,6 +371,9 @@ const GrantTitle = styled.div`
   display: flex;
   align-items: center;
   color: #ffffff;
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
 `
 
 const GrantDesc = styled.div`
@@ -325,6 +387,9 @@ const GrantDesc = styled.div`
   color: #ffffff;
   margin-top: 10px;
   max-width: 583px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `
 
 const ButtonText = styled.div`
@@ -360,6 +425,7 @@ const List: React.FC<{ list: { name: string; url: string } }> = ({ list }) => {
 
 const Develop: React.FC = () => {
   const { t } = useTranslation()
+  const { isMobile } = useResponsive()
   const initHoverState = new Array(developList.length).fill(false)
   const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
 
@@ -373,13 +439,18 @@ const Develop: React.FC = () => {
   return (
     <Wrap>
       <Content>
-        <QuoteBg src={quoteImage} width={145} height={114} alt="quote-bg" />
-        <RotateQuoteBg
-          src={quoteImage}
-          width={145}
-          height={114}
-          alt="rotate-quote-bg"
-        />
+        {!isMobile && (
+          <>
+            <QuoteBg src={quoteImage} width={145} height={114} alt="quote-bg" />
+            <RotateQuoteBg
+              src={quoteImage}
+              width={145}
+              height={114}
+              alt="rotate-quote-bg"
+            />
+          </>
+        )}
+
         <Title>
           <Trans i18nKey="Develop with KCC" components={{ color: <Color /> }} />
         </Title>
@@ -435,7 +506,13 @@ const Develop: React.FC = () => {
               </RowCenterBox>
             </NormalButton>
           </Box>
-          <Image src={cupImage} width={393} height={340} alt="cup-image" />
+          <Image
+            src={cupImage}
+            style={{ marginTop: isMobile ? '55px' : '0px' }}
+            width={isMobile ? 300 : 393}
+            height={isMobile ? 255 : 340}
+            alt="cup-image"
+          />
         </GrantWrap>
       </Content>
     </Wrap>

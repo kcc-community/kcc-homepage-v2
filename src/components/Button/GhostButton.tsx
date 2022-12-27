@@ -19,6 +19,11 @@ const StyledButton = styled(Button)`
   &.ant-btn-default:not(:disabled):hover {
     border: 1px solid #21c397;
   }
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
 `
 
 export const GhostButton: React.FC<ButtonProps> = (props) => {

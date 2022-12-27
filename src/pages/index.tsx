@@ -1,32 +1,15 @@
 import AppLayout from 'components/AppLayout'
 import { NextPage } from 'next'
-import Head from 'next/head'
-import React, { Suspense } from 'react'
-import styled from 'styled-components'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import dynamic from 'next/dynamic'
-import Loading from 'components/Loading'
+import Head from 'next/head'
+import React from 'react'
+import styled from 'styled-components'
 
-const Banner = dynamic(() => import('components/Home/Banner'), {
-  suspense: true,
-  ssr: false,
-})
-const Ecosystem = dynamic(() => import('components/Home/Ecosystem'), {
-  suspense: true,
-  ssr: false,
-})
-const Develop = dynamic(() => import('components/Home/Develop'), {
-  suspense: true,
-  ssr: false,
-})
-const Community = dynamic(() => import('components/Home/Community'), {
-  suspense: true,
-  ssr: false,
-})
-const Partner = dynamic(() => import('components/Home/Partner'), {
-  suspense: true,
-  ssr: false,
-})
+import Banner from 'components/Home/Banner'
+import Ecosystem from 'components/Home/Ecosystem'
+import Develop from 'components/Home/Develop'
+import Community from 'components/Home/Community'
+import Partner from 'components/Home/Partner'
 
 const AppWrap = styled.div`
   margin: 0;
@@ -38,14 +21,12 @@ const AppWrap = styled.div`
 export async function getStaticProps({ locale }: { locale: any }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['menu'], null, [
-        'en',
-        'zh-TW',
-        'zh-CN',
-        'es-ES',
-        'pt-BR',
-        'de',
-      ])),
+      ...(await serverSideTranslations(
+        locale ?? 'en',
+        ['menu', 'homepage', 'common'],
+        null,
+        ['en', 'zh-TW', 'zh-CN', 'es-ES', 'pt-BR', 'de']
+      )),
       // Will be passed to the page component as props
     },
   }
@@ -61,13 +42,11 @@ export default function Home() {
           content="KCC is a high performance decentralized public chain built by the fans of KCS and KuCoin. We aim to provide community users with faster, more convenient and low-cost experience."
         />
       </Head>
-      <Suspense fallback={<Loading show={true} />}>
-        <Banner />
-        <Ecosystem />
-        <Develop />
-        <Community />
-        <Partner />
-      </Suspense>
+      <Banner />
+      <Ecosystem />
+      <Develop />
+      <Community />
+      <Partner />
     </AppWrap>
   )
 }

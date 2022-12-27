@@ -6,6 +6,7 @@ import Link from 'next/link'
 import React from 'react'
 import Marquee from 'react-fast-marquee'
 import styled from 'styled-components'
+import { useResponsive } from 'utils/responsive'
 
 const Wrap = styled.div`
   display: flex;
@@ -16,6 +17,9 @@ const Wrap = styled.div`
   height: auto;
   background: #f5f5f5;
   padding: 190px 0 135px 0;
+  @media (max-width: 768px) {
+    padding: 110px 0 60px 0;
+  }
 `
 
 const Content = styled.div`
@@ -39,6 +43,10 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   color: #040a2d;
+  @media (max-width: 768px) {
+    font-size: 32px;
+    line-height: 48px;
+  }
 `
 const ImageWrap = styled(Link)`
   background: #ffffff;
@@ -54,14 +62,22 @@ const ImageWrap = styled(Link)`
   &:hover {
     transform: translateY(-10px);
   }
+  @media (max-width: 768px) {
+    transform: scale(0.7);
+    margin-left: -50px;
+  }
 `
 
 const StyledMarquee = styled(Marquee)`
   margin-top: 38px;
+  @media (max-width: 768px) {
+    margin-top: 18px;
+  }
 `
 
 const Partner: React.FC = () => {
   const { t } = useTranslation()
+  const { isMobile } = useResponsive()
   const [isHover, setIsHover] = React.useState<boolean>(false)
 
   return (

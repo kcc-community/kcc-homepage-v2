@@ -69,6 +69,9 @@ const Wrap = styled.div`
   height: auto;
   background: #f5f5f5;
   padding: 190px 0 0 0;
+  @media (max-width: 768px) {
+    padding: 80px 0 0 0;
+  }
 `
 
 const Content = styled.div`
@@ -81,6 +84,9 @@ const Content = styled.div`
   @media (max-width: 1200px) {
     padding-left: 24px;
     padding-right: 24px;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `
 
@@ -97,11 +103,17 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   color: #040a2d;
+  @media (max-width: 768px) {
+    font-size: 32px;
+    text-align: center;
+    line-height: 48px;
+  }
 `
 
 const Color = styled.span`
   color: #21c397;
   padding-left: 10px;
+  border: 1px solid red;
 `
 
 const SubTitle = styled.div`
@@ -114,6 +126,10 @@ const SubTitle = styled.div`
   text-align: center;
   color: #7f8393;
   margin-top: 16px;
+  @media (max-width: 768px) {
+    margin-top: 12px;
+    text-align: center;
+  }
 `
 
 const Main = styled.div`
@@ -123,6 +139,9 @@ const Main = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 60px;
+  @media (max-width: 768px) {
+    flex-flow: column nowrap;
+  }
 `
 const MediaGrid = styled.div`
   display: grid;
@@ -133,6 +152,11 @@ const MediaGrid = styled.div`
   width: 516px;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 100%;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+  }
 `
 
 const MediaText = styled.div`
@@ -162,6 +186,10 @@ const Media = styled(Link)`
   &:hover ${MediaText} {
     color: #ffffff;
   }
+  @media (max-width: 768px) {
+    width: 170px;
+    height: 140px;
+  }
 `
 
 const SubscribeWrap = styled.div`
@@ -175,6 +203,12 @@ const SubscribeWrap = styled.div`
   background: url('/images/home/logoprint-green.webp') bottom right no-repeat,
     #fff;
   background-size: 263px 178px;
+  @media (max-width: 768px) {
+    margin-left: 0px;
+    margin-top: 12px;
+    width: 100%;
+    padding-bottom: 30px;
+  }
 `
 
 const SubscribeTitle = styled.div`
