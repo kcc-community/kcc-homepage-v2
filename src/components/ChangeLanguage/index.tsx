@@ -36,12 +36,12 @@ const Text = styled.div`
   height: 22px;
   font-size: 14px;
   font-weight: 500;
-  color: ${() => theme.colors.primary};
+  color: #000;
   line-height: 24px;
   margin: 8px;
   cursor: pointer;
   &:hover {
-    color: #fff;
+    color: ${() => theme.colors.primary};
   }
 `
 
