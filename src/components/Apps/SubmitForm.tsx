@@ -26,6 +26,7 @@ import { RcFile } from 'antd/es/upload'
 import { PlusOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import GoogleCaptcha from './GoogleCaptcha'
+import { useResponsive } from '../../utils/responsive'
 
 const { Option } = Select
 
@@ -64,6 +65,11 @@ const Content = styled.div`
   margin-top: 80px;
   padding-top: 50px;
   padding-bottom: 100px;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 80px 24px 80px 24px;
+    box-sizing: border-box;
+  }
 `
 
 const Title = styled.div`
@@ -89,9 +95,6 @@ const layout = {
   labelCol: { span: 24 },
   wrapperCol: { span: 24 },
 }
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
-}
 
 const getBase64 = (file: RcFile): Promise<string> =>
   new Promise((resolve, reject) => {
@@ -102,7 +105,8 @@ const getBase64 = (file: RcFile): Promise<string> =>
   })
 
 const SubmitForm: React.FC = () => {
-  const { t } = useTranslation('submit')
+  const { t } = useTranslation()
+  const { isMobile } = useResponsive()
   const [form] = Form.useForm<FormDataProps>() // useForm to collect form data
   const [fileList, setFileList] = React.useState<UploadFile[]>([])
   const [previewOpen, setPreviewOpen] = React.useState<boolean>(false)
@@ -110,6 +114,12 @@ const SubmitForm: React.FC = () => {
   const [previewTitle, setPreviewTitle] = React.useState<string>('')
   const [refreshTag, setRefreshTag] = React.useState<number>(0)
   const [loading, setLoading] = React.useState<boolean>(false)
+
+  const tailLayout = React.useMemo(() => {
+    return {
+      wrapperCol: { offset: isMobile ? 0 : 8, span: isMobile ? 24 : 16 },
+    }
+  }, [isMobile])
 
   const setToken = React.useCallback(
     (token: string) => {
@@ -449,7 +459,7 @@ const SubmitForm: React.FC = () => {
             />
           </Form.Item>
 
-          <Form.Item {...tailLayout}>
+          <Form.Item {...tailLayout} style={{ width: '100%' }}>
             <Button
               type="primary"
               htmlType="submit"
