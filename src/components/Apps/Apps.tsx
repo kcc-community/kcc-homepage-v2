@@ -8,12 +8,16 @@ import Link from 'next/link'
 import Pagination from 'components/Pagination'
 import { DappService } from '../../api/dapp'
 import { Spin } from 'antd'
+import { useResponsive } from '../../utils/responsive'
 
 const Wrap = styled.div`
   width: 100%;
   background: #f5f5f5;
   flex: 1;
   padding-bottom: 200px;
+  @media (max-width: 768px) {
+    padding-bottom: 120px;
+  }
 `
 
 const Content = styled.div`
@@ -40,6 +44,11 @@ const OperateBar = styled.div`
   width: 100%;
   column-gap: 12px;
   row-gap: 12px;
+  @media (max-width: 768px) {
+    overflow-x: scroll;
+    height: 100px;
+    flex-flow: row nowrap;
+  }
 `
 
 const CategoryText = styled.div<{ isActive: boolean }>`
@@ -56,6 +65,9 @@ const CategoryText = styled.div<{ isActive: boolean }>`
     }
     return '#040a2d'
   }};
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `
 
 const Category = styled.div<{ isActive: boolean }>`
@@ -81,6 +93,11 @@ const Category = styled.div<{ isActive: boolean }>`
   &:hover {
     background: #21c397;
   }
+  @media (max-width: 768px) {
+    width: auto;
+    display: flex;
+    flex-shrink: 0;
+  }
 `
 
 const AppCardList = styled.div`
@@ -93,6 +110,11 @@ const AppCardList = styled.div`
   row-gap: 24px;
   column-gap: 16px;
   min-height: 300px;
+  @media (max-width: 768px) {
+    column-gap: 0px;
+    min-height: auto;
+    row-gap: 12px;
+  }
 `
 
 const StyledSpin = styled(Spin)`
@@ -109,6 +131,18 @@ const AppCard = styled.div`
   &:hover {
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.12);
   }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 167px;
+  }
+`
+
+const MobileBox = styled.div`
+  margin-left: 20px;
 `
 
 const Logo = styled(Image)`
@@ -124,6 +158,11 @@ const Name = styled.div`
   align-items: center;
   color: #000000;
   margin-top: 16px;
+  @media (max-width: 768px) {
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 0px;
+  }
 `
 const Website = styled(Link)`
   font-family: 'Poppins';
@@ -135,6 +174,9 @@ const Website = styled(Link)`
   align-items: center;
   color: #7f8393;
   margin-top: 3px;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `
 
 const Desc = styled.div`
@@ -156,6 +198,11 @@ const Desc = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
+  @media (max-width: 768px) {
+    -webkit-line-clamp: 2;
+    height: 44px;
+    margin-top: 12px;
+  }
 `
 const PaginationWrap = styled.div`
   display: flex;
@@ -186,14 +233,50 @@ const Text = styled.div`
   color: #494e67;
 `
 
+const ViewMoreButton = styled.div<{ disabled: boolean }>`
+  width: 141px;
+  height: 44px;
+  background: #fffefe;
+  border-radius: 32px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #21c397;
+  pointer-events: ${({ disabled }) => {
+    if (disabled) {
+      return 'none'
+    }
+    return ''
+  }};
+  cursor: ${({ disabled }) => {
+    if (disabled) {
+      return 'not-allowed'
+    }
+    return 'pointer'
+  }};
+  opacity: ${({ disabled }) => {
+    if (disabled) {
+      return 0.8
+    }
+    return 1
+  }};
+`
+
 const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
   categoryList,
 }) => {
   const { t } = useTranslation()
   const router = useRouter()
+  const { isMobile } = useResponsive()
   const [currentPage, setCurrentPage] = React.useState<number>(1)
 
-  const [pageSize] = React.useState<number>(12)
+  const [pageSize, setPageSize] = React.useState<number>(12)
   const [appList, setAppList] = React.useState<AppType[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
   const [totalApps, setTotalApps] = React.useState<number>(0)
@@ -252,6 +335,19 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
     [router]
   )
 
+  const isMaxList = React.useMemo(() => {
+    if (totalApps === appList.length) {
+      return true
+    }
+    return false
+  }, [totalApps, appList])
+
+  const viewMore = React.useCallback(() => {
+    if (!isMaxList) {
+      setPageSize((size) => size * 2)
+    }
+  }, [isMaxList, setPageSize])
+
   return (
     <Wrap>
       <Content>
@@ -270,7 +366,6 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
             )
           })}
         </OperateBar>
-
         <StyledSpin spinning={loading}>
           <AppCardList>
             {appList.length > 0 ? (
@@ -280,15 +375,27 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
                     <AppCard key={index}>
                       <Logo
                         src={app.logo_url}
-                        width={80}
-                        height={80}
+                        width={isMobile ? 54 : 80}
+                        height={isMobile ? 54 : 80}
                         alt="app-logo"
                       />
-                      <Name>{app.name}</Name>
-                      <Website href={app.website} target="_blank">
-                        {app.website}
-                      </Website>
-                      <Desc>{app.description}</Desc>
+                      {isMobile ? (
+                        <MobileBox>
+                          <Name>{app.name}</Name>
+                          <Website href={app.website} target="_blank">
+                            {app.website}
+                          </Website>
+                          <Desc>{app.description}</Desc>
+                        </MobileBox>
+                      ) : (
+                        <>
+                          <Name>{app.name}</Name>
+                          <Website href={app.website} target="_blank">
+                            {app.website}
+                          </Website>
+                          <Desc>{app.description}</Desc>
+                        </>
+                      )}
                     </AppCard>
                   )
                 })}
@@ -300,15 +407,22 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
             )}
           </AppCardList>
         </StyledSpin>
+        {isMobile && appList.length > 0 && (
+          <ViewMoreButton disabled={isMaxList} onClick={() => viewMore()}>
+            {isMaxList ? 'End' : 'View more'}
+          </ViewMoreButton>
+        )}
 
-        <PaginationWrap>
-          <Pagination
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            total={totalApps}
-            perPage={pageSize}
-          />
-        </PaginationWrap>
+        {!isMobile && appList.length > 0 && (
+          <PaginationWrap>
+            <Pagination
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              total={totalApps}
+              perPage={pageSize}
+            />
+          </PaginationWrap>
+        )}
       </Content>
     </Wrap>
   )

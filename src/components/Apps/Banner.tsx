@@ -24,6 +24,14 @@ const Content = styled.div`
     padding-left: 24px;
     padding-right: 24px;
   }
+  @media (max-width: 768px) {
+    background: url('/images/apps/apps-bg.webp') bottom center no-repeat;
+    background-size: 900px auto;
+    background-position: -450px bottom;
+    width: 100%;
+    height: 600px;
+    padding-top: 120px;
+  }
 `
 const Title = styled.div`
   font-family: 'Poppins';
@@ -35,6 +43,10 @@ const Title = styled.div`
   display: flex;
   align-items: center;
   color: #ffffff;
+  @media (max-width: 768px) {
+    font-size: 40px;
+    line-height: 60px;
+  }
 `
 
 const Desc = styled.div`
@@ -76,7 +88,10 @@ const Banner: React.FC = () => {
         <Title>{t('Discover dApps')}</Title>
         <Desc>{t('An overview of the dApps in the KCC ecosystem.')}</Desc>
         <ButtonGroup>
-          <NormalButton onClick={() => router.push('/apps/submit')}>
+          <NormalButton
+            style={{ width: 'auto' }}
+            onClick={() => router.push('/apps/submit')}
+          >
             <ButtonText>{t('Add your dApp')}</ButtonText>
           </NormalButton>
         </ButtonGroup>
