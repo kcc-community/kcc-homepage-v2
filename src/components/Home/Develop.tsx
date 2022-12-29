@@ -281,7 +281,7 @@ const AdvantageListWrap = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   margin-top: 100px;
   row-gap: 48px;
@@ -379,7 +379,7 @@ const GrantTitle = styled.div`
 const GrantDesc = styled.div`
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 200;
   font-size: 16px;
   line-height: 24px;
   display: flex;
@@ -395,7 +395,7 @@ const GrantDesc = styled.div`
 const ButtonText = styled.div`
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 16px;
   display: flex;
   align-items: center;

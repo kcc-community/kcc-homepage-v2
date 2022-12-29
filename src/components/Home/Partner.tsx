@@ -60,6 +60,7 @@ const ImageWrap = styled(Link)`
   margin-left: 24px;
   &:hover {
     transform: translateY(-10px);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.08);
   }
   @media (max-width: 768px) {
     transform: scale(0.7);

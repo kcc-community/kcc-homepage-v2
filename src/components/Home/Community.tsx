@@ -171,7 +171,7 @@ const MediaText = styled.div`
   margin-top: 12px;
 `
 
-const Media = styled(Link)`
+const Media = styled(Link)<{ nth: number }>`
   background: #fff;
   border-radius: 16px;
   display: flex;
@@ -181,7 +181,18 @@ const Media = styled(Link)`
   width: 252px;
   height: 173px;
   &:hover {
-    background: #1aacfb;
+    background: ${({ nth }) => {
+      switch (nth) {
+        case 0:
+          return '#1aacfb'
+        case 1:
+          return '#3795F1'
+        case 2:
+          return '#2B2B2B'
+        case 3:
+          return '#7F63F9'
+      }
+    }};
   }
   &:hover ${MediaText} {
     color: #ffffff;
@@ -318,6 +329,7 @@ const Community: React.FC = () => {
             {mediaList.map((media, index) => {
               return (
                 <Media
+                  nth={index}
                   href={media.url}
                   target="_blank"
                   key={index}

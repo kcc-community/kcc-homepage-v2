@@ -77,7 +77,7 @@ const ButtonGroup = styled.div`
 const ButtonText = styled.div`
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   display: flex;

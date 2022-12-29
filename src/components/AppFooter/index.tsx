@@ -21,8 +21,8 @@ export const mediaList = [
     name: 'Twitter',
     icon: (isHover: boolean) => (
       <TwitterIcon
-        width={18}
-        height={18}
+        width={22}
+        height={22}
         color={isHover ? '#21C397' : '#fff'}
       />
     ),
@@ -32,8 +32,8 @@ export const mediaList = [
     name: 'Github',
     icon: (isHover: boolean) => (
       <GithubMedia
-        width={18}
-        height={18}
+        width={22}
+        height={22}
         color={isHover ? '#21C397' : '#fff'}
       />
     ),
@@ -43,8 +43,8 @@ export const mediaList = [
     name: 'Discord',
     icon: (isHover: boolean) => (
       <DiscordIcon
-        width={18}
-        height={18}
+        width={22}
+        height={22}
         color={isHover ? '#21C397' : '#fff'}
       />
     ),
@@ -54,8 +54,8 @@ export const mediaList = [
     name: 'Telegram',
     icon: (isHover: boolean) => (
       <TelegramIcon
-        width={18}
-        height={18}
+        width={22}
+        height={22}
         color={isHover ? '#21C397' : '#fff'}
         style={{ marginLeft: '-3px' }}
       />
@@ -132,7 +132,7 @@ const CopyRightText = styled.div`
   height: 60px;
   line-height: 60px;
   opacity: 0.6;
-  font-size: 14px;
+  font-size: 12px;
   color: #ffffff;
   border-top: 1px solid #fff;
   @media (max-width: 768px) {

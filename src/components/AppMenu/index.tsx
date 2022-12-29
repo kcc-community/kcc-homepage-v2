@@ -147,7 +147,7 @@ const NavIcon = styled.div`
 const TitleWrap = styled(Column)`
   justify-content: flex-start;
   align-items: flex-start;
-  margin-left: 16px;
+  margin-left: 8px;
 `
 
 const NavItem: React.FunctionComponent<NavItemChildrenType> = (props) => {
