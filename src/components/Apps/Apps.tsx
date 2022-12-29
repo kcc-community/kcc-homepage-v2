@@ -88,10 +88,7 @@ const Category = styled.div<{ isActive: boolean }>`
     return '#fff'
   }};
   &:hover ${CategoryText} {
-    color: #fff;
-  }
-  &:hover {
-    background: #21c397;
+    color: #21c397;
   }
   @media (max-width: 768px) {
     width: auto;
@@ -128,8 +125,10 @@ const AppCard = styled.div`
   border-radius: 16px;
   cursor: pointer;
   background: #fff;
+  overflow: hidden;
   &:hover {
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.12);
+    border-top: 4px solid #21c397;
   }
   @media (max-width: 768px) {
     display: flex;

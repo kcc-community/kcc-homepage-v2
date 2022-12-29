@@ -45,6 +45,14 @@ const OperateButton = styled.div<{ disabled: boolean }>`
     }
     return '#000000'
   }};
+  &:hover {
+    color: ${({ disabled }) => {
+      if (disabled) {
+        return '#7F8393'
+      }
+      return '#21C397'
+    }};
+  }
 `
 
 const StyledInput = styled(Input)`

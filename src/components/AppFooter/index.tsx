@@ -97,6 +97,11 @@ const AppFooterContentWrap = styled.div`
   }
 `
 
+const CopyRightContent = styled.div`
+  width: 1200px;
+  margin: 0 auto;
+`
+
 const FooterTitle = styled.span`
   font-family: 'Poppins';
   font-style: normal;
@@ -270,11 +275,13 @@ const AppFooter: React.FC = () => {
         <MobileView style={{ padding: '0 24px' }}>
           <MFooter />
         </MobileView>
-        <CopyRightText>
+      </AppFooterContentWrap>
+      <CopyRightText>
+        <CopyRightContent>
           CopyRight © 2021 - {`${new Date().getFullYear()}`} kcc.io All Rights
           Reserved.
-        </CopyRightText>
-      </AppFooterContentWrap>
+        </CopyRightContent>
+      </CopyRightText>
     </AppFooterWrap>
   )
 }
