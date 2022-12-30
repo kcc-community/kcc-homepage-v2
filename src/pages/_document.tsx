@@ -67,7 +67,7 @@ export default class MyDocument extends Document {
           />
           <link rel="manifest" href="/manifest.json" />
           <Script
-            src="recaptcha.net/recaptcha/api.js?hl=en"
+            src="//recaptcha.net/recaptcha/api.js?hl=en"
             strategy="beforeInteractive"
           />
         </Head>

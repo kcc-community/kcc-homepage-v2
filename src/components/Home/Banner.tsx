@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { useTranslation } from 'next-i18next'
 import { NormalButton } from '../Button/NormalButton'
 import { GhostButton } from '../Button/GhostButton'
@@ -8,6 +8,29 @@ import { useRouter } from 'next/router'
 import NewsList from './NewsList'
 import { useResponsive } from 'utils/responsive'
 
+const bgAnimation = keyframes`
+  0% {
+     background: url('/images/home/bg_dark.jpg') top center no-repeat;
+     opacity:0.8;
+  }
+  50% {
+     background: url('/images/home/bg_light.jpg') top center no-repeat;
+     opacity:1;
+  }
+  100% {
+     background: url('/images/home/bg_dark.jpg') top center no-repeat;
+    opacity:0.8;
+  }
+`
+
+const AnimationBg = styled.div`
+  width: 100%;
+  height: 886px;
+  position: absolute;
+  z-index: 0;
+  animation: 9000ms ease-in-out both infinite ${bgAnimation};
+`
+
 const Wrap = styled.div`
   display: flex;
   flex-flow: column nowrap;
@@ -15,8 +38,7 @@ const Wrap = styled.div`
   align-items: center;
   width: 100%;
   height: auto;
-  background: url('/images/home/banner-bg.png') top center no-repeat, #f5f5f5;
-  background-size: auto 886px;
+  background: #f5f5f5;
   @media (min-width: 1920px) {
     background-size: 100% 886px;
   }
@@ -31,6 +53,8 @@ const Content = styled.div`
   margin: 0 auto;
   padding-top: 200px;
   padding-bottom: 70px;
+  position: relative;
+  z-index: 1;
   @media (max-width: 1200px) {
     padding-left: 24px;
     padding-right: 24px;
@@ -95,6 +119,7 @@ const Banner: React.FC = () => {
   const { isMobile } = useResponsive()
   return (
     <Wrap>
+      {!isMobile && <AnimationBg />}
       <Content>
         <Title>{t('To Accelerate the Flow of Value Around the World.')}</Title>
         <ButtonGroup>

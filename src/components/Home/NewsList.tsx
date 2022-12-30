@@ -128,7 +128,7 @@ const newsList = [
     url: '/apps',
     image: news3,
     title:
-      'Torches Announces Strategic Investment by KuCoin,c Investment by KuCoinc Investment by KuCoinc Investment by KuCoin ',
+      'Torches Announces Strategic Investment by KuCoin,Investment by KuCoinc Investment by KuCoinc Investment by KuCoin ',
     date: 'Jul 12.2020',
   },
 ]

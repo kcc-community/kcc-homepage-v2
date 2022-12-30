@@ -100,6 +100,9 @@ const AppFooterContentWrap = styled.div`
 const CopyRightContent = styled.div`
   width: 1200px;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const FooterTitle = styled.span`

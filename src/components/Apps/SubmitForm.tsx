@@ -284,7 +284,7 @@ const SubmitForm: React.FC = () => {
             rules={[{ required: true }]}
             initialValue={initState.website}
           >
-            <Input />
+            <Input placeholder={t('Enter official website URL') as any} />
           </Form.Item>
           <Form.Item
             name="category_ids"
@@ -307,15 +307,21 @@ const SubmitForm: React.FC = () => {
             rules={[{ required: true }, { max: 50 }]}
             initialValue={initState.brief_introduction}
           >
-            <Input.TextArea rows={2} />
+            <Input.TextArea
+              placeholder={t('One sentence description of the project') as any}
+              rows={2}
+            />
           </Form.Item>
           <Form.Item
             name="detail_description"
             label={t('Detail Description')}
-            rules={[{ required: true }, { max: 500 }]}
+            rules={[{ max: 500 }]}
             initialValue={initState.detail_description}
           >
-            <Input.TextArea rows={4} />
+            <Input.TextArea
+              placeholder={t('A detailed summary about your project') as any}
+              rows={4}
+            />
           </Form.Item>
           <Form.Item
             name="logo_url"
@@ -377,15 +383,14 @@ const SubmitForm: React.FC = () => {
             rules={[{ required: true }]}
             initialValue={initState.smart_contract_address}
           >
-            <Input />
+            <Input placeholder={t('Enter smart contract address') as any} />
           </Form.Item>
           <Form.Item
             name="token_symbol"
             label={t('Token Symbol')}
-            rules={[{ required: true }]}
             initialValue={initState.token_symbol}
           >
-            <Input />
+            <Input placeholder={t('Enter the Token Symbol') as any} />
           </Form.Item>
           <Form.Item
             name="project_email"
@@ -393,23 +398,22 @@ const SubmitForm: React.FC = () => {
             rules={[{ required: true }, { type: 'email', min: 6 }]}
             initialValue={initState.project_email}
           >
-            <Input />
+            <Input placeholder={t('Enter the Email for contact') as any} />
           </Form.Item>
           <Form.Item
             name="token_contract_address"
             label={t('Token Contract Address')}
-            rules={[]}
             initialValue={initState.token_contract_address}
           >
-            <Input />
+            <Input placeholder={t('Enter the Token Contract Address') as any} />
           </Form.Item>
           <Form.Item
             name="tvl_interface"
             label={t('Tvl Interface')}
-            rules={[{ required: true }, { type: 'url' }]}
+            rules={[{ type: 'url' }]}
             initialValue={initState.tvl_interface}
           >
-            <Input />
+            <Input placeholder="e.g.: https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2" />
           </Form.Item>
           <Form.Item
             name="github"
@@ -417,7 +421,7 @@ const SubmitForm: React.FC = () => {
             rules={[{ type: 'url' }]}
             initialValue={initState.github}
           >
-            <Input />
+            <Input placeholder="e.g.: https://github.com/kcc-community" />
           </Form.Item>
           <Form.Item
             name="twitter"
@@ -425,7 +429,7 @@ const SubmitForm: React.FC = () => {
             rules={[{ type: 'url' }]}
             initialValue={initState.twitter}
           >
-            <Input />
+            <Input placeholder={t('Enter project twitter URL') as any} />
           </Form.Item>
           <Form.Item
             name="telegram"
@@ -433,7 +437,7 @@ const SubmitForm: React.FC = () => {
             rules={[{ type: 'url' }]}
             initialValue={initState.telegram}
           >
-            <Input />
+            <Input placeholder={t('Enter project telegram URL') as any} />
           </Form.Item>
           <Form.Item
             name="coinmarketcap"
@@ -441,7 +445,9 @@ const SubmitForm: React.FC = () => {
             rules={[{ type: 'url' }]}
             initialValue={initState.coinmarketcap}
           >
-            <Input />
+            <Input
+              placeholder={t('Enter project CoinMarketCap page URL') as any}
+            />
           </Form.Item>
           <Form.Item
             name="coingecko"
@@ -449,7 +455,7 @@ const SubmitForm: React.FC = () => {
             rules={[{ type: 'url' }]}
             initialValue={initState.coingecko}
           >
-            <Input />
+            <Input placeholder={t('Enter project CoinGecko page URL') as any} />
           </Form.Item>
           <Form.Item label={t('Google Captcha')} initialValue={initState.token}>
             <GoogleCaptcha
