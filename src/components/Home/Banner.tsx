@@ -19,7 +19,7 @@ const bgAnimation = keyframes`
   }
   100% {
      background: url('/images/home/bg_dark.jpg') top center no-repeat;
-    opacity:0.8;
+     opacity:0.8;
   }
 `
 
@@ -27,8 +27,15 @@ const AnimationBg = styled.div`
   width: 100%;
   height: 886px;
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   animation: 9000ms ease-in-out both infinite ${bgAnimation};
+`
+const AnimationBg1 = styled.div`
+  width: 100%;
+  height: 886px;
+  position: absolute;
+  z-index: 0;
+  background: #000;
 `
 
 const Wrap = styled.div`
@@ -54,7 +61,7 @@ const Content = styled.div`
   padding-top: 200px;
   padding-bottom: 70px;
   position: relative;
-  z-index: 1;
+  z-index: 3;
   @media (max-width: 1200px) {
     padding-left: 24px;
     padding-right: 24px;
@@ -119,7 +126,12 @@ const Banner: React.FC = () => {
   const { isMobile } = useResponsive()
   return (
     <Wrap>
-      {!isMobile && <AnimationBg />}
+      {!isMobile && (
+        <>
+          <AnimationBg />
+          <AnimationBg1 />
+        </>
+      )}
       <Content>
         <Title>{t('To Accelerate the Flow of Value Around the World.')}</Title>
         <ButtonGroup>
