@@ -31,7 +31,6 @@ export async function getStaticProps({ locale }: { locale: any }) {
     },
   }
 }
-
 export default function Home() {
   return (
     <AppWrap>

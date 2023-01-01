@@ -7,11 +7,12 @@ import { KCC } from 'constants/index'
 import { useRouter } from 'next/router'
 import NewsList from './NewsList'
 import { useResponsive } from 'utils/responsive'
+import { NewListItemType } from 'api/news'
 
 const bgAnimation = keyframes`
   0% {
      background: url('/images/home/bg_dark.jpg') top center no-repeat;
-     opacity:0.8;
+     opacity:0.9;
   }
   50% {
      background: url('/images/home/bg_light.jpg') top center no-repeat;
@@ -19,7 +20,7 @@ const bgAnimation = keyframes`
   }
   100% {
      background: url('/images/home/bg_dark.jpg') top center no-repeat;
-     opacity:0.8;
+     opacity:0.9;
   }
 `
 

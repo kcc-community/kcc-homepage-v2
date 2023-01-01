@@ -1,14 +1,12 @@
+import arrowDown from 'assets/images/Icons/arrow-down.webp'
+import { RowCenterBox } from 'components'
+import { KCC } from 'constants/index'
+import { useTranslation } from 'next-i18next'
+import Image from 'next/image'
 import React from 'react'
 import styled from 'styled-components'
-import { useTranslation } from 'next-i18next'
-import { RowCenterBox } from 'components'
-import arrowDown from 'assets/images/Icons/arrow-down.webp'
-import Image from 'next/image'
-import { KCC } from 'constants/index'
 
-import news1 from '../../assets/images/home/news1.png'
-import news2 from '../../assets/images/home/news2.jpg'
-import news3 from '../../assets/images/home/news3.jpg'
+import { NewListItemType, NewsService } from 'api/news'
 import { useResponsive } from 'utils/responsive'
 
 const Wrap = styled.div`
@@ -106,36 +104,23 @@ const StyledImage = styled(Image)`
   cursor: pointer;
 `
 
-const newsList = [
-  {
-    id: '0',
-    url: '',
-    image: news1,
-    title:
-      'Torches Announces Strategic Investment by KuCoin,c Investment by KuCoinc Investment by KuCoinc Investment by KuCoin ',
-    date: 'Jul 12.2020',
-  },
-  {
-    id: '1',
-    url: '',
-    image: news2,
-    title:
-      'Torches Announces Strategic Investment by KuCoin,c Investment by KuCoinc Investment by KuCoinc Investment by KuCoin ',
-    date: 'Jul 12.2020',
-  },
-  {
-    id: '2',
-    url: '/apps',
-    image: news3,
-    title:
-      'Torches Announces Strategic Investment by KuCoin,Investment by KuCoinc Investment by KuCoinc Investment by KuCoin ',
-    date: 'Jul 12.2020',
-  },
-]
-
 const NewsList: React.FC = () => {
   const { t } = useTranslation()
   const { isMobile } = useResponsive()
+  const [newsList, setNewsList] = React.useState<NewListItemType[]>([])
+
+  React.useEffect(() => {
+    async function updateList() {
+      try {
+        const response = await NewsService.list()
+        setNewsList(() => response.data.data.list ?? [])
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    updateList()
+  }, [])
+
   return (
     <Wrap>
       <TitleBar>
@@ -168,13 +153,13 @@ const NewsList: React.FC = () => {
           return (
             <Item key={news.id}>
               <StyledImage
-                src={news.image}
+                src={news.banner_url}
                 width={isMobile ? 300 : 384}
                 height={isMobile ? 172 : 220}
                 alt="news-thumbnail"
               />
               <ItemTitle>{newTitle}</ItemTitle>
-              <DateText>{news.date}</DateText>
+              <DateText>{news.post_date}</DateText>
             </Item>
           )
         })}
