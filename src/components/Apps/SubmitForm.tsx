@@ -272,9 +272,9 @@ const SubmitForm: React.FC = () => {
             initialValue={initState.project_status}
           >
             <Radio.Group>
-              <Radio value={ProjectStatus.Live}>{ProjectStatus[0]}</Radio>
+              <Radio value={ProjectStatus.Live}>{t(ProjectStatus[0])}</Radio>
               <Radio value={ProjectStatus['Work in progress']}>
-                {ProjectStatus[1]}
+                {t(ProjectStatus[1])}
               </Radio>
             </Radio.Group>
           </Form.Item>
