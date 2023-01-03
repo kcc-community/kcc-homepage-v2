@@ -3,6 +3,7 @@ import SubmitForm from 'components/Apps/SubmitForm'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import styled from 'styled-components'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const AppWrap = styled.div`
   padding-top: 0px;
@@ -12,6 +13,22 @@ const AppWrap = styled.div`
   background: #000;
   border: 1px solid #000;
 `
+
+export async function getStaticProps({ locale }: { locale: any }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'en', ['common'], null, [
+        'en',
+        'zh_HK',
+        'zh_CN',
+        'es_ES',
+        'pt_BR',
+        'de_DE',
+      ])),
+      // Will be passed to the page component as props
+    },
+  }
+}
 
 export default function Submit() {
   return (

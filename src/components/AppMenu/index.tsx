@@ -153,7 +153,7 @@ const TitleWrap = styled(Column)`
 const NavItem: React.FunctionComponent<NavItemChildrenType> = (props) => {
   const [isHover, setIsHover] = React.useState<boolean>(false)
 
-  const { t, i18n } = useTranslation('menu')
+  const { t, i18n } = useTranslation()
   const { isMobile } = useResponsive()
 
   const getNavRoute = React.useCallback(
@@ -210,7 +210,7 @@ const NavItem: React.FunctionComponent<NavItemChildrenType> = (props) => {
 }
 
 const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
-  const { t, i18n } = useTranslation('menu')
+  const { t, i18n } = useTranslation()
 
   const { isMobile } = useResponsive()
 

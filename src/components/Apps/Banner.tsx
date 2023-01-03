@@ -86,7 +86,7 @@ const Banner: React.FC = () => {
     <Wrap>
       <Content>
         <Title>{t('Discover dApps')}</Title>
-        <Desc>{t('An overview of the dApps in the KCC ecosystem.')}</Desc>
+        <Desc>{t('KCC_dapp_subtitle')}</Desc>
         <ButtonGroup>
           <NormalButton
             style={{ width: 'auto' }}

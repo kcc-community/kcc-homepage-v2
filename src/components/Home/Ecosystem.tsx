@@ -252,21 +252,21 @@ const stepList = [
   {
     image: step1,
     title: 'Download Wallet',
-    desc: 'A wallet helps you connect to KCC and manage your funds.',
+    desc: 'KCC_home_individual_wallet',
     buttonText: 'Download Wallet',
     buttonUrl: '/apps?category=wallet',
   },
   {
     image: step2,
     title: 'Get KCS',
-    desc: 'KuCoin Token (KCS) is the only fuel and native token for KCC and can be used to pay gas fee in dApps.',
+    desc: 'KCC_home_individual_kcs',
     buttonText: 'Get KCS',
     buttonUrl: '',
   },
   {
     image: step3,
     title: 'Bridge assets',
-    desc: 'Bridge your holding assets from other chain to KCC instead of buy more.',
+    desc: 'KCC_home_individual_bridge',
     buttonText: 'Bridge to KCC',
     buttonUrl: KCC.BRIDGE_URL,
   },
@@ -304,9 +304,7 @@ const Ecosystem: React.FC = () => {
             components={{ color: <Color /> }}
           />
         </Title>
-        <SubTitle>
-          {t('Get started in 4 steps to dive into the world of KCC.')}
-        </SubTitle>
+        <SubTitle>{t('KCC_home_individual_subtitle')}</SubTitle>
         <ListWrap>
           {stepList.map((step, index) => {
             return (
@@ -335,11 +333,7 @@ const Ecosystem: React.FC = () => {
         <DiscoverWrap>
           <DiscoverTitle>{t('Discover dApps')}</DiscoverTitle>
           <DividerLine />
-          <DiscoverDesc>
-            {t(
-              'Easily navigate relevant dApps, swiftly explore and discover profitable projects. Also, apply to add your dApp.'
-            )}
-          </DiscoverDesc>
+          <DiscoverDesc>{t('KCC_home_individual_dapp')}</DiscoverDesc>
           <NormalButton
             style={{ marginTop: '24px' }}
             onClick={() => {

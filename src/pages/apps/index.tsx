@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from 'state'
 import { useAppCategoryList } from 'state/apps/hooks'
 import styled from 'styled-components'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { updateAppCategoryList } from '../../state/apps/actions'
 
 const AppWrap = styled.div`
@@ -42,6 +43,22 @@ const AppWrap = styled.div`
 //     }
 //   }
 // }
+
+export async function getStaticProps({ locale }: { locale: any }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'en', ['common'], null, [
+        'en',
+        'zh_HK',
+        'zh_CN',
+        'es_ES',
+        'pt_BR',
+        'de_DE',
+      ])),
+      // Will be passed to the page component as props
+    },
+  }
+}
 
 function Apps() {
   const appCategoryList = useAppCategoryList()

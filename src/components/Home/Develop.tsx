@@ -21,19 +21,19 @@ import { useResponsive } from 'utils/responsive'
 const advantageList = [
   {
     title: 'EVM Compatible',
-    desc: 'KCC is EVM compatible. Deploy and run your dApps on KCC with your favorite tooling for Ethereum.',
+    desc: 'KCC_home_developer_evm',
   },
   {
     title: 'Low Cost',
-    desc: 'Gas fee is paid with KCS. Transfer your tokens around the world with a fraction of a cent.',
+    desc: 'KCC_home_developer_cost',
   },
   {
     title: 'Fast Finality',
-    desc: 'The average block time of KCC is 3 seconds. A typical transaction can be included in a block in less than 6 seconds. And this block is finalized if more than half of all validators add their blocks after it.',
+    desc: 'KCC_home_developer_fast',
   },
   {
     title: 'Safe and Secure',
-    desc: 'Each block is validated by trusted validators with their identities and KCS as stakes.',
+    desc: 'KCC_home_developer_safe',
   },
 ]
 
@@ -48,7 +48,7 @@ const developList = [
     title: 'Documentation',
     list: [
       {
-        name: 'Access readily available resources on KCC.',
+        name: 'KCC_home_developer_documentation',
         url: KCC.DOCS_URL,
       },
     ],
@@ -113,7 +113,7 @@ const developList = [
     title: 'Roadmap',
     list: [
       {
-        name: 'This article will introduce you to the entire KCC roadmap.',
+        name: 'KCC_home_developer_roadmap',
         url: '', // gitbook Dev Toolkit
       },
     ],
@@ -454,11 +454,7 @@ const Develop: React.FC = () => {
         <Title>
           <Trans i18nKey="Develop with KCC" components={{ color: <Color /> }} />
         </Title>
-        <Desc>
-          {t(
-            'A collection of developer resources and discussion channels for developers onboarding to KCC.'
-          )}
-        </Desc>
+        <Desc>{t('KCC_home_developer_subtitle')}</Desc>
         <ListWrap>
           {developList.map((develop, index) => {
             return (
@@ -489,11 +485,7 @@ const Develop: React.FC = () => {
         <GrantWrap>
           <Box>
             <GrantTitle>{t('Grant Program')}</GrantTitle>
-            <GrantDesc>
-              {t(
-                'Sponsored by KCS Foundation, the program supports the research of protocols in the blockchain technology stack. The program also supports the development of bottom layers, tools and applications based on the KCC chain, all of which are operated in a decentralized manner to improve the KCC ecology and to offer a more convenient, faster and lower-cost blockchain experience for community users.'
-              )}
-            </GrantDesc>
+            <GrantDesc>{t('KCC_home_developer_grants')}</GrantDesc>
             <NormalButton
               style={{ border: '1px solid #fff', marginTop: '28px' }}
               onClick={() => {

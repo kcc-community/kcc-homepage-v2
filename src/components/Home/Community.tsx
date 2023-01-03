@@ -292,7 +292,7 @@ const Community: React.FC = () => {
     const emailReg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
 
     if (!emailReg.test(email)) {
-      message.error(t(`Please provide a valid email address.`))
+      message.error(t(`KCC_home_email_failed`))
       return false
     }
     setDisable(true)
@@ -301,7 +301,7 @@ const Community: React.FC = () => {
       if (response.data.status === 400) {
         message.warning(t(`${response.data.detail}`))
       } else {
-        message.success(t(`Thank you for subscribing`))
+        message.success(t(`KCC_home_email_success`))
         setSubscribed(() => true)
         setEmail(() => '')
       }
@@ -319,11 +319,7 @@ const Community: React.FC = () => {
             components={{ color: <Color /> }}
           />
         </Title>
-        <SubTitle>
-          {t(
-            'Our vibrant community with developers, validators, users, HODLers and enthusiasts.'
-          )}
-        </SubTitle>
+        <SubTitle>{t('KCC_home_community_subtitle')}</SubTitle>
         <Main>
           <MediaGrid>
             {mediaList.map((media, index) => {
@@ -343,12 +339,8 @@ const Community: React.FC = () => {
             })}
           </MediaGrid>
           <SubscribeWrap>
-            <SubscribeTitle>
-              {t('Subscribe to our Mailing List')}
-            </SubscribeTitle>
-            <SubscribeDesc>
-              {t("We'll send you updates about KCC")}
-            </SubscribeDesc>
+            <SubscribeTitle>{t('KCC_home_email_title')}</SubscribeTitle>
+            <SubscribeDesc>{t('KCC_home_email_subtitle')}</SubscribeDesc>
             <StyledInput
               type="email"
               size="large"

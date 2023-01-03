@@ -7,7 +7,6 @@ import { KCC } from 'constants/index'
 import { useRouter } from 'next/router'
 import NewsList from './NewsList'
 import { useResponsive } from 'utils/responsive'
-import { NewListItemType } from 'api/news'
 
 const bgAnimation = keyframes`
   0% {
@@ -134,7 +133,7 @@ const Banner: React.FC = () => {
         </>
       )}
       <Content>
-        <Title>{t('To Accelerate the Flow of Value Around the World.')}</Title>
+        <Title>{t('KCC_home_slogan')}</Title>
         <ButtonGroup>
           <NormalButton onClick={() => window.open(KCC.DOCS_URL, '_blank')}>
             <ButtonText>{t('Developer Docs')}</ButtonText>

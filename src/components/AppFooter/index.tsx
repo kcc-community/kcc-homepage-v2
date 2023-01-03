@@ -194,7 +194,7 @@ const AppFooter: React.FC = () => {
     setHoverList(() => stateList)
   }
 
-  const { t, i18n } = useTranslation('menu')
+  const { t, i18n } = useTranslation()
 
   const router = useRouter()
 

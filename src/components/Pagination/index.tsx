@@ -106,12 +106,12 @@ const Pagination: React.FC<Props> = ({
         ) {
           setCurrentPage(() => inputPage)
         } else {
-          message.warning('Please enter a valid page number')
+          message.warning(t('KCC_common_page_failed'))
           setInputPage(() => '')
         }
       }
     },
-    [inputPage, setCurrentPage, totalPage]
+    [inputPage, setCurrentPage, t, totalPage]
   )
 
   return (
