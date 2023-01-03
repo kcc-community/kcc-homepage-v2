@@ -1,5 +1,5 @@
 {
-  "Join the KCC Ecosystem": "Join the KCC Ecosystem",
+  "Join the KCC Ecosystem": "Join the <color> KCC Ecosystem </color>",
   "KCC_home_individual_subtitle": "Dive into the world of KCC in 4 simple steps.",
   "Download Wallet": "Download Wallet",
   "KCC_home_individual_wallet": "Connect to KCC and manage your funds with the wallet.",
@@ -125,5 +125,6 @@
   "KCC_common_page_failed": "Enter a valid number.",
   "KCC_home_email_success": "Subscription successful.",
   "KCC_home_email_failed": "Invalid email format.",
-  "KCC_home_manu_dapp": "Find top dApps on KCC."
+  "KCC_home_manu_dapp": "Find top dApps on KCC.",
+  "Join KCC Community": "Join <color>KCC Community</color>"
 }

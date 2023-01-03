@@ -54,6 +54,7 @@ export async function getStaticProps({ locale }: { locale: any }) {
         'es_ES',
         'pt_BR',
         'de_DE',
+        'ru_RU',
       ])),
       // Will be passed to the page component as props
     },

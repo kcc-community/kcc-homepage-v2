@@ -113,7 +113,6 @@ const Title = styled.div`
 const Color = styled.span`
   color: #21c397;
   padding-left: 10px;
-  border: 1px solid red;
 `
 
 const SubTitle = styled.div`

@@ -20,7 +20,7 @@ export const PL = { code: 'pl', language: 'Polski' }
 export const PTPT = { code: 'pt_PT', language: 'Português(Portugal)' }
 export const PTBR = { code: 'pt_BR', language: 'Português' }
 export const RO = { code: 'ro', language: 'Română' }
-export const RU = { code: 'ru', language: 'Русский' }
+export const RU = { code: 'ru_RU', language: 'Русский' }
 export const ESES = { code: 'es_ES', language: 'Español' }
 export const SVSE = { code: 'sv_SE', language: 'Svenska' }
 export const TA = { code: 'ta', language: 'தமிழ்' }
@@ -35,6 +35,7 @@ export const allLanguages = [
   ESES,
   DE,
   PTBR,
+  RU,
   /*   AR,
   BN,
 
