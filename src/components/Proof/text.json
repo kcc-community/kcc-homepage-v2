@@ -1,0 +1,866 @@
+[
+  {
+    "symbol": "BTC",
+    "name": "Bitcoin",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/btc.png",
+    "lockInfo": [
+      {
+        "network": "BTC",
+        "address": "bc1qg9ura3eja58gdgat74fmnahgsuxzy9499ca62u",
+        "balance": "271.39",
+        "contract": "",
+        "decimal": 0,
+        "explorer": "https://explorer.btc.com/btc/address/bc1qg9ura3eja58gdgat74fmnahgsuxzy9499ca62u"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xfA93C12Cd345c658bc4644D1D4E1B9615952258C",
+        "symbol": "BTCK",
+        "supply": "271.4",
+        "explorer": "https://explorer.kcc.io/en/address/0xfA93C12Cd345c658bc4644D1D4E1B9615952258C"
+      }
+    ]
+  },
+  {
+    "symbol": "USDT",
+    "name": "Tether",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/usdt.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "41203066.788274",
+        "contract": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "decimal": 6,
+        "explorer": "https://etherscan.io/token/0xdAC17F958D2ee523a2206206994597C13D831ec7"
+      },
+      {
+        "network": "BEP20",
+        "address": "0x76D1E324757d7E6765df1EcFD6Ba6F20Ca04BB93",
+        "balance": "5301122.484185987059222082",
+        "contract": "0x55d398326f99059fF775485246999027B3197955",
+        "decimal": 18,
+        "explorer": "https://bscscan.com/address/0x55d398326f99059fF775485246999027B3197955"
+      },
+      {
+        "network": "POLYGON",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "1776237.36224",
+        "contract": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "decimal": 6,
+        "explorer": "https://polygonscan.com/token/0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
+      },
+      {
+        "network": "AVAX C-Chain",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "959.906841",
+        "contract": "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
+        "decimal": 6,
+        "explorer": "https://snowtrace.io/token/0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48",
+        "symbol": "USDT",
+        "supply": "48281384.541540987059222082",
+        "explorer": "https://explorer.kcc.io/en/address/0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48"
+      }
+    ]
+  },
+  {
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/usdc.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "14308927.75625",
+        "contract": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "decimal": 6,
+        "explorer": "https://etherscan.io/token/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+      },
+      {
+        "network": "BEP20",
+        "address": "0x76D1E324757d7E6765df1EcFD6Ba6F20Ca04BB93",
+        "balance": "6789700.091029953253103103",
+        "contract": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+        "decimal": 18,
+        "explorer": "https://bscscan.com/address/0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d"
+      },
+      {
+        "network": "POLYGON",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "7974983.424756",
+        "contract": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "decimal": 6,
+        "explorer": "https://polygonscan.com/token/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+      },
+      {
+        "network": "AVAX C-Chain",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "1385.991905",
+        "contract": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+        "decimal": 6,
+        "explorer": "https://snowtrace.io/token/0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x980a5AfEf3D17aD98635F6C5aebCBAedEd3c3430",
+        "symbol": "USDC",
+        "supply": "29074997.263934811765791298",
+        "explorer": "https://explorer.kcc.io/en/address/0x980a5AfEf3D17aD98635F6C5aebCBAedEd3c3430"
+      }
+    ]
+  },
+  {
+    "symbol": "ETH",
+    "name": "Ethereum",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/eth.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "9026.255942924223690345",
+        "contract": "",
+        "decimal": 18,
+        "explorer": ""
+      },
+      {
+        "network": "BEP20",
+        "address": "0x76D1E324757d7E6765df1EcFD6Ba6F20Ca04BB93",
+        "balance": "96.659016864998032601",
+        "contract": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+        "decimal": 18,
+        "explorer": "https://bscscan.com/address/0x2170Ed0880ac9A755fd29B2688956BD959F933F8"
+      },
+      {
+        "network": "POLYGON",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "97.935018054961237911",
+        "contract": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "decimal": 18,
+        "explorer": "https://polygonscan.com/token/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xf55aF137A98607F7ED2eFEfA4cd2DfE70E4253b1",
+        "symbol": "ETH",
+        "supply": "9220.84997725500285036",
+        "explorer": "https://explorer.kcc.io/en/address/0xf55aF137A98607F7ED2eFEfA4cd2DfE70E4253b1"
+      }
+    ]
+  },
+  {
+    "symbol": "UNI",
+    "name": "Uniswap",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/uni.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "405187.182735637192391681",
+        "contract": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xEe58E4D62b10A92dB1089d4D040B759C28aE16Cd",
+        "symbol": "UNI",
+        "supply": "405187.182735637192391681",
+        "explorer": "https://explorer.kcc.io/en/address/0xEe58E4D62b10A92dB1089d4D040B759C28aE16Cd"
+      }
+    ]
+  },
+  {
+    "symbol": "LINK",
+    "name": "Chainlink",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/link.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "60943.774009719637675803",
+        "contract": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x514910771AF9Ca656af840dff83E8264EcF986CA"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x47841910329aaa6b88D5e9DcdE9000195151dc72",
+        "symbol": "LINK",
+        "supply": "60943.774009719637675803",
+        "explorer": "https://explorer.kcc.io/en/address/0x47841910329aaa6b88D5e9DcdE9000195151dc72"
+      }
+    ]
+  },
+  {
+    "symbol": "CRO",
+    "name": "Crypto.com Coin",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/cro.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "2304110.48",
+        "contract": "0xA0b73E1Ff0B80914AB6fe0444E65848C4C34450b",
+        "decimal": 8,
+        "explorer": "https://etherscan.io/token/0xA0b73E1Ff0B80914AB6fe0444E65848C4C34450b"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x652D253b7Ca91810A4a05ACFc39729387c5090C0",
+        "symbol": "CRO",
+        "supply": "2304110.48",
+        "explorer": "https://explorer.kcc.io/en/address/0x652D253b7Ca91810A4a05ACFc39729387c5090C0"
+      }
+    ]
+  },
+  {
+    "symbol": "GRT",
+    "name": "The Graph",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/grt.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "400611.9529",
+        "contract": "0xc944E90C64B2c07662A292be6244BDf05Cda44a7",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0xc944E90C64B2c07662A292be6244BDf05Cda44a7"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xb49dd3eDB98FBe82A01DFcb556Cd016964baf5A3",
+        "symbol": "GRT",
+        "supply": "400611.9529",
+        "explorer": "https://explorer.kcc.io/en/address/0xb49dd3eDB98FBe82A01DFcb556Cd016964baf5A3"
+      }
+    ]
+  },
+  {
+    "symbol": "MKR",
+    "name": "Maker",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/mkr.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "0.232167802038671676",
+        "contract": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xdE81028C743f5304fe2cdEfac588f572d629a687",
+        "symbol": "MKR",
+        "supply": "0.232167802038671676",
+        "explorer": "https://explorer.kcc.io/en/address/0xdE81028C743f5304fe2cdEfac588f572d629a687"
+      }
+    ]
+  },
+  {
+    "symbol": "QNT",
+    "name": "Quant",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/qnt.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "1989.746397272518456062",
+        "contract": "0x4a220E6096B25EADb88358cb44068A3248254675",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x4a220E6096B25EADb88358cb44068A3248254675"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x791630C11c7159A748d8c2267a66780B3DDC40a7",
+        "symbol": "QNT",
+        "supply": "1989.746397272518456062",
+        "explorer": "https://explorer.kcc.io/en/address/0x791630C11c7159A748d8c2267a66780B3DDC40a7"
+      }
+    ]
+  },
+  {
+    "symbol": "COMP",
+    "name": "Compound",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/comp.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "202",
+        "contract": "0xc00e94Cb662C3520282E6f5717214004A7f26888",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0xc00e94Cb662C3520282E6f5717214004A7f26888"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x16c4106966cE30e06E806A7c40eEFb46d84cE7e5",
+        "symbol": "COMP",
+        "supply": "202",
+        "explorer": "https://explorer.kcc.io/en/address/0x16c4106966cE30e06E806A7c40eEFb46d84cE7e5"
+      }
+    ]
+  },
+  {
+    "symbol": "SNX",
+    "name": "Synthetix",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/snx.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "138681.71819323",
+        "contract": "0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x31965b5c9c55f5579eb49F4b3AcC59aA10a7B98E",
+        "symbol": "SNX",
+        "supply": "138681.71819323",
+        "explorer": "https://explorer.kcc.io/en/address/0x31965b5c9c55f5579eb49F4b3AcC59aA10a7B98E"
+      }
+    ]
+  },
+  {
+    "symbol": "CHZ",
+    "name": "Chiliz",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/chz.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "1421000",
+        "contract": "0x3506424F91fD33084466F402d5D97f05F8e3b4AF",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x3506424F91fD33084466F402d5D97f05F8e3b4AF"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x6E8ce0519B7e4d691BaCE464099547E5fC17679c",
+        "symbol": "CHZ",
+        "supply": "1421000",
+        "explorer": "https://explorer.kcc.io/en/address/0x6E8ce0519B7e4d691BaCE464099547E5fC17679c"
+      }
+    ]
+  },
+  {
+    "symbol": "ENJ",
+    "name": "Enjin Coin",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/enj.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "164022.9415001",
+        "contract": "0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x6e2D990C8e718E7b6D86ed08eBf0FF2dEc05253B",
+        "symbol": "ENJ",
+        "supply": "164022.9415001",
+        "explorer": "https://explorer.kcc.io/en/address/0x6e2D990C8e718E7b6D86ed08eBf0FF2dEc05253B"
+      }
+    ]
+  },
+  {
+    "symbol": "TUSD",
+    "name": "TrueUSD",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/tusd.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "140500",
+        "contract": "0x0000000000085d4780B73119b644AE5ecd22b376",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x0000000000085d4780B73119b644AE5ecd22b376"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xD17027b85Abf02721F953EE528721A980fa58941",
+        "symbol": "TUSD",
+        "supply": "140500",
+        "explorer": "https://explorer.kcc.io/en/address/0xD17027b85Abf02721F953EE528721A980fa58941"
+      }
+    ]
+  },
+  {
+    "symbol": "YFI",
+    "name": "yearn.finance",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/yfi.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "5.05",
+        "contract": "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xdfa3Ef49d357c6b0B2DfBB88701af2b7A053fD0A",
+        "symbol": "YFI",
+        "supply": "5.05",
+        "explorer": "https://explorer.kcc.io/en/address/0xdfa3Ef49d357c6b0B2DfBB88701af2b7A053fD0A"
+      }
+    ]
+  },
+  {
+    "symbol": "TEL",
+    "name": "Telcoin",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/tel.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "10526151.27",
+        "contract": "0x467Bccd9d29f223BcE8043b84E8C8B282827790F",
+        "decimal": 2,
+        "explorer": "https://etherscan.io/token/0x467Bccd9d29f223BcE8043b84E8C8B282827790F"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x621C1E8610e4B9b7fc9F043203C008EDe52E92F5",
+        "symbol": "TEL",
+        "supply": "10526151.27",
+        "explorer": "https://explorer.kcc.io/en/address/0x621C1E8610e4B9b7fc9F043203C008EDe52E92F5"
+      }
+    ]
+  },
+  {
+    "symbol": "NEXO",
+    "name": "Nexo",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/nexo.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "0",
+        "contract": "0xB62132e35a6c13ee1EE0f84dC5d40bad8d815206",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0xB62132e35a6c13ee1EE0f84dC5d40bad8d815206"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xb7A18bd55e8E3E2262d7c8Ee7b4DD9B216Df0Faf",
+        "symbol": "NEXO",
+        "supply": "0",
+        "explorer": "https://explorer.kcc.io/en/address/0xb7A18bd55e8E3E2262d7c8Ee7b4DD9B216Df0Faf"
+      }
+    ]
+  },
+  {
+    "symbol": "BAT",
+    "name": "Basic Attention Token",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/bat.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "200100",
+        "contract": "0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x0D8775F648430679A709E98d2b0Cb6250d2887EF"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x0bF46C86Ce3B904660aE85677EaA20B0C1b24064",
+        "symbol": "BAT",
+        "supply": "200100",
+        "explorer": "https://explorer.kcc.io/en/address/0x0bF46C86Ce3B904660aE85677EaA20B0C1b24064"
+      }
+    ]
+  },
+  {
+    "symbol": "PAX",
+    "name": "Paxos Standard",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/pax.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "10000",
+        "contract": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x8E870D67F660D95d5be530380D0eC0bd388289E1"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x69a7169F9Da9BBa04b982e49Ffd8d6a16c70c590",
+        "symbol": "PAX",
+        "supply": "10000",
+        "explorer": "https://explorer.kcc.io/en/address/0x69a7169F9Da9BBa04b982e49Ffd8d6a16c70c590"
+      }
+    ]
+  },
+  {
+    "symbol": "HUSD",
+    "name": "HUSD",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/husd.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "0",
+        "contract": "0xdF574c24545E5FfEcb9a659c229253D4111d87e1",
+        "decimal": 8,
+        "explorer": "https://etherscan.io/token/0xdF574c24545E5FfEcb9a659c229253D4111d87e1"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xBEc1e1009CE00ECf7F16372451Ac849b39C32897",
+        "symbol": "HUSD",
+        "supply": "0",
+        "explorer": "https://explorer.kcc.io/en/address/0xBEc1e1009CE00ECf7F16372451Ac849b39C32897"
+      }
+    ]
+  },
+  {
+    "symbol": "1INCH",
+    "name": "1INCH Token",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/1inch.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "100251",
+        "contract": "0x111111111117dC0aa78b770fA6A738034120C302",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x111111111117dC0aa78b770fA6A738034120C302"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x79f3244F3FFd7500A31a90Bb83C7D56649c2C7C5",
+        "symbol": "1INCH",
+        "supply": "100251",
+        "explorer": "https://explorer.kcc.io/en/address/0x79f3244F3FFd7500A31a90Bb83C7D56649c2C7C5"
+      }
+    ]
+  },
+  {
+    "symbol": "SHIB",
+    "name": "SHIBA INU",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/shib.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "104588376383.98315326",
+        "contract": "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x73b6086955c820370A18002F60E9b51FB67d7e1A",
+        "symbol": "SHIB",
+        "supply": "104588376383.98315326",
+        "explorer": "https://explorer.kcc.io/en/address/0x73b6086955c820370A18002F60E9b51FB67d7e1A"
+      }
+    ]
+  },
+  {
+    "symbol": "CRV",
+    "name": "Curve DAO Token",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/crv.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "320307.957939573622956757",
+        "contract": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0xD533a949740bb3306d119CC777fa900bA034cd52"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x4500E16dA66b99e0C55D7B46EBBD59bc413BA171",
+        "symbol": "CRV",
+        "supply": "320307.957939573622956757",
+        "explorer": "https://explorer.kcc.io/en/address/0x4500E16dA66b99e0C55D7B46EBBD59bc413BA171"
+      }
+    ]
+  },
+  {
+    "symbol": "SUSHI",
+    "name": "SushiSwap",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/sushi.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "9921.6162",
+        "contract": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xE0a60890BB7F9250089455620063fb6fe4DC159a",
+        "symbol": "SUSHI",
+        "supply": "9921.6162",
+        "explorer": "https://explorer.kcc.io/en/address/0xE0a60890BB7F9250089455620063fb6fe4DC159a"
+      }
+    ]
+  },
+  {
+    "symbol": "AAVE",
+    "name": "Aave Token",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/aave.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "7201",
+        "contract": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xE76e97C157658004eE22e01C03a5e21A4655A2Fd",
+        "symbol": "AAVE",
+        "supply": "7201",
+        "explorer": "https://explorer.kcc.io/en/address/0xE76e97C157658004eE22e01C03a5e21A4655A2Fd"
+      }
+    ]
+  },
+  {
+    "symbol": "DODO",
+    "name": "DODO",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/dodo.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "100000",
+        "contract": "0x43Dfc4159D86F3A37A5A4B3D4580b888ad7d4DDd",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x43Dfc4159D86F3A37A5A4B3D4580b888ad7d4DDd"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x8724F9FB7B3f1bb6f2c90B3Ad3Fd6B3c20A06429",
+        "symbol": "DODO",
+        "supply": "100000",
+        "explorer": "https://explorer.kcc.io/en/address/0x8724F9FB7B3f1bb6f2c90B3Ad3Fd6B3c20A06429"
+      }
+    ]
+  },
+  {
+    "symbol": "MATIC",
+    "name": "Polygon",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/matic.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "98675.86569358",
+        "contract": "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0"
+      },
+      {
+        "network": "POLYGON",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "1023.438304542479858007",
+        "contract": "",
+        "decimal": 18,
+        "explorer": ""
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x1B8e27ABA297466fc6765Ce55BD12A8E216759da",
+        "symbol": "MATIC",
+        "supply": "99699.303998122479858007",
+        "explorer": "https://explorer.kcc.io/en/address/0x1B8e27ABA297466fc6765Ce55BD12A8E216759da"
+      }
+    ]
+  },
+  {
+    "symbol": "BAL",
+    "name": "Balancer",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/bal.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "0",
+        "contract": "0xba100000625a3754423978a60c9317c58a424e3D",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0xba100000625a3754423978a60c9317c58a424e3D"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xFC31366Be1795c1Ff444b9fBF55759733aD4d26D",
+        "symbol": "BAL",
+        "supply": "0",
+        "explorer": "https://explorer.kcc.io/en/address/0xFC31366Be1795c1Ff444b9fBF55759733aD4d26D"
+      }
+    ]
+  },
+  {
+    "symbol": "MANA",
+    "name": "Decentraland",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/mana.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "2000200",
+        "contract": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x0F5D2fB29fb7d3CFeE444a200298f468908cC942"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xC19a5caCC2bb68Ff09f2Fcc695F31493A039Fa5e",
+        "symbol": "MANA",
+        "supply": "2000200",
+        "explorer": "https://explorer.kcc.io/en/address/0xC19a5caCC2bb68Ff09f2Fcc695F31493A039Fa5e"
+      }
+    ]
+  },
+  {
+    "symbol": "SFI",
+    "name": "Spice",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/sfi.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "375.663538754019826217",
+        "contract": "0xb753428af26E81097e7fD17f40c88aaA3E04902c",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0xb753428af26E81097e7fD17f40c88aaA3E04902c"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xd55D9DF77B23A7455613f2244Ee4B6a45b6e2D00",
+        "symbol": "SFI",
+        "supply": "375.663538754019826217",
+        "explorer": "https://explorer.kcc.io/en/address/0xd55D9DF77B23A7455613f2244Ee4B6a45b6e2D00"
+      }
+    ]
+  },
+  {
+    "symbol": "UMB",
+    "name": "Umbrella Network",
+    "icon": "https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/umb.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "11650",
+        "contract": "0x6fC13EACE26590B80cCCAB1ba5d51890577D83B2",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x6fC13EACE26590B80cCCAB1ba5d51890577D83B2"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0xD61BAbA0E2646544c1ef59acab081529467cE918",
+        "symbol": "UMB",
+        "supply": "11650",
+        "explorer": "https://explorer.kcc.io/en/address/0xD61BAbA0E2646544c1ef59acab081529467cE918"
+      }
+    ]
+  },
+  {
+    "symbol": "DAI",
+    "name": "Dai Stablecoin (DAI)",
+    "icon": "https://static.kcc.network/bridge/dai.png",
+    "lockInfo": [
+      {
+        "network": "ERC20",
+        "address": "0xe61dd9cA7364225aFBFB79e15AD33864424e6aE4",
+        "balance": "128.810513867554022249",
+        "contract": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+        "decimal": 18,
+        "explorer": "https://etherscan.io/token/0x6B175474E89094C44Da98b954EedeAC495271d0F"
+      }
+    ],
+    "wrapInfo": [
+      {
+        "network": "KRC20",
+        "address": "0x05713dEf8F4379C17dCF50A0CFc538a675b4F79c",
+        "symbol": "DAI",
+        "supply": "128.810513867554022249",
+        "explorer": "https://explorer.kcc.io/en/address/0x05713dEf8F4379C17dCF50A0CFc538a675b4F79c"
+      }
+    ]
+  }
+]

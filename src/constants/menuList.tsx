@@ -54,7 +54,7 @@ export const MENU_LIST = [
       {
         title: 'Developer resources',
         subTitle: 'KCC_home_developer_subtitle',
-        route: '', // Develop with KCC
+        route: 'id=developer_resources', // Develop with KCC
         icon: (isHover = false) => {
           return <DeveloperResourceIcon isHover={isHover} />
         },
@@ -176,7 +176,7 @@ export const MENU_LIST = [
       {
         title: 'Social Media',
         subTitle: 'KCC_home_manu_socialmedia',
-        route: '', // Join KCC Community
+        route: 'id=join_kcc_community', // Join KCC Community
         icon: (isHover = false) => {
           return <MediaIcon isHover={isHover} />
         },

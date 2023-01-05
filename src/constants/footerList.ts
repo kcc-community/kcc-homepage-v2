@@ -15,7 +15,7 @@ export const FOOTER_LIST = [
       },
       {
         navText: 'Tools',
-        navRoute: '', // docs tools kit
+        navRoute: 'https://docs.kcc.io/developers/dev-toolkit', // docs tools kit
       },
       {
         navText: 'GitHub',
@@ -44,7 +44,7 @@ export const FOOTER_LIST = [
       },
       {
         navText: 'Proof of assets',
-        navRoute: '/proof-of-assets',
+        navRoute: '/proof',
       },
     ],
   },
@@ -53,7 +53,7 @@ export const FOOTER_LIST = [
     children: [
       {
         navText: 'About KCC',
-        navRoute: KCC.MEDIA_URL, // 'docs about kcc'
+        navRoute: `${KCC.DOCS_URL}/overview/introduction`, // 'docs about kcc'
       },
       {
         navText: 'Risk Statement',
@@ -65,7 +65,7 @@ export const FOOTER_LIST = [
       },
       {
         navText: 'Media Kit',
-        navRoute: '', // media kit
+        navRoute: `${KCC.DOCS_URL}/disclosure/media-kit`, // media kit
       },
     ],
   },

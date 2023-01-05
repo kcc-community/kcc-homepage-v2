@@ -22,7 +22,7 @@ export async function getStaticProps({ locale }: { locale: any }) {
         'zh_HK',
         'zh_CN',
         'es_ES',
-        'pt_BR',
+        'pt_PT',
         'de_DE',
         'ru_RU',
       ])),

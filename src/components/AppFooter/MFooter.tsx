@@ -3,7 +3,6 @@ import { Collapse } from 'antd'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import styled from 'styled-components'
-import { KCC } from '../../constants'
 import { FOOTER_LIST } from '../../constants/footerList'
 import KccLogo from 'components/Logo/KccLogo'
 import { CenterRow } from 'components/Row'
@@ -61,38 +60,15 @@ const MediaImage = styled(Link)`
 export default function MFooter() {
   const router = useRouter()
 
-  const { t, i18n } = useTranslation('menu')
+  const { t } = useTranslation('menu')
 
-  const nav2Target = ({
-    navText,
-    navRoute,
-  }: {
-    navText: string
-    navRoute: string
-  }) => {
+  const nav2Target = ({ navRoute }: { navText: string; navRoute: string }) => {
     const route = navRoute
     if (route) {
       if (route.startsWith('/')) {
         router.push(route)
-      } else if (route.startsWith('http')) {
+      } else {
         window.open(route, '_blank')
-      } else if (route.startsWith('id')) {
-        const translateLanguageTable: any = {
-          en: 'en-us',
-          'zh-CN': 'zh-cn',
-          'es-ES': 'es-es',
-          'de-DE': 'de-de',
-        }
-        // Open the corresponding document address according to the current language
-        const anchor = t(navText)
-          .trimStart()
-          .trimEnd()
-          .replaceAll(' ', '-')
-          .toLowerCase()
-        const url = `${KCC.DOCS_URL}${
-          translateLanguageTable[i18n.language]
-        }/?id=${anchor}`
-        window.open(url, '_blank')
       }
     }
   }

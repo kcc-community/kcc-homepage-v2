@@ -17,7 +17,7 @@ export const IT = { code: 'it', language: 'Italiano' }
 export const JA = { code: 'ja', language: '日本語' }
 export const KO = { code: 'ko', language: '한국어' }
 export const PL = { code: 'pl', language: 'Polski' }
-export const PTPT = { code: 'pt_PT', language: 'Português(Portugal)' }
+export const PTPT = { code: 'pt_PT', language: 'Português' }
 export const PTBR = { code: 'pt_BR', language: 'Português' }
 export const RO = { code: 'ro', language: 'Română' }
 export const RU = { code: 'ru_RU', language: 'Русский' }
@@ -34,7 +34,7 @@ export const allLanguages = [
   ZHHK,
   ESES,
   DE,
-  PTBR,
+  PTPT,
   RU,
   /*   AR,
   BN,

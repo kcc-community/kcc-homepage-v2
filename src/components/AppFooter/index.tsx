@@ -137,7 +137,6 @@ const FooterNavText = styled.span`
 const CopyRightText = styled.div`
   margin-top: 40px;
   width: 100%;
-  height: 60px;
   line-height: 60px;
   opacity: 0.6;
   font-size: 12px;
@@ -194,7 +193,7 @@ const AppFooter: React.FC = () => {
     setHoverList(() => stateList)
   }
 
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   const router = useRouter()
 
@@ -204,25 +203,12 @@ const AppFooter: React.FC = () => {
       if (route) {
         if (route.startsWith('/')) {
           router.push(route)
-        } else if (route.startsWith('http')) {
+        } else {
           window.open(route, '_blank')
-        } else if (route.startsWith('id')) {
-          const translateLanguageTable: any = {
-            en: 'en-us',
-            'zh-CN': 'zh-cn',
-            'es-ES': 'es-es',
-            'de-DE': 'de-de',
-            'zh-TW': 'zh-hk',
-            'pt-BR': 'pt-br',
-          }
-          // Open the corresponding document address according to the current language
-
-          const url = `${KCC.DOCS_URL}${translateLanguageTable[i18n.language]}`
-          window.open(url, '_blank')
         }
       }
     },
-    [i18n.language, router]
+    [router]
   )
 
   const FooterNavList = FOOTER_LIST.map((item, index) => {

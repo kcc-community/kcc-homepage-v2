@@ -99,7 +99,7 @@ const developList = [
       },
       {
         name: 'Toolkit',
-        url: '', // gitbook Dev Toolkit
+        url: `${KCC.DOCS_URL}/developers/dev-toolkit`, // gitbook Dev Toolkit
       },
     ],
   },
@@ -114,7 +114,7 @@ const developList = [
     list: [
       {
         name: 'KCC_home_developer_roadmap',
-        url: '', // gitbook Dev Toolkit
+        url: `${KCC.DOCS_URL}/future-developments/milestone`, // gitbook Dev Toolkit
       },
     ],
   },

@@ -23,12 +23,19 @@ const bgAnimation = keyframes`
   }
 `
 
-const AnimationBg = styled.div`
+const AnimationBg = styled.div<{ isDev: boolean }>`
   width: 100%;
   height: 886px;
   position: absolute;
   z-index: 1;
-  animation: 9000ms ease-in-out both infinite ${bgAnimation};
+  animation: ${({ isDev }) =>
+    `9000ms ease-in-out both infinite ${isDev ? null : bgAnimation}`};
+  background: ${({ isDev }) => {
+    if (isDev) {
+      return "url('/images/home/bg_light.jpg') top center no-repeat"
+    }
+    return ''
+  }};
 `
 const AnimationBg1 = styled.div`
   width: 100%;
@@ -81,6 +88,7 @@ const Title = styled.div`
   align-items: center;
   color: #ffffff;
   max-width: 677px;
+  min-height: 180px;
   @media (max-width: 768px) {
     width: 100%;
     font-size: 42px;
@@ -128,7 +136,7 @@ const Banner: React.FC = () => {
     <Wrap>
       {!isMobile && (
         <>
-          <AnimationBg />
+          <AnimationBg isDev={process.env.NODE_ENV === 'development'} />
           <AnimationBg1 />
         </>
       )}
