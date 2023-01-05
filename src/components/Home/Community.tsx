@@ -312,7 +312,7 @@ const Community: React.FC = () => {
   return (
     <Wrap>
       <Content>
-        <Title>
+        <Title id="join_kcc_community">
           <Trans
             i18nKey="Join KCC Community"
             components={{ color: <Color /> }}

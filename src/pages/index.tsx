@@ -10,6 +10,8 @@ import Ecosystem from 'components/Home/Ecosystem'
 import Develop from 'components/Home/Develop'
 import Community from 'components/Home/Community'
 import Partner from 'components/Home/Partner'
+import { useRouter } from 'next/router'
+import { scrollToId } from 'utils/scroll'
 
 const AppWrap = styled.div`
   margin: 0;
@@ -35,6 +37,17 @@ export async function getStaticProps({ locale }: { locale: any }) {
   }
 }
 export default function Home() {
+  const router = useRouter()
+
+  // add handle when url query change
+  React.useEffect(() => {
+    console.log('router.query?.id', router.query?.id)
+    const { query } = router
+    if (query?.id) {
+      scrollToId(query.id as string)
+    }
+  }, [router, router.query?.id])
+
   return (
     <AppWrap>
       <Head>

@@ -451,7 +451,7 @@ const Develop: React.FC = () => {
           </>
         )}
 
-        <Title>
+        <Title id="developer_resources">
           <Trans i18nKey="Develop with KCC" components={{ color: <Color /> }} />
         </Title>
         <Desc>{t('KCC_home_developer_subtitle')}</Desc>

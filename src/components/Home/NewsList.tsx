@@ -9,14 +9,12 @@ import styled from 'styled-components'
 import { NewListItemType, NewsService } from 'api/news'
 import { useResponsive } from 'utils/responsive'
 
-const Wrap = styled.div<{ visible: boolean }>`
+const Wrap = styled.div`
   width: 100%;
-  display: ${({ visible }) => {
-    if (visible) {
-      return 'block'
-    }
-    return 'none'
-  }};
+  min-height: 300px;
+  @media (max-width: 768px) {
+    min-height: auto;
+  }
 `
 
 const TitleBar = styled.div`
@@ -128,7 +126,7 @@ const NewsList: React.FC = () => {
   }, [])
 
   return (
-    <Wrap visible={Boolean(newsList.length)}>
+    <Wrap>
       <TitleBar>
         <Title>{t('News')}</Title>
         <RowCenterBox

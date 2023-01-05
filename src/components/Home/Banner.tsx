@@ -132,6 +132,7 @@ const Banner: React.FC = () => {
   const { t } = useTranslation()
   const router = useRouter()
   const { isMobile } = useResponsive()
+
   return (
     <Wrap>
       {!isMobile && (

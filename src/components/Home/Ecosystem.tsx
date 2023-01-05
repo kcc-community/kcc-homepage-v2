@@ -298,7 +298,7 @@ const Ecosystem: React.FC = () => {
   return (
     <Wrap>
       <Content>
-        <Title>
+        <Title id="join_the_kcc_ecosystem">
           <Trans
             i18nKey="Join the KCC Ecosystem"
             components={{ color: <Color /> }}

@@ -159,7 +159,7 @@ const NavItem: React.FunctionComponent<NavItemChildrenType> = (props) => {
   const getNavRoute = React.useCallback(
     (route: string) => {
       if (route === KCC.EXPLORER) {
-        if (i18n.language === 'zh-CN') {
+        if (i18n.language === 'zh_CN') {
           return `${route}/cn`
         }
         return `${route}/en`
@@ -183,6 +183,12 @@ const NavItem: React.FunctionComponent<NavItemChildrenType> = (props) => {
           const route1 = getNavRoute(route)
           window.open(route1, '_blank')
         }
+
+        if (route.includes('id=')) {
+          const id = route.split('=')[1]
+          router.push({ pathname: '/', query: { id: id } })
+        }
+
         if (isMobile) {
           dispatch(changeMobileMenuShow({ show: false }))
         }
