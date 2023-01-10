@@ -113,21 +113,6 @@ const ButtonGroup = styled.div`
   }
 `
 
-const ButtonText = styled.div`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  color: #ffffff;
-`
-
-const ButtonText1 = styled(ButtonText)`
-  color: #21c397;
-`
-
 const Banner: React.FC = () => {
   const { t } = useTranslation()
   const router = useRouter()
@@ -145,13 +130,13 @@ const Banner: React.FC = () => {
         <Title>{t('KCC_home_slogan')}</Title>
         <ButtonGroup>
           <NormalButton onClick={() => window.open(KCC.DOCS_URL, '_blank')}>
-            <ButtonText>{t('Developer Docs')}</ButtonText>
+            {t('Developer Docs')}
           </NormalButton>
           <GhostButton
             style={{ marginLeft: isMobile ? '0px' : '20px' }}
             onClick={() => router.push('/apps')}
           >
-            <ButtonText1>{t('Explore dApps')}</ButtonText1>
+            {t('Explore dApps')}
           </GhostButton>
         </ButtonGroup>
         <NewsList />
