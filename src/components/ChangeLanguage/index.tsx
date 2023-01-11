@@ -62,7 +62,7 @@ export const LanguageButton = styled.div`
   @media (max-width: 768px) {
     background: none;
     border: none;
-    width: 70px;
+    width: auto;
     margin-right: 10px;
   }
 `
@@ -133,40 +133,22 @@ const ChangeLanguage: React.FC = () => {
         content={selectOptions}
         open={show}
       >
-        <BrowserView>
-          <LanguageButton
-            onMouseEnter={showPop}
-            onMouseLeave={hidePopover}
-            onClick={() => {
-              setShow(() => !show)
-            }}
-          >
-            {currentLanguage}
-            <Image
-              src={i18nIcon}
-              width={24}
-              height={24}
-              alt="language-icon"
-              style={{ fontSize: '10px', marginLeft: isMobile ? '2px' : '6px' }}
-            />
-          </LanguageButton>
-        </BrowserView>
-        <MobileView>
-          <LanguageButton
-            onClick={() => {
-              setShow(() => !show)
-            }}
-            style={{
-              color: theme.colors.primary,
-              fontSize: isMobile ? '14px' : '12px',
-            }}
-          >
-            {currentLanguage}
-            <DownOutlined
-              style={{ fontSize: '10px', marginLeft: isMobile ? '2px' : '6px' }}
-            />
-          </LanguageButton>
-        </MobileView>
+        <LanguageButton
+          onMouseEnter={showPop}
+          onMouseLeave={hidePopover}
+          onClick={() => {
+            setShow(() => !show)
+          }}
+        >
+          {currentLanguage}
+          <Image
+            src={i18nIcon}
+            width={24}
+            height={24}
+            alt="language-icon"
+            style={{ fontSize: '10px', marginLeft: isMobile ? '2px' : '6px' }}
+          />
+        </LanguageButton>
       </Popover>
     </MenuWrap>
   )

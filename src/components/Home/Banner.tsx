@@ -95,6 +95,7 @@ const Title = styled.div`
     line-height: 64px;
     max-width: 280px;
     margin-left: 34px;
+    min-height: 400px;
   }
 `
 

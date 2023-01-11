@@ -170,11 +170,12 @@ const Title = styled.div`
   margin: 0;
   padding: 0;
   display: flex;
+  flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   color: #fff;
   @media (max-width: 768px) {
-    font-size: 32px;
+    font-size: 24px;
     line-height: 48px;
     text-align: center;
   }
@@ -378,7 +379,7 @@ const GrantTitle = styled.div`
 const GrantDesc = styled.div`
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 16px;
   line-height: 24px;
   display: flex;

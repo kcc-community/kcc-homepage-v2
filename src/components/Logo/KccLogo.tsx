@@ -14,8 +14,13 @@ const NextImage = styled(Image)`
   z-index: 2;
 `
 
+interface Props {
+  width?: number
+  height?: number
+}
+
 //  default choose english logo，svg type，full logo.
-const KccLogo: React.FC = () => {
+const KccLogo: React.FC<Props> = ({ width, height }) => {
   const router = useRouter()
 
   const navToHome = () => {
@@ -25,8 +30,8 @@ const KccLogo: React.FC = () => {
   return (
     <NextImage
       src="/images/logo/AbbreviatedLettersLogo/KuCoinCommunityChain_Green.svg"
-      width={90}
-      height={31}
+      width={width ?? 94}
+      height={height ?? 33}
       onClick={navToHome}
       alt="kcc-logo"
     />

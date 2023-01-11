@@ -1,5 +1,4 @@
-import { CloseCircleOutlined, MenuOutlined } from '@ant-design/icons'
-import { theme } from 'constants/theme'
+import { MenuOutlined } from '@ant-design/icons'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { changeMobileMenuShow } from 'state/application/actions'
@@ -10,6 +9,8 @@ import AppMenu from '../AppMenu'
 import ChangeLanguage from '../ChangeLanguage/index'
 import { BrowserView, MobileView } from '../index'
 import KccLogo from '../Logo/KccLogo'
+import closeIcon from 'assets/images/Icons/close.png'
+import Image from 'next/image'
 
 const AppHeaderWrap = styled.div`
   display: flex;
@@ -87,17 +88,21 @@ const AppHeader: React.FunctionComponent = () => {
           <MobileView style={{ width: '24px' }}>
             {!show ? (
               <MenuOutlined
-                style={{ fontSize: '18px', color: theme.colors.primary }}
+                style={{ fontSize: '18px', color: '#fff' }}
                 onClick={() => {
                   dispatch(changeMobileMenuShow({ show: true }))
                 }}
               />
             ) : (
-              <CloseCircleOutlined
-                style={{ fontSize: '20px', color: theme.colors.primary }}
+              <Image
+                width={24}
+                height={24}
+                src={closeIcon}
+                style={{ marginTop: '5px' }}
                 onClick={() => {
                   dispatch(changeMobileMenuShow({ show: false }))
                 }}
+                alt="close"
               />
             )}
 

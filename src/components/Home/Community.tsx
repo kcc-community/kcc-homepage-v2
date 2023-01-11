@@ -18,8 +18,8 @@ const mediaList = [
     name: 'Twitter',
     icon: (isHover: boolean) => (
       <TwitterIcon
-        width={24}
-        height={24}
+        width={48}
+        height={48}
         color={isHover ? '#fff' : '#040A2D'}
       />
     ),
@@ -29,8 +29,8 @@ const mediaList = [
     name: 'Telegram',
     icon: (isHover: boolean) => (
       <TelegramIcon
-        width={24}
-        height={24}
+        width={48}
+        height={48}
         color={isHover ? '#fff' : '#040A2D'}
       />
     ),
@@ -40,8 +40,8 @@ const mediaList = [
     name: 'Github',
     icon: (isHover: boolean) => (
       <GithubMedia
-        width={24}
-        height={24}
+        width={48}
+        height={48}
         color={isHover ? '#fff' : '#040A2D'}
       />
     ),
@@ -51,8 +51,8 @@ const mediaList = [
     name: 'Discord',
     icon: (isHover: boolean) => (
       <DiscordIcon
-        width={24}
-        height={24}
+        width={48}
+        height={48}
         color={isHover ? '#fff' : '#040A2D'}
       />
     ),
@@ -82,8 +82,8 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 1200px) {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
   @media (max-width: 768px) {
     width: 100%;
@@ -100,11 +100,12 @@ const Title = styled.div`
   margin: 0;
   padding: 0;
   display: flex;
+  flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   color: #040a2d;
   @media (max-width: 768px) {
-    font-size: 32px;
+    font-size: 24px;
     text-align: center;
     line-height: 48px;
   }
@@ -217,7 +218,9 @@ const SubscribeWrap = styled.div`
     margin-left: 0px;
     margin-top: 12px;
     width: 100%;
-    padding-bottom: 30px;
+    max-width: 354px;
+    margin: 12px auto;
+    padding: 44px 32px 82px 32px;
   }
 `
 
@@ -230,6 +233,9 @@ const SubscribeTitle = styled.div`
   align-items: center;
   text-align: center;
   color: #040a2d;
+  @media (max-width: 768px) {
+    text-align: left;
+  }
 `
 
 const SubscribeDesc = styled.div`
@@ -242,6 +248,9 @@ const SubscribeDesc = styled.div`
   text-align: center;
   color: #494e67;
   margin-top: 12px;
+  @media (max-width: 768px) {
+    text-align: left;
+  }
 `
 
 const ButtonText = styled.div`
@@ -258,6 +267,9 @@ const StyledInput = styled(Input)`
   height: 64px;
   outline: none;
   font-size: 18px;
+  @media (max-width: 768px) {
+    height: 54px;
+  }
 `
 
 async function subscribeMail(email: string) {

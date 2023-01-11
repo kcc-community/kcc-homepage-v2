@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import styled from 'styled-components'
+import { useResponsive } from 'utils/responsive'
 import { KCC } from '../../constants'
 import { FOOTER_LIST } from '../../constants/footerList'
 import Column from '../Column/index'
-import { BrowserView, MobileView } from '../index'
 import KccLogo from '../Logo/KccLogo'
 import Row from '../Row'
 import { CenterRow, RowBetween } from '../Row/index'
@@ -14,7 +14,6 @@ import DiscordIcon from '../Svg/Icons/DiscordIcon'
 import GithubMedia from '../Svg/Icons/GithubMedia'
 import TelegramIcon from '../Svg/Icons/TelegramIcon'
 import TwitterIcon from '../Svg/Icons/TwitterIcon'
-import MFooter from './MFooter'
 
 export const mediaList = [
   {
@@ -64,6 +63,16 @@ export const mediaList = [
   },
 ]
 
+const StyledRowBetween = styled(RowBetween)`
+  @media (max-width: 768px) {
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin-top: 46px;
+    padding-left: 32px;
+    row-gap: 64px;
+  }
+`
+
 const AppFooterWrap = styled.div`
   position: relative;
   z-index: 99;
@@ -100,6 +109,11 @@ const AppFooterContentWrap = styled.div`
 const CopyRightContent = styled.div`
   width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    padding: 0 20px;
+  }
+
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -132,6 +146,9 @@ const FooterNavText = styled.span`
   &:hover {
     color: #21c397;
   }
+  @media (max-width: 768px) {
+    text-align: left;
+  }
 `
 
 const CopyRightText = styled.div`
@@ -141,9 +158,8 @@ const CopyRightText = styled.div`
   opacity: 0.6;
   font-size: 12px;
   color: #ffffff;
-  border-top: 1px solid #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
   @media (max-width: 768px) {
-    border-top: none;
     text-align: center;
     height: auto;
     font-size: 12px;
@@ -162,6 +178,11 @@ const MediaListWrap = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-top: 32px;
+  @media (max-width: 768px) {
+    padding: 0 24px;
+    width: 100%;
+    justify-content: space-between;
+  }
 `
 
 const MediaImage = styled(Link)`
@@ -183,6 +204,8 @@ const MediaImage = styled(Link)`
 `
 
 const AppFooter: React.FC = () => {
+  const { isMobile } = useResponsive()
+
   const initHoverState = new Array(mediaList.length).fill(false)
   const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
 
@@ -230,40 +253,36 @@ const AppFooter: React.FC = () => {
   return (
     <AppFooterWrap>
       <AppFooterContentWrap>
-        <BrowserView>
-          <Row>
-            <CenterRow
-              style={{
-                width: '355px',
-                flexFlow: 'column nowrap',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                marginRight: '100px',
-              }}
-            >
-              <KccLogo />
-              <MediaListWrap>
-                {mediaList.map((media, index) => {
-                  return (
-                    <MediaImage
-                      href={media.url}
-                      target="_blank"
-                      onMouseEnter={() => setHoverByIndex(index)}
-                      onMouseLeave={() => setHoverList(() => initHoverState)}
-                      key={index}
-                    >
-                      {media.icon(hoverList[index])}
-                    </MediaImage>
-                  )
-                })}
-              </MediaListWrap>
-            </CenterRow>
-            <RowBetween>{FooterNavList}</RowBetween>
-          </Row>
-        </BrowserView>
-        <MobileView style={{ padding: '0 24px' }}>
-          <MFooter />
-        </MobileView>
+        <Row style={{ flexFlow: isMobile ? 'column nowrap' : 'row nowrap' }}>
+          <CenterRow
+            style={{
+              width: isMobile ? '100%' : '355px',
+              flexFlow: 'column nowrap',
+              justifyContent: isMobile ? 'center' : 'flex-start',
+              alignItems: isMobile ? 'center' : 'flex-start',
+              marginRight: isMobile ? '0px' : '100px',
+              marginTop: isMobile ? '52px' : '0px',
+            }}
+          >
+            <KccLogo width={isMobile ? 133 : 94} height={isMobile ? 47 : 33} />
+            <MediaListWrap>
+              {mediaList.map((media, index) => {
+                return (
+                  <MediaImage
+                    href={media.url}
+                    target="_blank"
+                    onMouseEnter={() => setHoverByIndex(index)}
+                    onMouseLeave={() => setHoverList(() => initHoverState)}
+                    key={index}
+                  >
+                    {media.icon(hoverList[index])}
+                  </MediaImage>
+                )
+              })}
+            </MediaListWrap>
+          </CenterRow>
+          <StyledRowBetween>{FooterNavList}</StyledRowBetween>
+        </Row>
       </AppFooterContentWrap>
       <CopyRightText>
         <CopyRightContent>
