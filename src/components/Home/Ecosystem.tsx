@@ -149,22 +149,6 @@ const ItemDesc = styled.div`
   }
 `
 
-const ButtonText = styled.div`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #21c397;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin-right: 9px;
-`
-
 const DiscoverWrap = styled.div`
   width: 100%;
   border-radius: 16px;
@@ -277,6 +261,20 @@ const Ecosystem: React.FC = () => {
   const router = useRouter()
   const [modalShow, setModalShow] = React.useState<boolean>(false)
 
+  const initHoverList = new Array(stepList.length).fill(false)
+
+  const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverList)
+
+  const resetHoverList = () => {
+    setHoverList(initHoverList)
+  }
+
+  const handleMouseEnter = (index: number) => {
+    const newHoverList = [...initHoverList]
+    newHoverList[index] = true
+    setHoverList(() => newHoverList)
+  }
+
   const handleButtonClick = React.useCallback(
     (index: number) => {
       switch (index) {
@@ -308,7 +306,11 @@ const Ecosystem: React.FC = () => {
         <ListWrap>
           {stepList.map((step, index) => {
             return (
-              <Item key={index}>
+              <Item
+                key={index}
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={() => resetHoverList()}
+              >
                 <StyledImage
                   src={step.image}
                   width={110}
@@ -319,11 +321,16 @@ const Ecosystem: React.FC = () => {
                 <ItemDesc>{t(step.desc)}</ItemDesc>
                 <GhostButton
                   style={{ marginTop: '20px' }}
-                  onClick={handleButtonClick.bind(null, index)}
+                  onClick={() => handleButtonClick(index)}
                 >
                   <RowCenterBox style={{ width: 'auto' }}>
-                    <ButtonText>{t(step.buttonText)}</ButtonText>
-                    <ArrowLeft />
+                    {t(step.buttonText)}
+                    <ArrowLeft
+                      color={hoverList[index] ? '#fff' : '#00BC8D'}
+                      style={{
+                        marginLeft: '8px',
+                      }}
+                    />
                   </RowCenterBox>
                 </GhostButton>
               </Item>

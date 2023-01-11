@@ -59,12 +59,6 @@ const CategoryText = styled.div<{ isActive: boolean }>`
   line-height: 24px;
   display: flex;
   align-items: center;
-  color: ${({ isActive }) => {
-    if (isActive) {
-      return '#fff'
-    }
-    return '#040a2d'
-  }};
   @media (max-width: 768px) {
     text-align: center;
   }
@@ -81,6 +75,12 @@ const Category = styled.div<{ isActive: boolean }>`
   border-radius: 20px;
   row-gap: 12px;
   cursor: pointer;
+  color: ${({ isActive }) => {
+    if (isActive) {
+      return '#fff'
+    }
+    return '#040a2d'
+  }};
   background: ${({ isActive }) => {
     if (isActive) {
       return '#21C397'
@@ -88,7 +88,12 @@ const Category = styled.div<{ isActive: boolean }>`
     return '#fff'
   }};
   &:hover ${CategoryText} {
-    color: #21c397;
+    color: ${({ isActive }) => {
+      if (isActive) {
+        return '#fff'
+      }
+      return '#21c397'
+    }};
   }
   @media (max-width: 768px) {
     width: auto;

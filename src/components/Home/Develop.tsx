@@ -12,11 +12,10 @@ import { Trans, useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import React from 'react'
 import styled from 'styled-components'
-import { NormalButton } from '../Button/NormalButton'
-
 import { Box, RowCenterBox } from 'components'
 import Link from 'next/link'
 import { useResponsive } from 'utils/responsive'
+import { GhostWhiteButton } from 'components/Button'
 
 const advantageList = [
   {
@@ -392,21 +391,6 @@ const GrantDesc = styled.div`
   }
 `
 
-const ButtonText = styled.div`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #ffffff;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin-right: 9px;
-`
-
 const List: React.FC<{ list: { name: string; url: string } }> = ({ list }) => {
   const { t } = useTranslation()
   const [isHover, setIsHover] = React.useState<boolean>(false)
@@ -435,6 +419,8 @@ const Develop: React.FC = () => {
     stateList.splice(index, 1, true)
     setHoverList(() => stateList)
   }
+
+  const [isWhite, setIsWhite] = React.useState<boolean>(true)
 
   return (
     <Wrap>
@@ -486,17 +472,22 @@ const Develop: React.FC = () => {
           <Box>
             <GrantTitle>{t('Grant Program')}</GrantTitle>
             <GrantDesc>{t('KCC_home_developer_grants')}</GrantDesc>
-            <NormalButton
+            <GhostWhiteButton
               style={{ border: '1px solid #fff', marginTop: '28px' }}
               onClick={() => {
                 window.open(KCC.GRANTS, '_blank')
               }}
+              onMouseEnter={() => setIsWhite(() => false)}
+              onMouseLeave={() => setIsWhite(() => true)}
             >
               <RowCenterBox style={{ width: 'auto' }}>
-                <ButtonText>{t('Learn More')}</ButtonText>
-                <ArrowLeft color="#fff" />
+                {t('Learn More')}
+                <ArrowLeft
+                  style={{ marginLeft: '8px' }}
+                  color={isWhite ? '#fff' : '#21C397'}
+                />
               </RowCenterBox>
-            </NormalButton>
+            </GhostWhiteButton>
           </Box>
           <Image
             src={cupImage}
