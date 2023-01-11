@@ -1,4 +1,3 @@
-import { DownOutlined } from '@ant-design/icons'
 import { Popover } from 'antd'
 import i18nIcon from 'assets/images/Icons/i18n.webp'
 import { useTranslation } from 'next-i18next'
@@ -11,7 +10,6 @@ import { theme } from '../../constants/theme'
 import { changeLanguage } from '../../state/application/actions'
 import { AppDispatch } from '../../state/index'
 import { useResponsive } from '../../utils/responsive'
-import { BrowserView, MobileView } from '../index'
 import { RowBetween } from '../Row'
 
 import { isClient } from 'constants/index'
