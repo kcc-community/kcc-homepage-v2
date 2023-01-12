@@ -8,10 +8,10 @@ import styled from 'styled-components'
 import DiscordIcon from '../Svg/Icons/DiscordIcon'
 import TelegramIcon from '../Svg/Icons/TelegramIcon'
 import TwitterIcon from '../Svg/Icons/TwitterIcon'
-import GithubMedia from '../Svg/Icons/GithubMedia'
 
 import { message } from 'antd'
 import axios, { AxiosResponse } from 'axios'
+import { MediumnIcon } from 'components/Svg'
 
 const Wrap = styled.div`
   display: flex;
@@ -239,6 +239,7 @@ const Community: React.FC = () => {
   const initHoverState = new Array(4).fill(false)
   const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
   const [email, setEmail] = React.useState<string>('')
+  const [count, setCount] = React.useState<number>(0)
   const [disable, setDisable] = React.useState<boolean>(false)
   const [, setSubscribed] = React.useState<boolean>(false)
 
@@ -246,7 +247,7 @@ const Community: React.FC = () => {
     return [
       {
         name: 'Twitter',
-        icon: () => (
+        icon: (
           <TwitterIcon
             width={48}
             height={48}
@@ -257,7 +258,7 @@ const Community: React.FC = () => {
       },
       {
         name: 'Telegram',
-        icon: () => (
+        icon: (
           <TelegramIcon
             width={48}
             height={48}
@@ -267,19 +268,19 @@ const Community: React.FC = () => {
         url: KCC.TELEGRAM,
       },
       {
-        name: 'Github',
-        icon: () => (
-          <GithubMedia
+        name: 'Mediumn',
+        icon: (
+          <MediumnIcon
             width={48}
             height={48}
             color={hoverList[2] ? '#fff' : '#040A2D'}
           />
         ),
-        url: KCC.GITHUB_URL,
+        url: KCC.MEDIA_URL,
       },
       {
         name: 'Discord',
-        icon: () => (
+        icon: (
           <DiscordIcon
             width={48}
             height={48}
@@ -289,11 +290,11 @@ const Community: React.FC = () => {
         url: KCC.DISCORD_URL,
       },
     ]
-  }, [hoverList])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count, hoverList])
 
   const setHoverByIndex = (index: number) => {
     const stateList = initHoverState
-    setHoverList(() => initHoverState)
     stateList.splice(index, 1, true)
     setHoverList(() => stateList)
   }
@@ -339,10 +340,16 @@ const Community: React.FC = () => {
                   href={media.url}
                   target="_blank"
                   key={index}
-                  onMouseEnter={() => setHoverByIndex(index)}
-                  onMouseLeave={() => setHoverList(() => initHoverState)}
+                  onMouseEnter={() => {
+                    setHoverByIndex(index)
+                    setCount((c) => c + 1)
+                  }}
+                  onMouseLeave={() => {
+                    setHoverList(() => initHoverState)
+                    setCount((c) => c + 1)
+                  }}
                 >
-                  {media.icon()}
+                  {media.icon}
                   <MediaText>{t(media.name)}</MediaText>
                 </Media>
               )
