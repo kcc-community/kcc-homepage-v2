@@ -123,7 +123,8 @@ const StyledSpin = styled(Spin)`
   width: 100%;
 `
 
-const AppCard = styled.div`
+const AppCard = styled(Link)`
+  display: block;
   width: 288px;
   height: 360px;
   padding: 24px;
@@ -168,7 +169,7 @@ const Name = styled.div`
     margin-top: 0px;
   }
 `
-const Website = styled(Link)`
+const Website = styled.div`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
@@ -377,7 +378,7 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
               <>
                 {appList.map((app, index) => {
                   return (
-                    <AppCard key={index}>
+                    <AppCard key={index} href={app.website} target="_blank">
                       <Logo
                         src={app.logo_url}
                         width={isMobile ? 54 : 80}
@@ -387,17 +388,13 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
                       {isMobile ? (
                         <MobileBox>
                           <Name>{app.name}</Name>
-                          <Website href={app.website} target="_blank">
-                            {app.website}
-                          </Website>
+                          <Website>{app.website}</Website>
                           <Desc>{app.description}</Desc>
                         </MobileBox>
                       ) : (
                         <>
                           <Name>{app.name}</Name>
-                          <Website href={app.website} target="_blank">
-                            {app.website}
-                          </Website>
+                          <Website>{app.website}</Website>
                           <Desc>{app.description}</Desc>
                         </>
                       )}

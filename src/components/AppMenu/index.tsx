@@ -333,7 +333,7 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
           className="sub-menu"
           title={
             <Row
-              style={{ alignItems: 'center' }}
+              style={{ alignItems: 'center', height: '60px' }}
               onClick={showSubMenu.bind(null, navItem)}
             >
               <RootTitle>

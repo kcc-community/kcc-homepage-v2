@@ -36,8 +36,8 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 1200px) {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
   @media (max-width: 768px) {
     width: 100%;
@@ -306,11 +306,7 @@ const Ecosystem: React.FC = () => {
         <ListWrap>
           {stepList.map((step, index) => {
             return (
-              <Item
-                key={index}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={() => resetHoverList()}
-              >
+              <Item key={index}>
                 <StyledImage
                   src={step.image}
                   width={110}
@@ -322,6 +318,8 @@ const Ecosystem: React.FC = () => {
                 <GhostButton
                   style={{ marginTop: '20px' }}
                   onClick={() => handleButtonClick(index)}
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={() => resetHoverList()}
                 >
                   <RowCenterBox style={{ width: 'auto' }}>
                     {t(step.buttonText)}

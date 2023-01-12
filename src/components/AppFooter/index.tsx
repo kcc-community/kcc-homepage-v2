@@ -15,54 +15,6 @@ import GithubMedia from '../Svg/Icons/GithubMedia'
 import TelegramIcon from '../Svg/Icons/TelegramIcon'
 import TwitterIcon from '../Svg/Icons/TwitterIcon'
 
-export const mediaList = [
-  {
-    name: 'Twitter',
-    icon: (isHover: boolean) => (
-      <TwitterIcon
-        width={22}
-        height={22}
-        color={isHover ? '#21C397' : '#fff'}
-      />
-    ),
-    url: KCC.TWITTER,
-  },
-  {
-    name: 'Github',
-    icon: (isHover: boolean) => (
-      <GithubMedia
-        width={22}
-        height={22}
-        color={isHover ? '#21C397' : '#fff'}
-      />
-    ),
-    url: KCC.GITHUB_URL,
-  },
-  {
-    name: 'Discord',
-    icon: (isHover: boolean) => (
-      <DiscordIcon
-        width={22}
-        height={22}
-        color={isHover ? '#21C397' : '#fff'}
-      />
-    ),
-    url: KCC.DISCORD_URL,
-  },
-  {
-    name: 'Telegram',
-    icon: (isHover: boolean) => (
-      <TelegramIcon
-        width={22}
-        height={22}
-        color={isHover ? '#21C397' : '#fff'}
-        style={{ marginLeft: '-3px' }}
-      />
-    ),
-    url: KCC.TELEGRAM,
-  },
-]
-
 const StyledRowBetween = styled(RowBetween)`
   @media (max-width: 768px) {
     flex-flow: row wrap;
@@ -206,8 +158,59 @@ const MediaImage = styled(Link)`
 const AppFooter: React.FC = () => {
   const { isMobile } = useResponsive()
 
-  const initHoverState = new Array(mediaList.length).fill(false)
+  const initHoverState = new Array(4).fill(false)
   const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
+  const [count, setCount] = React.useState<number>(0)
+  const mediaList = React.useMemo(() => {
+    return [
+      {
+        name: 'Twitter',
+        icon: (
+          <TwitterIcon
+            width={22}
+            height={22}
+            color={hoverList[0] ? '#21C397' : '#fff'}
+          />
+        ),
+        url: KCC.TWITTER,
+      },
+      {
+        name: 'Github',
+        icon: (
+          <GithubMedia
+            width={22}
+            height={22}
+            color={hoverList[1] ? '#21C397' : '#fff'}
+          />
+        ),
+        url: KCC.GITHUB_URL,
+      },
+      {
+        name: 'Discord',
+        icon: (
+          <DiscordIcon
+            width={22}
+            height={22}
+            color={hoverList[2] ? '#21C397' : '#fff'}
+          />
+        ),
+        url: KCC.DISCORD_URL,
+      },
+      {
+        name: 'Telegram',
+        icon: (
+          <TelegramIcon
+            width={22}
+            height={22}
+            color={hoverList[3] ? '#21C397' : '#fff'}
+            style={{ marginLeft: '-3px' }}
+          />
+        ),
+        url: KCC.TELEGRAM,
+      },
+    ]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hoverList, count])
 
   const setHoverByIndex = (index: number) => {
     const stateList = initHoverState
@@ -271,11 +274,17 @@ const AppFooter: React.FC = () => {
                   <MediaImage
                     href={media.url}
                     target="_blank"
-                    onMouseEnter={() => setHoverByIndex(index)}
-                    onMouseLeave={() => setHoverList(() => initHoverState)}
+                    onMouseEnter={() => {
+                      setHoverByIndex(index)
+                      setCount(() => count + 1)
+                    }}
+                    onMouseLeave={() => {
+                      setHoverList(() => initHoverState)
+                      setCount(() => count + 1)
+                    }}
                     key={index}
                   >
-                    {media.icon(hoverList[index])}
+                    {media.icon}
                   </MediaImage>
                 )
               })}

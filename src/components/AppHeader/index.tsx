@@ -89,7 +89,14 @@ const AppHeader: React.FunctionComponent = () => {
           <ChangeLanguage />
           {/* {!walletButtonShow || !isMobile ? <ChangeLanguage /> : null} */}
           {/* <ButtonGroup>{walletButtonShow ? <UnlockButton /> : null}</ButtonGroup> */}
-          <MobileView style={{ width: '24px' }}>
+          <MobileView
+            style={{
+              width: '24px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             {!show ? (
               <MenuOutlined
                 style={{ fontSize: '18px', color: '#fff' }}
@@ -105,7 +112,7 @@ const AppHeader: React.FunctionComponent = () => {
                 width={24}
                 height={24}
                 src={closeIcon}
-                style={{ marginTop: '5px' }}
+                style={{ marginTop: '0px' }}
                 onClick={() => {
                   dispatch(changeMobileMenuShow({ show: false }))
                   document.removeEventListener('touchmove', preventDefault)
