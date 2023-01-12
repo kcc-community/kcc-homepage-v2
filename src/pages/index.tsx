@@ -13,6 +13,7 @@ import Partner from 'components/Home/Partner'
 import { useRouter } from 'next/router'
 import { scrollToId } from 'utils/scroll'
 import { isClient } from 'constants/index'
+import Loading from 'components/Loading'
 
 const AppWrap = styled.div`
   margin: 0;
@@ -31,6 +32,15 @@ export async function getStaticProps({ locale }: { locale: any }) {
 }
 export default function Home() {
   const router = useRouter()
+  const [show, setShow] = React.useState<boolean>(true)
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.setTimeout(() => {
+        setShow(() => false)
+      }, 500)
+    }
+  }, [])
 
   // add handle when url query change
   React.useEffect(() => {
@@ -51,11 +61,17 @@ export default function Home() {
           content="KCC is a high performance decentralized public chain built by the fans of KCS and KuCoin. We aim to provide community users with faster, more convenient and low-cost experience."
         />
       </Head>
-      <Banner />
-      <Ecosystem />
-      <Develop />
-      <Community />
-      <Partner />
+      {show ? (
+        <Loading show={show} />
+      ) : (
+        <>
+          <Banner />
+          <Ecosystem />
+          <Develop />
+          <Community />
+          <Partner />
+        </>
+      )}
     </AppWrap>
   )
 }
