@@ -13,53 +13,6 @@ import GithubMedia from '../Svg/Icons/GithubMedia'
 import { message } from 'antd'
 import axios, { AxiosResponse } from 'axios'
 
-const mediaList = [
-  {
-    name: 'Twitter',
-    icon: (isHover: boolean) => (
-      <TwitterIcon
-        width={48}
-        height={48}
-        color={isHover ? '#fff' : '#040A2D'}
-      />
-    ),
-    url: KCC.TWITTER,
-  },
-  {
-    name: 'Telegram',
-    icon: (isHover: boolean) => (
-      <TelegramIcon
-        width={48}
-        height={48}
-        color={isHover ? '#fff' : '#040A2D'}
-      />
-    ),
-    url: KCC.TELEGRAM,
-  },
-  {
-    name: 'Github',
-    icon: (isHover: boolean) => (
-      <GithubMedia
-        width={48}
-        height={48}
-        color={isHover ? '#fff' : '#040A2D'}
-      />
-    ),
-    url: KCC.GITHUB_URL,
-  },
-  {
-    name: 'Discord',
-    icon: (isHover: boolean) => (
-      <DiscordIcon
-        width={48}
-        height={48}
-        color={isHover ? '#fff' : '#040A2D'}
-      />
-    ),
-    url: KCC.DISCORD_URL,
-  },
-]
-
 const Wrap = styled.div`
   display: flex;
   flex-flow: column nowrap;
@@ -264,12 +217,9 @@ const ButtonText = styled.div`
 const StyledInput = styled(Input)`
   font-family: 'Poppins';
   margin-top: 26px;
-  height: 64px;
+  height: 54px;
   outline: none;
   font-size: 18px;
-  @media (max-width: 768px) {
-    height: 54px;
-  }
 `
 
 async function subscribeMail(email: string) {
@@ -286,11 +236,60 @@ async function subscribeMail(email: string) {
 
 const Community: React.FC = () => {
   const { t } = useTranslation()
-  const initHoverState = new Array(mediaList.length).fill(false)
+  const initHoverState = new Array(4).fill(false)
   const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
   const [email, setEmail] = React.useState<string>('')
   const [disable, setDisable] = React.useState<boolean>(false)
   const [, setSubscribed] = React.useState<boolean>(false)
+
+  const mediaList: any[] = React.useMemo(() => {
+    return [
+      {
+        name: 'Twitter',
+        icon: () => (
+          <TwitterIcon
+            width={48}
+            height={48}
+            color={hoverList[0] ? '#fff' : '#040A2D'}
+          />
+        ),
+        url: KCC.TWITTER,
+      },
+      {
+        name: 'Telegram',
+        icon: () => (
+          <TelegramIcon
+            width={48}
+            height={48}
+            color={hoverList[1] ? '#fff' : '#040A2D'}
+          />
+        ),
+        url: KCC.TELEGRAM,
+      },
+      {
+        name: 'Github',
+        icon: () => (
+          <GithubMedia
+            width={48}
+            height={48}
+            color={hoverList[2] ? '#fff' : '#040A2D'}
+          />
+        ),
+        url: KCC.GITHUB_URL,
+      },
+      {
+        name: 'Discord',
+        icon: () => (
+          <DiscordIcon
+            width={48}
+            height={48}
+            color={hoverList[3] ? '#fff' : '#040A2D'}
+          />
+        ),
+        url: KCC.DISCORD_URL,
+      },
+    ]
+  }, [hoverList])
 
   const setHoverByIndex = (index: number) => {
     const stateList = initHoverState
@@ -343,7 +342,7 @@ const Community: React.FC = () => {
                   onMouseEnter={() => setHoverByIndex(index)}
                   onMouseLeave={() => setHoverList(() => initHoverState)}
                 >
-                  {media.icon(hoverList[index])}
+                  {media.icon()}
                   <MediaText>{t(media.name)}</MediaText>
                 </Media>
               )
