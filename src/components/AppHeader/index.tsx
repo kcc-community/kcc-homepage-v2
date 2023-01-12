@@ -87,42 +87,43 @@ const AppHeader: React.FunctionComponent = () => {
             />
           </BrowserView>
           <ChangeLanguage />
-          {/* {!walletButtonShow || !isMobile ? <ChangeLanguage /> : null} */}
-          {/* <ButtonGroup>{walletButtonShow ? <UnlockButton /> : null}</ButtonGroup> */}
-          <MobileView
-            style={{
-              height: '24px',
-              width: '24px',
-              textAlign: 'center',
-              lineHeight: '24px',
-            }}
-          >
-            {!show ? (
-              <MenuOutlined
-                style={{ fontSize: '18px', color: '#fff' }}
-                onClick={() => {
-                  dispatch(changeMobileMenuShow({ show: true }))
-                  document.addEventListener('touchmove', preventDefault, {
-                    passive: false,
-                  })
-                }}
-              />
-            ) : (
-              <Image
-                width={24}
-                height={24}
-                src={closeIcon}
-                style={{ marginTop: '0px' }}
-                onClick={() => {
-                  dispatch(changeMobileMenuShow({ show: false }))
-                  document.removeEventListener('touchmove', preventDefault)
-                }}
-                alt="close"
-              />
-            )}
+          {isMobile ? (
+            <div
+              style={{
+                display: 'flex ',
+                height: '24px',
+                width: '24px',
+                justifyContent: 'center',
+                alignContent: 'center',
+              }}
+            >
+              {!show ? (
+                <MenuOutlined
+                  style={{ fontSize: '18px', color: '#fff' }}
+                  onClick={() => {
+                    dispatch(changeMobileMenuShow({ show: true }))
+                    document.addEventListener('touchmove', preventDefault, {
+                      passive: false,
+                    })
+                  }}
+                />
+              ) : (
+                <Image
+                  width={24}
+                  height={24}
+                  src={closeIcon}
+                  style={{ marginTop: '0px' }}
+                  onClick={() => {
+                    dispatch(changeMobileMenuShow({ show: false }))
+                    document.removeEventListener('touchmove', preventDefault)
+                  }}
+                  alt="close"
+                />
+              )}
 
-            {show ? <AppMenu style={{ width: '100%' }} /> : null}
-          </MobileView>
+              {show ? <AppMenu style={{ width: '100%' }} /> : null}
+            </div>
+          ) : null}
         </Box>
       </AppHeaderContent>
     </AppHeaderWrap>
