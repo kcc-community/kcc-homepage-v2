@@ -21,7 +21,7 @@ const GoogleCaptcha: React.FC<{
       const char = window.document.getElementById('captcha')
       console.log('captchaId', captchaId)
       if (!token && char && window?.grecaptcha && !rendered) {
-        const cid = window.grecaptcha.render('captcha', {
+        const cid = window?.grecaptcha.render('captcha', {
           sitekey: '6LeOBWgjAAAAABbXn2QM7GtdTu7ugAQwOJRPCuzG',
         })
         rendered = true
@@ -55,7 +55,9 @@ const GoogleCaptcha: React.FC<{
   }, [getGoogleCaptcha, refreshTag])
 
   React.useEffect(() => {
-    renderGoogleCaptcha()
+    if (isClient) {
+      renderGoogleCaptcha()
+    }
   }, [renderGoogleCaptcha])
 
   return (
