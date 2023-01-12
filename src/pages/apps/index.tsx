@@ -47,15 +47,7 @@ const AppWrap = styled.div`
 export async function getStaticProps({ locale }: { locale: any }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['common'], null, [
-        'en',
-        'zh_HK',
-        'zh_CN',
-        'es_ES',
-        'pt_PT',
-        'de_DE',
-        'ru_RU',
-      ])),
+      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
       // Will be passed to the page component as props
     },
   }

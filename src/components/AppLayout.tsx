@@ -36,7 +36,7 @@ const AppLayout: React.FC<{ children: any }> = ({ children }) => {
     ? window.localStorage.getItem('FULLSCREEN_MODE') ?? false
     : false
 
-  if (isFullScreen) return <React.Fragment>{children}</React.Fragment>
+  if (isFullScreen) return <div>{children}</div>
   return <AppBaseLayout>{children}</AppBaseLayout>
 }
 

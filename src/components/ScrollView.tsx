@@ -17,7 +17,7 @@ const SVComponent: React.FC<Props> = ({ node, children, options }) => {
     animate()
   }, [options, node])
 
-  return <React.Fragment>{children}</React.Fragment>
+  return <div>{children}</div>
 }
 
 export default SVComponent

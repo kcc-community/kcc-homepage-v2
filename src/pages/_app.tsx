@@ -53,7 +53,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page)
   return (
-    <>
+    <div>
       <Providers>{getLayout(<Component {...pageProps} />)}</Providers>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-SDY59S7KD7"
@@ -68,7 +68,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
           gtag('config', 'G-SDY59S7KD7');
         `}
       </Script>
-    </>
+    </div>
   )
 }
 
