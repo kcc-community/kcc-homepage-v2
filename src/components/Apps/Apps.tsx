@@ -179,6 +179,10 @@ const Website = styled.div`
   align-items: center;
   color: #7f8393;
   margin-top: 3px;
+  white-space: nowrap;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
   @media (max-width: 768px) {
     font-size: 12px;
   }
