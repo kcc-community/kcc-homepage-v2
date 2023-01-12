@@ -301,8 +301,9 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
     } else {
       category = 'All apps'
     }
+    setCurrentPage(() => 1)
     return category
-  }, [router.query, categoryList])
+  }, [router.query, categoryList, setCurrentPage])
 
   React.useEffect(() => {
     async function update() {
