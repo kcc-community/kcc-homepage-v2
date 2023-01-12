@@ -21,7 +21,7 @@ const GoogleCaptcha: React.FC<{
       const char = window.document.getElementById('captcha')
       console.log('captchaId', captchaId)
       if (!token && char && window?.grecaptcha && !rendered) {
-        const cid = window?.grecaptcha.render('captcha', {
+        const cid = window?.grecaptcha?.render('captcha', {
           sitekey: '6LeOBWgjAAAAABbXn2QM7GtdTu7ugAQwOJRPCuzG',
         })
         rendered = true
@@ -38,7 +38,7 @@ const GoogleCaptcha: React.FC<{
   }, [captchaId])
 
   const getGoogleCaptcha = React.useCallback(async () => {
-    const code = window.grecaptcha.getResponse(captchaId)
+    const code = window?.grecaptcha?.getResponse(captchaId)
     if (!code) {
       message.error(t('Invalid captcha'))
       resetCaptcha()
