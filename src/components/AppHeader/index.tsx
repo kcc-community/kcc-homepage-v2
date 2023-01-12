@@ -61,6 +61,10 @@ const AppHeader: React.FunctionComponent = () => {
 
   const dispatch = useDispatch()
 
+  const preventDefault = (e: Event) => {
+    e.preventDefault()
+  }
+
   // const walletButtonShow = React.useMemo(() => {
   //   return props.location.pathname.startsWith('/bridge')
   // }, [props.location.pathname])
@@ -91,6 +95,9 @@ const AppHeader: React.FunctionComponent = () => {
                 style={{ fontSize: '18px', color: '#fff' }}
                 onClick={() => {
                   dispatch(changeMobileMenuShow({ show: true }))
+                  document.addEventListener('touchmove', preventDefault, {
+                    passive: false,
+                  })
                 }}
               />
             ) : (
@@ -101,6 +108,7 @@ const AppHeader: React.FunctionComponent = () => {
                 style={{ marginTop: '5px' }}
                 onClick={() => {
                   dispatch(changeMobileMenuShow({ show: false }))
+                  document.removeEventListener('touchmove', preventDefault)
                 }}
                 alt="close"
               />
