@@ -91,10 +91,10 @@ const AppHeader: React.FunctionComponent = () => {
           {/* <ButtonGroup>{walletButtonShow ? <UnlockButton /> : null}</ButtonGroup> */}
           <MobileView
             style={{
+              height: '24px',
               width: '24px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
+              textAlign: 'center',
+              lineHeight: '24px',
             }}
           >
             {!show ? (

@@ -58,7 +58,7 @@ const Title = styled.div`
   align-items: center;
   color: #040a2d;
   @media (max-width: 768px) {
-    font-size: 24px;
+    font-size: 32px;
     text-align: center;
     line-height: 48px;
   }
