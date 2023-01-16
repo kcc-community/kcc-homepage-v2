@@ -9,6 +9,7 @@ import Pagination from 'components/Pagination'
 import { DappService } from '../../api/dapp'
 import { Spin } from 'antd'
 import { useResponsive } from '../../utils/responsive'
+import { InfoCircleOutlined } from '@ant-design/icons'
 
 const Wrap = styled.div`
   width: 100%;
@@ -277,6 +278,24 @@ const ViewMoreButton = styled.div<{ disabled: boolean }>`
   }};
 `
 
+const RiskContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #7f8393;
+  margin-top: 44px;
+  @media (max-width: 768px) {
+    padding: 0 12px;
+    align-items: flex-start;
+  }
+`
+
 const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
   categoryList,
 }) => {
@@ -429,6 +448,13 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
             />
           </PaginationWrap>
         )}
+
+        <RiskContainer>
+          <InfoCircleOutlined
+            style={{ fontSize: '14px', color: '#7F8393', marginRight: '8px' }}
+          />
+          {t('dapp_risk_statement')}
+        </RiskContainer>
       </Content>
     </Wrap>
   )

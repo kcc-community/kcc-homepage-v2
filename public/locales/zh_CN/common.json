@@ -133,5 +133,6 @@
   "Community": "社区",
   "Join KCC Community": "加入 <color>KCC社区</color>",
   "Live": "已部署上线",
-  "In progress": "开发中"
+  "In progress": "开发中",
+  "dapp_risk_statement": "KCC是一个完全开源和开放的社区，所有在KCC上运行的项目和dApp应用都是由第三方开发者独立开发的。"
 }
