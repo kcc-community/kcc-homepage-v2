@@ -1,11 +1,10 @@
 import arrowDown from 'assets/images/Icons/arrow-down.webp'
 import { RowCenterBox } from 'components'
 import { KCC } from 'constants/index'
-import { i18n, useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import React from 'react'
 import styled from 'styled-components'
-import dayjs from 'dayjs'
 import { NewListItemType, NewsService } from 'api/news'
 import { useResponsive } from 'utils/responsive'
 
@@ -86,23 +85,6 @@ const ItemTitle = styled.div`
   }
 `
 
-const DateText = styled.div`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 30px;
-  display: flex;
-  align-items: center;
-  color: #7f8393;
-  margin-top: 16px;
-  @media (max-width: 768px) {
-    font-size: 16px;
-    margin-top: 6px;
-    line-height: 24px;
-  }
-`
-
 const StyledImage = styled(Image)`
   border-radius: 12px;
   cursor: pointer;
@@ -123,16 +105,6 @@ const NewsList: React.FC = () => {
       }
     }
     updateList()
-  }, [])
-
-  const formatDate = React.useCallback((date: string) => {
-    switch (i18n?.language) {
-      case 'zh_CN':
-      case 'zh_HK':
-        return dayjs(date).format('YYYY年MM月DD日')
-      default:
-        return dayjs(date).format('DD MMM YYYY')
-    }
   }, [])
 
   return (

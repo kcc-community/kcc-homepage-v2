@@ -92,7 +92,7 @@ export const MENU_LIST = [
       {
         title: 'Wallet',
         subTitle: `KCC_home_manu_wallet`,
-        route: '/apps?category=wallet', // dApps -> wallet
+        route: '/apps?category=wallets', // dApps -> wallet
         icon: (isHover = false) => {
           return <WalletIcon isHover={isHover} />
         },
