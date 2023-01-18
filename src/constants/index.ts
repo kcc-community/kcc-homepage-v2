@@ -16,6 +16,10 @@ import zonff from 'assets/images/home/v2/zonff.svg'
 import axis from 'assets/images/home/v2/axis.svg'
 import acCapital from 'assets/images/home/v2/ac-capital.svg'
 import web3port from 'assets/images/home/v2/web3port.svg'
+import idg from 'assets/images/home/v2/idg.svg'
+import pyth from 'assets/images/home/v2/pyth.svg'
+import moonshot from 'assets/images/home/v2/moonshot.svg'
+import certik from 'assets/images/home/v2/certik.svg'
 
 export const KCC = {
   FULLNAME: 'KuCoin Community Chain',
@@ -137,6 +141,26 @@ export const KCC = {
       name: 'Web3Port',
       logo: web3port,
       route: 'https://www.web3port.us/',
+    },
+    {
+      name: 'Pyth',
+      logo: pyth,
+      route: 'https://pyth.network/',
+    },
+    {
+      name: 'CertiK',
+      logo: certik,
+      route: 'https://www.certik.com/',
+    },
+    {
+      name: 'Moonshot Commons',
+      logo: moonshot,
+      route: 'https://moonshotcommons.com/',
+    },
+    {
+      name: 'IDG',
+      logo: idg,
+      route: 'https://en.idgcapital.com/',
     },
   ],
 }

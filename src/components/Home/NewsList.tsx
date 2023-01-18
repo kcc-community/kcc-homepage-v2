@@ -173,7 +173,7 @@ const NewsList: React.FC = () => {
                 alt="news-thumbnail"
               />
               <ItemTitle>{newTitle}</ItemTitle>
-              <DateText>{formatDate(news.post_date)}</DateText>
+              {/* <DateText>{formatDate(news.post_date)}</DateText> */}
             </Item>
           )
         })}
