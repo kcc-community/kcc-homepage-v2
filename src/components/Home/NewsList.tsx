@@ -165,7 +165,7 @@ const NewsList: React.FC = () => {
               ? news.title
               : news.title.slice(0, 54) + '...'
           return (
-            <Item key={news.id}>
+            <Item key={news.id} onClick={() => window.open(news.content_link)}>
               <StyledImage
                 src={news.banner_url}
                 width={isMobile ? 300 : 384}
