@@ -72,7 +72,6 @@ const AppHeader: React.FunctionComponent = () => {
 
   React.useEffect(() => {
     if (!show && isClient) {
-      dispatch(changeMobileMenuShow({ show: true }))
       document.removeEventListener('touchmove', preventDefault)
     }
   }, [dispatch, show])
