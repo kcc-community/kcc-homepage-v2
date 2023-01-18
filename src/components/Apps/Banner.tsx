@@ -18,16 +18,15 @@ const Content = styled.div`
   margin: 0 auto;
   height: 480px;
   padding-top: 163px;
-  background: url('/images/apps/apps-bg.webp') -100px center no-repeat;
+  background: url('/images/apps/banner_dapp.jpg') bottom center no-repeat;
   background-size: auto 100%;
   @media (max-width: 1200px) {
     padding-left: 24px;
     padding-right: 24px;
   }
   @media (max-width: 768px) {
-    background: url('/images/apps/apps-bg.webp') bottom center no-repeat;
-    background-size: 900px auto;
-    background-position: -450px bottom;
+    background: url('/images/apps/mobile.jpg') bottom center no-repeat;
+    background-size: 100% auto;
     width: 100%;
     height: 600px;
     padding-top: 120px;

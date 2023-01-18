@@ -142,9 +142,8 @@ const AppCard = styled(Link)`
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 96%;
+    width: 100%;
     height: 167px;
-    margin-left: 2%;
   }
 `
 
@@ -187,6 +186,7 @@ const Website = styled.div`
   overflow: hidden;
   @media (max-width: 768px) {
     font-size: 12px;
+    max-width: 200px;
   }
 `
 
@@ -312,7 +312,7 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
   const [totalApps, setTotalApps] = React.useState<number>(0)
 
   const allCategoryList = React.useMemo(() => {
-    return [{ id: -1, name: 'All apps' }, ...categoryList]
+    return [{ id: -1, name: 'All Categories' }, ...categoryList]
   }, [categoryList])
 
   const currentCategory = React.useMemo(() => {
@@ -325,7 +325,7 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
         }
       }
     } else {
-      category = 'All apps'
+      category = 'All Categories'
     }
     setCurrentPage(() => 1)
     return category
@@ -339,7 +339,7 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
         const response = await DappService.dappList(
           currentPage,
           pageSize,
-          currentCategory !== 'All apps' ? currentCategory : undefined
+          currentCategory !== 'All Categories' ? currentCategory : undefined
         )
         setAppList(() => response.data.data.list)
         console.log('change app list', response.data.data.list)
@@ -357,7 +357,7 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
     (categoryName: string) => {
       setLoading(() => true)
       const { pathname } = router
-      if (categoryName === 'All apps') {
+      if (categoryName === 'All Categories') {
         router.push(pathname)
       } else {
         router.push(`${pathname}?category=${categoryName}`)
