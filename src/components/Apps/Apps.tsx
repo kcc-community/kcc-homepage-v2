@@ -142,8 +142,9 @@ const AppCard = styled(Link)`
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 100%;
+    width: 96%;
     height: 167px;
+    margin-left: 2%;
   }
 `
 
@@ -209,8 +210,9 @@ const Desc = styled.div`
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   @media (max-width: 768px) {
-    -webkit-line-clamp: 2;
-    height: 44px;
+    width: 100%;
+    height: auto;
+    -webkit-line-clamp: 3;
     margin-top: 12px;
   }
 `

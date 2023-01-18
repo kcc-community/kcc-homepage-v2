@@ -238,7 +238,7 @@ const stepList = [
     title: 'Download Wallet',
     desc: 'KCC_home_individual_wallet',
     buttonText: 'Download Wallet',
-    buttonUrl: '/apps?category=wallet',
+    buttonUrl: '/apps?category=wallets',
   },
   {
     image: step2,
