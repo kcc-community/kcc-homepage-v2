@@ -48,6 +48,10 @@ const HeaderLeftWrap = styled.div`
   }
 `
 
+export const preventDefault = (e: Event) => {
+  e.preventDefault()
+}
+
 const AppHeaderContent = styled(HeaderLeftWrap)<{ isMobile: boolean }>`
   justify-content: space-between;
   width: 100%;
@@ -60,10 +64,6 @@ const AppHeader: React.FunctionComponent = () => {
   const { isMobile } = useResponsive()
 
   const dispatch = useDispatch()
-
-  const preventDefault = (e: Event) => {
-    e.preventDefault()
-  }
 
   // const walletButtonShow = React.useMemo(() => {
   //   return props.location.pathname.startsWith('/bridge')

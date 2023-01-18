@@ -20,6 +20,7 @@ import { BrowserView, MobileView } from '../index'
 
 import './index.less'
 import { useMobileMenuShow } from '../../state/application/hooks'
+import { preventDefault } from 'components/AppHeader'
 
 export interface AppMenuProps {
   style?: CSSProperties
@@ -321,6 +322,11 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
               lineHeight: '25px',
               color: theme.colors.primary,
             }}
+            onClick={() =>
+              document.addEventListener('touchmove', preventDefault, {
+                passive: false,
+              })
+            }
           >
             <NavItem {...item} setOpenKeys={setOpenKeys} />
           </Menu.Item>
