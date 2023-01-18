@@ -11,6 +11,7 @@ import { BrowserView } from '../index'
 import KccLogo from '../Logo/KccLogo'
 import closeIcon from 'assets/images/Icons/close.png'
 import Image from 'next/image'
+import { isClient } from '../../constants/index'
 
 const AppHeaderWrap = styled.div`
   display: flex;
@@ -68,6 +69,13 @@ const AppHeader: React.FunctionComponent = () => {
   // const walletButtonShow = React.useMemo(() => {
   //   return props.location.pathname.startsWith('/bridge')
   // }, [props.location.pathname])
+
+  React.useEffect(() => {
+    if (!show && isClient) {
+      dispatch(changeMobileMenuShow({ show: true }))
+      document.removeEventListener('touchmove', preventDefault)
+    }
+  }, [dispatch, show])
 
   return (
     <AppHeaderWrap>

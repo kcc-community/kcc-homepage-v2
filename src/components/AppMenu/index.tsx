@@ -323,9 +323,7 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = ({ style }) => {
               color: theme.colors.primary,
             }}
             onClick={() =>
-              document.addEventListener('touchmove', preventDefault, {
-                passive: false,
-              })
+              document.removeEventListener('touchmove', preventDefault)
             }
           >
             <NavItem {...item} setOpenKeys={setOpenKeys} />
