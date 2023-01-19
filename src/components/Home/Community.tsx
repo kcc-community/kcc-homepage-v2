@@ -268,7 +268,7 @@ const Community: React.FC = () => {
         url: KCC.TELEGRAM,
       },
       {
-        name: 'medium',
+        name: 'Medium',
         icon: (
           <MediumnIcon
             width={48}
