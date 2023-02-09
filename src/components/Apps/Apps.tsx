@@ -164,6 +164,12 @@ const Name = styled.div`
   align-items: center;
   color: #000000;
   margin-top: 16px;
+  width: 240px;
+  overflow: hidden;
+  word-wrap: clip;
+  white-space: break-spaces;
+  text-overflow: ellipsis;
+
   @media (max-width: 768px) {
     font-size: 20px;
     line-height: 30px;
@@ -196,13 +202,9 @@ const Desc = styled.div`
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  display: flex;
-  align-items: center;
   color: #494e67;
   margin-top: 24px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: wrap;
   height: 105px;
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -418,7 +420,11 @@ const Apps: React.FC<{ categoryList: AppCategoryType[] }> = ({
                         </MobileBox>
                       ) : (
                         <>
-                          <Name>{app.name}</Name>
+                          <Name>
+                            {app.name.length > 14
+                              ? app.name.slice(0, 14) + '...'
+                              : app.name}
+                          </Name>
                           <Website>{app.website}</Website>
                           <Desc>{app.description}</Desc>
                         </>

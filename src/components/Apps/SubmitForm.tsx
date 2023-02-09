@@ -32,7 +32,7 @@ const { Option } = Select
 
 const initState: FormDataProps = {
   name: '',
-  requestType: RequestType['New submission'],
+  request: RequestType['New submission'],
   project_status: ProjectStatus.Live,
   website: '',
   category_ids: '',
@@ -251,10 +251,10 @@ const SubmitForm: React.FC = () => {
             <Input />
           </Form.Item>
           <Form.Item
-            name="requestType"
+            name="request"
             label={t('Request Type')}
             rules={[{ required: true }]}
-            initialValue={initState.requestType}
+            initialValue={initState.request}
           >
             <Radio.Group>
               <Radio value={RequestType['New submission']}>

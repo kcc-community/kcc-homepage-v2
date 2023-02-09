@@ -23,7 +23,7 @@ export enum ProjectStatus {
 }
 export interface FormDataProps {
   name: string
-  requestType: RequestType
+  request: RequestType
   project_status: ProjectStatus
   website: string
   category_ids: string
