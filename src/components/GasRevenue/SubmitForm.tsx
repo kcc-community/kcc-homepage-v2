@@ -216,7 +216,10 @@ const SubmitForm: React.FC = () => {
             )}
           </Form.Item>
 
-          <Form.Item {...tailLayout} style={{ width: '100%' }}>
+          <Form.Item
+            {...tailLayout}
+            style={{ width: isMobile ? 'auto' : '100%' }}
+          >
             <NormalButton
               type="primary"
               htmlType="submit"
