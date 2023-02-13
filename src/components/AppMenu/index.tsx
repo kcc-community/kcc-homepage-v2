@@ -12,7 +12,7 @@ import Column from '../Column'
 import Row from '../Row/index'
 
 import { useDispatch } from 'react-redux'
-import { isClient, KCC } from '../../constants/index'
+import { isClient, KCC } from '../../constants'
 import { theme } from '../../constants/theme'
 import { changeMobileMenuShow } from '../../state/application/actions'
 import { useResponsive } from '../../utils/responsive'
@@ -31,13 +31,12 @@ const MenuWrap = styled.div`
   position: relative;
   z-index: 2;
   @media (max-width: 768px) {
-    margin-left: 0px;
+    margin-left: 0;
     justify-self: flex-end;
     position: fixed;
     top: 70px;
-    left: 0px;
+    left: 0;
     width: 100%;
-    margin-left: 0;
     background: #fff;
     min-height: calc(100vh + 70px);
   }
@@ -108,7 +107,6 @@ const NavSubTitle = styled.div`
   font-size: 12px;
   color: #040a2d;
   letter-spacing: 0;
-  text-align: center;
   padding: 0;
   margin: 0;
   width: auto;
