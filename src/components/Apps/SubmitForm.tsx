@@ -17,16 +17,12 @@ import { DappService } from 'api/dapp'
 import { updateAppCategoryList } from 'state/apps/actions'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from 'state'
-import StringCrypto from 'string-crypto'
-import { uploadImg } from 'utils/submit'
 import { FormDataProps, ProjectStatus, RequestType } from './types'
-import { NFTStorage } from 'nft.storage'
-import { Ipfs, IpfsUri } from 'constants/index'
-import { RcFile } from 'antd/es/upload'
 import { PlusOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import GoogleCaptcha from './GoogleCaptcha'
 import { useResponsive } from '../../utils/responsive'
+import { getBase64, uploadImg } from 'utils/submit'
 
 const { Option } = Select
 
@@ -38,7 +34,7 @@ const initState: FormDataProps = {
   category_ids: '',
   brief_introduction: '',
   detail_description: '',
-  logo_url: '',
+  base64_image_content: '',
   smart_contract_address: '',
   token_symbol: '',
   project_email: '',
@@ -96,14 +92,6 @@ const layout = {
   wrapperCol: { span: 24 },
 }
 
-const getBase64 = (file: RcFile): Promise<string> =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onload = () => resolve(reader.result as string)
-    reader.onerror = (error) => reject(error)
-  })
-
 const SubmitForm: React.FC = () => {
   const { t } = useTranslation()
   const { isMobile } = useResponsive()
@@ -127,10 +115,6 @@ const SubmitForm: React.FC = () => {
     },
     [form]
   )
-
-  const { decryptString } = new StringCrypto()
-
-  const client = new NFTStorage({ token: decryptString(Ipfs, 'KCC_DISCOVER') })
 
   const categoryList = useAppCategoryList()
 
@@ -190,28 +174,32 @@ const SubmitForm: React.FC = () => {
   )
 
   const upLoadProps = {
+    customRequest: (option: any) => {
+      const file = option.file
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => {
+        const base64 = reader.result
+        form.setFieldValue('base64_image_content', base64)
+      }
+    },
     onRemove: (file: any) => {
       const index = fileList.indexOf(file)
       const newFileList = fileList.slice()
       newFileList.splice(index, 1)
       setFileList(newFileList)
     },
-    beforeUpload: (file: any) => {
-      console.log('file =', file)
-      setFileList([...fileList, file])
-      return false
-    },
     accept: 'image/*',
     fileList,
   }
 
-  const handlePreview = async (file: UploadFile) => {
+  const handlePreview = async (file: any) => {
     if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj as RcFile)
+      file.preview = await getBase64(file)
     }
     setPreviewImage(file.url || (file.preview as string))
     setPreviewOpen(true)
-    setPreviewTitle(file.name ?? file.url)
+    setPreviewTitle(file.originFileObj.name ?? file.url)
   }
 
   const handleCancel = () => setPreviewOpen(false)
@@ -324,7 +312,7 @@ const SubmitForm: React.FC = () => {
             />
           </Form.Item>
           <Form.Item
-            name="logo_url"
+            name="base64_image_content"
             label={LogoItem}
             rules={[{ required: true }]}
           >
@@ -340,21 +328,15 @@ const SubmitForm: React.FC = () => {
                   if (!e.fileList.length) {
                     return false
                   }
-                  const metadata = await uploadImg(client, e.file, {
+                  const metadata = await uploadImg(e.file as any, {
                     width: 256,
                     height: 256,
                   })
                   if (metadata) {
-                    console.log(
-                      '`${IpfsUri}/${metadata}`',
-                      `${IpfsUri}/${metadata}`
-                    )
-                    form.setFieldValue('logo_url', `${IpfsUri}/${metadata}`)
-                    setFileList((oldFileList) => {
-                      return [
-                        { ...oldFileList[0], url: `${IpfsUri}/${metadata}` },
-                      ]
-                    })
+                    form.setFieldValue('base64_image_content', metadata)
+                    setFileList(() => [
+                      { ...e.file.originFileObj, url: metadata },
+                    ])
                   } else {
                     setFileList(() => [])
                   }

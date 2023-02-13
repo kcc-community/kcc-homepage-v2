@@ -29,7 +29,7 @@ export interface FormDataProps {
   category_ids: string
   brief_introduction: string
   detail_description: string
-  logo_url: string
+  base64_image_content: string
   smart_contract_address: string
   token_symbol: string
   project_email: string

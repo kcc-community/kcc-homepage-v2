@@ -1,13 +1,11 @@
 import { message } from 'antd'
 import { i18n } from 'next-i18next'
-import { NFTStorage } from 'nft.storage'
-import { CIDString } from 'nft.storage/dist/src/lib/interface'
-
 export const limitUploadImageSize = (
-  file: Blob,
+  file: any,
   standardWidth: number,
   standardHeight: number
 ) => {
+  console.log('file', file)
   return new Promise(function (resolve) {
     const reader = new FileReader()
     reader.onload = function (e: ProgressEvent<FileReader>) {
@@ -24,7 +22,7 @@ export const limitUploadImageSize = (
       }
       image.src = data
     }
-    reader.readAsDataURL(file)
+    reader.readAsDataURL(file?.originFileObj as any)
   })
 }
 
@@ -32,11 +30,19 @@ const limitUploadVolume = (size: number) => {
   return Number(size) / 1024
 }
 
+export const getBase64 = (file: any): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file?.originFileObj as any)
+    reader.onload = () => resolve(reader.result as string)
+    reader.onerror = (error) => reject(error)
+  })
+}
+
 export const uploadImg = async (
-  client: NFTStorage,
-  file: Blob,
+  file: any,
   limit: { width: number; height: number }
-): Promise<CIDString | null> => {
+): Promise<string | null> => {
   const sizeResult = await limitUploadImageSize(file, limit.width, limit.height)
   const volumeResult = limitUploadVolume(1024)
 
@@ -45,8 +51,7 @@ export const uploadImg = async (
     return null
   }
   i18n && message.info(i18n.t('Uploading'), 0)
-  const metadata = await client.storeBlob(new Blob([file]))
-  console.log('metadata.json contents with IPFS gateway URLs:\n', metadata)
+  const metadata = await getBase64(file)
   message.destroy()
   i18n && message.success(i18n.t('Upload success'))
   return metadata
