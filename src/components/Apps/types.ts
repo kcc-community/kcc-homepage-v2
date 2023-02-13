@@ -13,9 +13,34 @@ export interface AppType {
   categories: AppCategoryType[]
 }
 
+export enum RequestType {
+  'New submission',
+  'Update dApp information',
+}
+
+export enum ProjectStatus {
+  'Live',
+  'Work in progress',
+}
+
 export interface FormDataProps {
   name: string
+  request: RequestType
+  project_status: ProjectStatus
   website: string
-  contact: string
-  profile: string
+  category_ids: string
+  brief_introduction: string
+  detail_description: string
+  base64_image_content: string
+  smart_contract_address: string
+  token_symbol: string
+  project_email: string
+  token_contract_address?: string
+  tvl_interface: string
+  github?: string
+  twitter?: string
+  telegram?: string
+  coinmarketcap?: string
+  coingecko?: string
+  token?: string
 }

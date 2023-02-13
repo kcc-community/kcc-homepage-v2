@@ -5,9 +5,8 @@ import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import { useResponsive } from 'utils/responsive'
 import { NormalButton } from '../Button'
-import { FormDataProps } from '../Apps/types'
 
-const initState: FormDataProps = {
+const initState = {
   name: '',
   website: '',
   profile: '',
@@ -74,7 +73,7 @@ const layout = {
 const SubmitForm: React.FC = () => {
   const { t } = useTranslation()
   const { isMobile } = useResponsive()
-  const [form] = Form.useForm<FormDataProps>() // useForm to collect form data
+  const [form] = Form.useForm<any>() // useForm to collect form data
   const [loading, setLoading] = React.useState<boolean>(false)
   const tailLayout = React.useMemo(() => {
     return {
@@ -163,14 +162,6 @@ const SubmitForm: React.FC = () => {
             >
               {t('Submit')}
             </NormalButton>
-            {/*<NormalButton*/}
-            {/*  size='large'*/}
-            {/*  htmlType='button'*/}
-            {/*  onClick={onReset}*/}
-            {/*  style={{ borderRadius: '24px', padding: '10px 20px', width: '200px' }}*/}
-            {/*>*/}
-            {/*  {t('Reset')}*/}
-            {/*</NormalButton>*/}
           </Form.Item>
         </StyledForm>
       </Content>
