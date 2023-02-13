@@ -14,6 +14,8 @@ const Wrap = styled.div`
   @media (max-width: 768px) {
     background: url('/images/gas-revenue/gasmobile.jpg') bottom center no-repeat,
       #000;
+    background-size: 100% auto;
+    overflow: hidden;
   }
 `
 const Content = styled.div`
@@ -21,17 +23,15 @@ const Content = styled.div`
   margin: 0 auto;
   height: 480px;
   padding-top: 163px;
-
-  background-size: auto 100%;
   @media (max-width: 1200px) {
     padding-left: 24px;
     padding-right: 24px;
   }
   @media (max-width: 768px) {
-    background-size: 100% auto;
     width: 100%;
-    height: 600px;
+    height: 700px;
     padding-top: 120px;
+    overflow: hidden;
   }
 `
 const Title = styled.div`

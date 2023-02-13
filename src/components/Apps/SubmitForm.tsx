@@ -23,6 +23,7 @@ import Image from 'next/image'
 import GoogleCaptcha from './GoogleCaptcha'
 import { useResponsive } from '../../utils/responsive'
 import { getBase64, uploadImg } from 'utils/submit'
+import { isClient } from '../../constants/index'
 
 const { Option } = Select
 
@@ -440,11 +441,13 @@ const SubmitForm: React.FC = () => {
             <Input placeholder={t('Enter project CoinGecko page URL') as any} />
           </Form.Item>
           <Form.Item label={t('Google Captcha')} initialValue={initState.token}>
-            <GoogleCaptcha
-              token={form.getFieldValue('token')}
-              setToken={setToken}
-              refreshTag={refreshTag}
-            />
+            {isClient && (
+              <GoogleCaptcha
+                token={form.getFieldValue('token')}
+                setToken={setToken}
+                refreshTag={refreshTag}
+              />
+            )}
           </Form.Item>
 
           <Form.Item {...tailLayout} style={{ width: '100%' }}>
