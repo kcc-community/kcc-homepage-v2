@@ -25,6 +25,11 @@ import GoogleCaptcha from './GoogleCaptcha'
 import { useResponsive } from '../../utils/responsive'
 import { getBase64, uploadImg } from 'utils/submit'
 import { isClient } from 'constants/index'
+import Web3 from 'web3'
+
+const web3 = new Web3()
+
+const { isAddress } = web3.utils
 
 const { Option } = Select
 
@@ -376,7 +381,18 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="smart_contract_address"
             label={t('Contract Address')}
-            rules={[{ required: true }]}
+            rules={[
+              { required: true },
+              // check is ethereum address
+              {
+                validator: (_, value) => {
+                  if (isAddress(value)) {
+                    return Promise.resolve()
+                  }
+                  return Promise.reject(new Error('Invalid Address'))
+                },
+              },
+            ]}
             initialValue={initState.smart_contract_address}
           >
             <Input placeholder={t('Enter smart contract address') as any} />
@@ -399,6 +415,17 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="token_contract_address"
             label={t('Token Contract Address')}
+            rules={[
+              // check is ethereum address
+              {
+                validator: (_, value) => {
+                  if (isAddress(value)) {
+                    return Promise.resolve()
+                  }
+                  return Promise.reject(new Error('Invalid Address'))
+                },
+              },
+            ]}
             initialValue={initState.token_contract_address}
           >
             <Input placeholder={t('Enter the Token Contract Address') as any} />
