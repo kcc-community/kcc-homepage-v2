@@ -42,8 +42,9 @@ const Content = styled.div`
   padding-bottom: 80px;
   background: #fff;
   @media (max-width: 768px) {
+    margin: 16px auto;
     width: 100%;
-    padding: 80px 24px 80px 24px;
+    padding: 48px 24px 80px 24px;
     box-sizing: border-box;
   }
 `
@@ -168,6 +169,7 @@ const SubmitForm: React.FC = () => {
         <StyledForm
           {...layout}
           form={form}
+          requiredMark={false}
           name="control-hooks"
           onFinish={onFinish}
         >
@@ -239,10 +241,11 @@ const SubmitForm: React.FC = () => {
               size="large"
               style={{
                 borderRadius: '29px',
-                width: '200px',
+                width: isMobile ? '300px' : '200px',
                 padding: '20px 20px',
                 height: '54px',
                 fontSize: '18px',
+                boxShadow: 'none',
               }}
             >
               {t('Submit')}

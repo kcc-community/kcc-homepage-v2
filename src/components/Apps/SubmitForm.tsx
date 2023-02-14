@@ -235,6 +235,7 @@ const SubmitForm: React.FC = () => {
         <StyledForm
           {...layout}
           form={form}
+          requiredMark={false}
           name="control-hooks"
           onFinish={onFinish}
         >

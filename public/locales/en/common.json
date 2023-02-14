@@ -134,5 +134,6 @@
   "Join KCC Community": "Join the <color>KCC Community</color>",
   "Live": "Live",
   "In progress": "Under Development",
-  "dapp_risk_statement": "KCC is an entirely open-source and open community,all projects and dApp applications running on the KCC are independently developed by third-party developers."
+  "dapp_risk_statement": "KCC is an entirely open-source and open community,all projects and dApp applications running on the KCC are independently developed by third-party developers.",
+  "gas revenue desc": "The Gas Revenue & Grants project is KCC's module for developers to receive a portion of the fees accumulated by their contracts. <color>Click here</color> to learn more about the rules for participating in Gas Back and Grants."
 }

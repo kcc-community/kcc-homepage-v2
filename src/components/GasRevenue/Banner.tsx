@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'next-i18next'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -57,10 +57,13 @@ const Desc = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  display: flex;
-  align-items: center;
   color: #ffffff;
   margin-top: 9px;
+`
+
+const Link = styled.a`
+  color: #1ebb8c;
+  cursor: pointer;
 `
 
 const Banner: React.FC = () => {
@@ -70,9 +73,22 @@ const Banner: React.FC = () => {
       <Content>
         <Title>{t('Gas Revenue & Grants Project')}</Title>
         <Desc>
-          {t(
-            "The Gas Revenue & Grants project is KCC's module for developers to receive a portion of the fees accumulated by their contracts. Click here to learn more about the rules for participating in Gas Back and Grants."
-          )}
+          <Trans
+            i18nKey="gas revenue desc"
+            components={{
+              color: (
+                <Link
+                  href="https://github.com/kcc-community/kcc-grants"
+                  target="_blank"
+                />
+              ),
+            }}
+          />
+
+          {/* <Trans
+            i18nKey="Join the KCC Ecosystem"
+            components={{ color: <Color /> }}
+          /> */}
         </Desc>
       </Content>
     </Wrap>
