@@ -9,6 +9,7 @@ import {
   Modal,
   message,
 } from 'antd'
+
 import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
@@ -23,7 +24,7 @@ import Image from 'next/image'
 import GoogleCaptcha from './GoogleCaptcha'
 import { useResponsive } from '../../utils/responsive'
 import { getBase64, uploadImg } from 'utils/submit'
-import { isClient } from '../../constants/index'
+import { isClient } from 'constants/index'
 
 const { Option } = Select
 
@@ -127,6 +128,7 @@ const SubmitForm: React.FC = () => {
       const response = await DappService.categoryList()
       dispatch(updateAppCategoryList({ list: response.data.data.list }))
     }
+
     if (categoryList.length < 1) {
       updateList()
     }
@@ -270,7 +272,18 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="website"
             label={t('Website')}
-            rules={[{ required: true }]}
+            rules={[
+              { required: true },
+              // check url start with http or https
+              {
+                validator: (_, value) => {
+                  if (!value || value.startsWith('http')) {
+                    return Promise.resolve()
+                  }
+                  return Promise.reject(new Error('Invalid URL'))
+                },
+              },
+            ]}
             initialValue={initState.website}
           >
             <Input placeholder={t('Enter official website URL') as any} />

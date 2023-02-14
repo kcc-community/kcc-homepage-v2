@@ -183,7 +183,19 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="website"
             label={`2.${t('Website of your project')}`}
-            rules={[{ required: true }, { min: 1, max: 100 }]}
+            rules={[
+              { required: true },
+              { min: 1, max: 100 },
+              // check url start with http or https
+              {
+                validator: (_, value) => {
+                  if (value && !value.startsWith('http')) {
+                    return Promise.reject(new Error('Please enter a valid URL'))
+                  }
+                  return Promise.resolve()
+                },
+              },
+            ]}
             initialValue={initState.website}
           >
             <Input style={{ width: '100%', height: '54px' }} />
