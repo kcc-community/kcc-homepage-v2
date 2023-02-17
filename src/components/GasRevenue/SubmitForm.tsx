@@ -165,7 +165,7 @@ const SubmitForm: React.FC = () => {
   return (
     <FormWrap>
       <Content>
-        <Title>{t('Information Submission')}</Title>
+        <Title>{t('KCC_grants_list_title')}</Title>
         <StyledForm
           {...layout}
           form={form}
@@ -175,7 +175,7 @@ const SubmitForm: React.FC = () => {
         >
           <Form.Item
             name="name"
-            label={`1.${t('Your project name')}`}
+            label={`1.${t('KCC_grants_list_name')}`}
             rules={[{ required: true }, { min: 1, max: 50 }]}
             initialValue={initState.name}
           >
@@ -184,7 +184,7 @@ const SubmitForm: React.FC = () => {
 
           <Form.Item
             name="website"
-            label={`2.${t('Website of your project')}`}
+            label={`2.${t('KCC_grants_list_website')}`}
             rules={[
               { required: true },
               { min: 1, max: 100 },
@@ -192,7 +192,9 @@ const SubmitForm: React.FC = () => {
               {
                 validator: (_, value) => {
                   if (value && !value.startsWith('http')) {
-                    return Promise.reject(new Error('Please enter a valid URL'))
+                    return Promise.reject(
+                      new Error(t('Please enter a valid URL') as string)
+                    )
                   }
                   return Promise.resolve()
                 },
@@ -205,7 +207,7 @@ const SubmitForm: React.FC = () => {
 
           <Form.Item
             name="profile"
-            label={`3.${t('Your introduction')}`}
+            label={`3.${t('KCC_grants_list_information')}`}
             rules={[{ required: true }, { min: 1, max: 100 }]}
             initialValue={initState.profile}
           >
@@ -214,7 +216,7 @@ const SubmitForm: React.FC = () => {
 
           <Form.Item
             name="email"
-            label={`4.${t('Your contact information')}`}
+            label={`4.${t('KCC_grants_list_contact')}`}
             rules={[{ required: true }, { min: 1, max: 100 }]}
             initialValue={initState.email}
           >
@@ -248,12 +250,12 @@ const SubmitForm: React.FC = () => {
                 boxShadow: 'none',
               }}
             >
-              {t('Submit')}
+              {t('KCC_grants_list_submit')}
             </NormalButton>
           </Form.Item>
         </StyledForm>
         <SuccessModal
-          text="Your information has been submitted successfully and we will contact you within 72 hours"
+          text={t('KCC_grants_list_success') as string}
           open={show}
           onOk={() => setShow(() => false)}
           onCancel={() => setShow(() => false)}

@@ -60,8 +60,8 @@ export const MENU_LIST = [
         },
       },
       {
-        title: 'Gas Revenue & Grants Project',
-        subTitle: 'KCC_home_manu_grants',
+        title: 'Grants_new',
+        subTitle: 'KCC_home_manu_grants_new',
         route: '/gas-revenue',
         icon: (isHover = false) => {
           return <GrantIcon isHover={isHover} />

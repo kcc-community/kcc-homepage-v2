@@ -61,7 +61,7 @@ const SuccessModal: React.FC<
           style={{ marginTop: '43px', marginBottom: '40px', width: '200px' }}
           onClick={props?.onCancel as any}
         >
-          {t('OK')}
+          {t('KCC_grants_list_ok')}
         </NormalButton>
       </Content>
     </StyledModal>

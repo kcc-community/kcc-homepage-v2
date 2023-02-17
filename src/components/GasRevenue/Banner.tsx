@@ -43,7 +43,7 @@ const Title = styled.div`
   display: flex;
   align-items: center;
   color: #ffffff;
-  max-width: 560px;
+  max-width: 580px;
   @media (max-width: 768px) {
     font-size: 40px;
     line-height: 60px;
@@ -71,10 +71,10 @@ const Banner: React.FC = () => {
   return (
     <Wrap>
       <Content>
-        <Title>{t('Gas Revenue & Grants Project')}</Title>
+        <Title>{t('KCC_grants_banner_title')}</Title>
         <Desc>
           <Trans
-            i18nKey="gas revenue desc"
+            i18nKey="KCC_grants_banner_subtitle"
             components={{
               color: (
                 <Link
