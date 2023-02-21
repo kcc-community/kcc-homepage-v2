@@ -362,7 +362,6 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="smart_contract_address"
             label={t('Contract Address')}
-            rules={[{ required: true }]}
             initialValue={initState.smart_contract_address}
           >
             <Input placeholder={t('Enter smart contract address') as any} />
