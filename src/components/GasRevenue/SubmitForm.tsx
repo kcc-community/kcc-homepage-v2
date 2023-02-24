@@ -176,7 +176,21 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="name"
             label={`1.${t('KCC_grants_list_name')}`}
-            rules={[{ required: true }, { min: 1, max: 50 }]}
+            rules={[
+              { required: true },
+              { min: 1, max: 50 },
+              // name length must be gt 1 after trim
+              {
+                validator: (_, value) => {
+                  if (value && value.trim().length < 1) {
+                    return Promise.reject(
+                      new Error(t('Name is not filled') as string)
+                    )
+                  }
+                  return Promise.resolve()
+                },
+              },
+            ]}
             initialValue={initState.name}
           >
             <Input style={{ width: '100%', height: '54px' }} />
@@ -191,6 +205,11 @@ const SubmitForm: React.FC = () => {
               // check url start with http or https
               {
                 validator: (_, value) => {
+                  if (value && value.trim().length < 1) {
+                    return Promise.reject(
+                      new Error(t('Website is not filled') as string)
+                    )
+                  }
                   if (value && !value.startsWith('http')) {
                     return Promise.reject(
                       new Error(t('Please enter a valid URL') as string)
@@ -208,7 +227,20 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="profile"
             label={`3.${t('KCC_grants_list_information')}`}
-            rules={[{ required: true }, { min: 1, max: 100 }]}
+            rules={[
+              { required: true },
+              { min: 1, max: 100 },
+              {
+                validator: (_, value) => {
+                  if (value && value.trim().length < 1) {
+                    return Promise.reject(
+                      new Error(t('Profile is not filled') as string)
+                    )
+                  }
+                  return Promise.resolve()
+                },
+              },
+            ]}
             initialValue={initState.profile}
           >
             <Input.TextArea rows={3} style={{ width: '100%' }} />
