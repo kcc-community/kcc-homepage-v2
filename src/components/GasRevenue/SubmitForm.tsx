@@ -255,7 +255,7 @@ const SubmitForm: React.FC = () => {
             <Input style={{ width: '100%', height: '54px' }} />
           </Form.Item>
           <Form.Item label={t('Google Captcha')} initialValue={initState.token}>
-            {isClient && (
+            {isClient && window?.grecaptcha && (
               <GoogleCaptcha
                 token={form.getFieldValue('token')}
                 setToken={setToken}

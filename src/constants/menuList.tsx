@@ -60,9 +60,12 @@ export const MENU_LIST = [
         },
       },
       {
-        title: 'Grants_new',
-        subTitle: 'KCC_home_manu_grants_new',
-        route: '/gas-revenue',
+        // title: 'Grants_new',
+        // subTitle: 'KCC_home_manu_grants_new',
+        // route: '/gas-revenue',
+        title: 'Grants',
+        subTitle: 'KCC_home_manu_grants',
+        route: KCC.GRANTS,
         icon: (isHover = false) => {
           return <GrantIcon isHover={isHover} />
         },

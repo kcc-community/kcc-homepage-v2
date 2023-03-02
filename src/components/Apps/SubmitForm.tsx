@@ -9,7 +9,6 @@ import {
   Modal,
   message,
 } from 'antd'
-
 import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
@@ -25,11 +24,6 @@ import GoogleCaptcha from './GoogleCaptcha'
 import { useResponsive } from '../../utils/responsive'
 import { getBase64, uploadImg } from 'utils/submit'
 import { isClient } from 'constants/index'
-import Web3 from 'web3'
-
-const web3 = new Web3()
-
-const { isAddress } = web3.utils
 
 const { Option } = Select
 
@@ -133,7 +127,6 @@ const SubmitForm: React.FC = () => {
       const response = await DappService.categoryList()
       dispatch(updateAppCategoryList({ list: response.data.data.list }))
     }
-
     if (categoryList.length < 1) {
       updateList()
     }
@@ -235,7 +228,6 @@ const SubmitForm: React.FC = () => {
         <StyledForm
           {...layout}
           form={form}
-          requiredMark={false}
           name="control-hooks"
           onFinish={onFinish}
         >
@@ -278,18 +270,7 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="website"
             label={t('Website')}
-            rules={[
-              { required: true },
-              // check url start with http or https
-              {
-                validator: (_, value) => {
-                  if (!value || value.startsWith('http')) {
-                    return Promise.resolve()
-                  }
-                  return Promise.reject(new Error('Invalid URL'))
-                },
-              },
-            ]}
+            rules={[{ required: true }]}
             initialValue={initState.website}
           >
             <Input placeholder={t('Enter official website URL') as any} />
@@ -382,18 +363,7 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="smart_contract_address"
             label={t('Contract Address')}
-            rules={[
-              { required: true },
-              // check is ethereum address
-              {
-                validator: (_, value) => {
-                  if (isAddress(value)) {
-                    return Promise.resolve()
-                  }
-                  return Promise.reject(new Error('Invalid Address'))
-                },
-              },
-            ]}
+            rules={[{ required: true }]}
             initialValue={initState.smart_contract_address}
           >
             <Input placeholder={t('Enter smart contract address') as any} />
@@ -416,17 +386,6 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="token_contract_address"
             label={t('Token Contract Address')}
-            rules={[
-              // check is ethereum address
-              {
-                validator: (_, value) => {
-                  if (isAddress(value)) {
-                    return Promise.resolve()
-                  }
-                  return Promise.reject(new Error('Invalid Address'))
-                },
-              },
-            ]}
             initialValue={initState.token_contract_address}
           >
             <Input placeholder={t('Enter the Token Contract Address') as any} />
