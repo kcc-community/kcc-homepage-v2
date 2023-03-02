@@ -482,7 +482,7 @@ const SubmitForm: React.FC = () => {
             <Input placeholder={t('Enter project CoinGecko page URL') as any} />
           </Form.Item>
           <Form.Item label={t('Google Captcha')} initialValue={initState.token}>
-            {isClient && (
+            {isClient && window?.grecaptcha && (
               <GoogleCaptcha
                 token={form.getFieldValue('token')}
                 setToken={setToken}
