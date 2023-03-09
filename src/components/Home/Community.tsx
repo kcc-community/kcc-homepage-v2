@@ -58,6 +58,7 @@ const Title = styled.div`
   align-items: center;
   color: #040a2d;
   @media (max-width: 768px) {
+    flex-flow: row wrap;
     font-size: 32px;
     text-align: center;
     line-height: 48px;
@@ -133,6 +134,7 @@ const Media = styled(Link)<{ nth: number }>`
   align-items: center;
   width: 252px;
   height: 173px;
+
   &:hover {
     background: ${({ nth }) => {
       switch (nth) {
@@ -147,9 +149,11 @@ const Media = styled(Link)<{ nth: number }>`
       }
     }};
   }
+
   &:hover ${MediaText} {
     color: #ffffff;
   }
+
   @media (max-width: 768px) {
     width: 170px;
     height: 140px;

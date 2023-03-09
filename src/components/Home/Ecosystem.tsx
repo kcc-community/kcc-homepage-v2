@@ -58,7 +58,8 @@ const Title = styled.div`
   align-items: center;
   color: #040a2d;
   @media (max-width: 768px) {
-    font-size: 24px;
+    flex-flow: row wrap;
+    font-size: 32px;
     line-height: 48px;
     text-align: center;
   }
@@ -102,13 +103,16 @@ const Item = styled.div`
   padding: 48px 32px 30px 32px;
   background: #fff;
   border-radius: 16px;
+
   & + & {
     margin-left: 24px;
   }
+
   @media (max-width: 768px) {
     & + & {
       margin-left: 0px;
     }
+
     width: 100%;
     margin-top: 16px;
     display: flex;

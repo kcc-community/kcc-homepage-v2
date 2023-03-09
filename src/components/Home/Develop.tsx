@@ -16,6 +16,7 @@ import { Box, RowCenterBox } from 'components'
 import Link from 'next/link'
 import { useResponsive } from 'utils/responsive'
 import { GhostWhiteButton } from 'components/Button'
+import { useRouter } from 'next/router'
 
 const advantageList = [
   {
@@ -175,7 +176,8 @@ const Title = styled.div`
   align-items: center;
   color: #fff;
   @media (max-width: 768px) {
-    font-size: 24px;
+    flex-flow: row wrap;
+    font-size: 32px;
     line-height: 48px;
     text-align: center;
   }
@@ -220,9 +222,11 @@ const Item = styled.div`
   height: 320px;
   padding: 48px 32px 30px 32px;
   background: #181818;
+
   & + & {
     margin-left: 24px;
   }
+
   @media (max-width: 768px) {
     display: flex;
     flex-flow: column nowrap;
@@ -272,6 +276,7 @@ const ItemRow = styled(Link)`
   align-items: center;
   margin-top: 12px;
   cursor: pointer;
+
   &:hover ${ItemText} {
     color: #21c397;
   }
@@ -305,6 +310,7 @@ const AdvantageTitle = styled.div`
   font-size: 20px;
   color: #ffffff;
   z-index: 1;
+
   &::after {
     content: '';
     position: absolute;
@@ -370,9 +376,13 @@ const GrantTitle = styled.div`
   font-size: 48px;
   display: flex;
   align-items: center;
+  white-space: nowrap;
+  max-width: 740px;
   color: #ffffff;
   @media (max-width: 768px) {
+    white-space: break-spaces;
     font-size: 32px;
+    max-width: 100%;
   }
 `
 
@@ -413,6 +423,7 @@ const Develop: React.FC = () => {
   const { isMobile } = useResponsive()
   const initHoverState = new Array(developList.length).fill(false)
   const [hoverList, setHoverList] = React.useState<boolean[]>(initHoverState)
+  const history = useRouter()
 
   const setHoverByIndex = (index: number) => {
     const stateList = initHoverState
@@ -471,12 +482,12 @@ const Develop: React.FC = () => {
         </AdvantageListWrap>
         <GrantWrap>
           <Box>
-            <GrantTitle>{t('Grant Program')}</GrantTitle>
+            <GrantTitle>{t('Grants_new')}</GrantTitle>
             <GrantDesc>{t('KCC_home_developer_grants')}</GrantDesc>
             <GhostWhiteButton
               style={{ border: '1px solid #fff', marginTop: '28px' }}
               onClick={() => {
-                window.open(KCC.GRANTS, '_blank')
+                history.push('/gas-revenue')
               }}
               onMouseEnter={() => setIsWhite(() => false)}
               onMouseLeave={() => setIsWhite(() => true)}

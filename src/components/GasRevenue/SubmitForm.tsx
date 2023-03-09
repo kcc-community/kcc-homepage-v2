@@ -249,7 +249,24 @@ const SubmitForm: React.FC = () => {
           <Form.Item
             name="email"
             label={`4.${t('KCC_grants_list_contact')}`}
-            rules={[{ required: true }, { min: 1, max: 100 }]}
+            rules={[
+              { required: true },
+              { min: 1, max: 100 },
+              {
+                validator: (_, value) => {
+                  const reg =
+                    /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+                  if (!reg.test(value)) {
+                    return Promise.reject(
+                      new Error(
+                        t('Please enter a valid email address') as string
+                      )
+                    )
+                  }
+                  return Promise.resolve()
+                },
+              },
+            ]}
             initialValue={initState.email}
           >
             <Input style={{ width: '100%', height: '54px' }} />
