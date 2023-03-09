@@ -78,7 +78,7 @@ const Banner: React.FC = () => {
             components={{
               color: (
                 <Link
-                  href="https://kccofficial.medium.com/17f60f8b418a"
+                  href="https://news.kcc.io/kcc-gas-revenue-program/"
                   target="_blank"
                 />
               ),
