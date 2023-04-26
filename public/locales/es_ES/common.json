@@ -148,5 +148,6 @@
   "KCC_home_manu_grants_new": "Solicita ingresos y subvenciones de gas para tu proyecto.",
   "Grants_new": "Programa de ingresos y subvenciones de gas",
   "KCC_grants_list_success": "La información se ha enviado. Contactaremos contigo en un plazo de 72 horas.",
-  "KCC_grants_list_ok": "Aceptar"
+  "KCC_grants_list_ok": "Aceptar",
+  "KCC_home_footer_contact": "Contactar"
 }

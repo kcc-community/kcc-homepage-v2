@@ -67,6 +67,10 @@ export const FOOTER_LIST = [
         navText: 'Media Kit',
         navRoute: `${KCC.DOCS_URL}/disclosure/media-kit`, // media kit
       },
+      {
+        navText: 'KCC_home_footer_contact',
+        navRoute: `${KCC.DOCS_URL}/contact-us/contact-us`,
+      },
     ],
   },
 ]
