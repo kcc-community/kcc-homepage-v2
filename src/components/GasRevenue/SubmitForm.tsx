@@ -254,8 +254,7 @@ const SubmitForm: React.FC = () => {
               { min: 1, max: 100 },
               {
                 validator: (_, value) => {
-                  const reg =
-                    /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+                  const reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
                   if (!reg.test(value)) {
                     return Promise.reject(
                       new Error(

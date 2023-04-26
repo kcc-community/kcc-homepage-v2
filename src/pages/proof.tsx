@@ -130,7 +130,8 @@ const NoDataText = styled.div`
 const mockData = {
   symbol: 'BTC',
   name: 'Bitcoin',
-  icon: 'https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/btc.png',
+  icon:
+    'https://cdn.jsdelivr.net/gh/kcc-community/tokens-info@main/icons/btc.png',
   lockInfo: [
     {
       network: 'BTC',
