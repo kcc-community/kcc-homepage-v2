@@ -127,11 +127,12 @@ export const KCC = {
       logo: zonff,
       route: 'https://www.zonff.partners/#/home',
     },
-    {
-      name: 'Axis Ventures',
-      logo: axis,
-      route: 'https://www.axis.ventures/',
-    },
+    // removed
+    // {
+    //   name: 'Axis Ventures',
+    //   logo: axis,
+    //   route: 'https://www.axis.ventures/',
+    // },
     {
       name: 'AC Capital',
       logo: acCapital,
