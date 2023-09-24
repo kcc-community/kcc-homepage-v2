@@ -7,7 +7,7 @@ import {
   Upload,
   UploadFile,
   Modal,
-  message,
+  // message,
 } from 'antd'
 import React from 'react'
 import styled from 'styled-components'
@@ -136,43 +136,43 @@ const SubmitForm: React.FC = () => {
     form.resetFields()
   }, [form])
 
-  const onFinish = React.useCallback(
-    async (values: any) => {
-      console.log(values)
-      try {
-        setLoading(() => true)
-        // get googlecaptcha code
-        setRefreshTag((n) => n + 1)
-        setTimeout(async () => {
-          if (form.getFieldValue('token')) {
-            // handle data with categories
-            values = {
-              ...values,
-              token: form.getFieldValue('token'),
-              category_ids: values.category_ids?.join(','),
-            }
-            // send add new dapp request
-            console.log('values', values)
-            const response = await DappService.addApp(values)
-            console.log('response', response)
-            if (response.data.code === 1) {
-              message.error(response.data.msg)
-            } else {
-              message.success(t('Successfully Submit Project'))
-              onReset()
-            }
-          } else {
-            console.log('no google captcha')
-          }
-        }, 100)
-      } catch (e) {
-        console.warn(e)
-      } finally {
-        setLoading(() => false)
-      }
-    },
-    [form, onReset, t]
-  )
+  // const onFinish = React.useCallback(
+  //   async (values: any) => {
+  //     console.log(values)
+  //     try {
+  //       setLoading(() => true)
+  //       // get googlecaptcha code
+  //       setRefreshTag((n) => n + 1)
+  //       setTimeout(async () => {
+  //         if (form.getFieldValue('token')) {
+  //           // handle data with categories
+  //           values = {
+  //             ...values,
+  //             token: form.getFieldValue('token'),
+  //             category_ids: values.category_ids?.join(','),
+  //           }
+  //           // send add new dapp request
+  //           console.log('values', values)
+  //           const response = await DappService.addApp(values)
+  //           console.log('response', response)
+  //           if (response.data.code === 1) {
+  //             message.error(response.data.msg)
+  //           } else {
+  //             message.success(t('Successfully Submit Project'))
+  //             onReset()
+  //           }
+  //         } else {
+  //           console.log('no google captcha')
+  //         }
+  //       }, 100)
+  //     } catch (e) {
+  //       console.warn(e)
+  //     } finally {
+  //       setLoading(() => false)
+  //     }
+  //   },
+  //   [form, onReset, t]
+  // )
 
   const upLoadProps = {
     customRequest: (option: any) => {
