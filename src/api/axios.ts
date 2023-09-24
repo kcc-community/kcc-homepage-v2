@@ -1,4 +1,3 @@
-//@ts-nocheck
 import Axios, { AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios'
 import { message } from 'antd'
 
