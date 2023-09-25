@@ -1,4 +1,4 @@
-import Axios, { AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios'
+import Axios, { AxiosResponse, AxiosError } from 'axios'
 import { message } from 'antd'
 
 export interface HttpResponse<T> {
@@ -75,7 +75,7 @@ const service = Axios.create({
  * @description INTERCEPTORS
  * @returns {AxiosRequestConfig} config
  */
-service.interceptors.request.use(async (config: AxiosRequestConfig) => {
+service.interceptors.request.use(async (config: any) => {
   /*  config.headers['User-Account'] = userAccount
     config.headers.Authorization = 'Basic ZmViczoxMjM0NTY=' */
 
