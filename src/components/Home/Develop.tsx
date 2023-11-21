@@ -66,13 +66,13 @@ const developList = [
         name: 'Explorer Mainnet',
         url: KCC.EXPLORER,
       },
+      {
+        name: 'Faucet Mainnet',
+        url: KCC.MAINNET_FAUCET,
+      },
       // {
       //   name: 'Explorer Testnet',
       //   url: KCC.TEST_EXPLORER,
-      // },
-      // {
-      //   name: 'Faucet Mainnet',
-      //   url: KCC.MAINNET_FAUCET,
       // },
       // {
       //   name: 'Faucet Testnet',
