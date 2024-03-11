@@ -112,17 +112,9 @@ export const MENU_LIST = [
     hasChildren: true,
     childrens: [
       {
-        title: 'Explorer1',
+        title: 'Explorer',
         subTitle: 'KCC_home_manu_explore',
         route: KCC.EXPLORER,
-        icon: (isHover = false) => {
-          return <ChromeIcon isHover={isHover} />
-        },
-      },
-      {
-        title: 'Explorer2',
-        subTitle: 'KCC_home_manu_explore',
-        route: KCC.EXPLORER2,
         icon: (isHover = false) => {
           return <ChromeIcon isHover={isHover} />
         },
