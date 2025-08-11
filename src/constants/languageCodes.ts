@@ -1,7 +1,6 @@
 export const EN = { code: 'en', language: 'English' }
 export const AR = { code: 'ar', language: 'العربية' }
 export const BN = { code: 'bn', language: 'বাংলা' }
-export const ZHCN = { code: 'zh_CN', language: '简体中文' }
 export const ZHTW = { code: 'zh_TW', language: '繁體中文' }
 export const ZHHK = { code: 'zh_HK', language: '繁體中文' }
 export const NL = { code: 'nl', language: 'Nederlands' }
@@ -30,7 +29,6 @@ export const VI = { code: 'vi', language: 'Tiếng Việt' }
 
 export const allLanguages = [
   EN,
-  ZHCN,
   ZHHK,
   ESES,
   DE,

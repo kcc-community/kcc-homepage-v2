@@ -163,7 +163,6 @@ export async function getStaticProps({ locale }: { locale: any }) {
       ...(await serverSideTranslations(locale ?? 'en', ['common'], null, [
         'en',
         'zh_HK',
-        'zh_CN',
         'es_ES',
         'pt_PT',
         'de_DE',

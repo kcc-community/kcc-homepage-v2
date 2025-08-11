@@ -158,9 +158,6 @@ const NavItem: React.FunctionComponent<NavItemChildrenType> = (props) => {
   const getNavRoute = React.useCallback(
     (route: string) => {
       if (route === KCC.EXPLORER) {
-        if (i18n.language === 'zh_CN') {
-          return `${route}/cn`
-        }
         return `${route}/en`
       }
       return route
