@@ -80,7 +80,7 @@ const Title = styled.div`
   margin-bottom: 20px;
 `
 
-const StyledForm = styled(Form)`
+const StyledForm = styled(Form<FormDataProps>)`
   .ant-form-item {
     font-family: 'Poppins';
     font-size: 24px;
