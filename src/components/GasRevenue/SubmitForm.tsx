@@ -64,7 +64,7 @@ const Title = styled.div`
   }
 `
 
-const StyledForm = styled(Form)`
+const StyledForm = styled(Form<GasRevenueFormDataType>)`
   width: 736px;
   display: flex;
   flex-flow: column nowrap;
